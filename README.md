@@ -3,8 +3,7 @@
 Example project for [FairyGUI-PixiJS](https://github.com/jcyuan/FairyGUI-PixiJS)
 
 ## Online demo
-* Check online demo for PixiJS version (Chrome / MobilePhone): [http://jc-space.com/pixigui/](http://jc-space.com/pixigui/)
-  ![PixiJS GUI Demo](http://jc-space.com/demo.png)
+* Check online demo for PixiJS version (Chrome / MobilePhone): [https://pk2016.github.io/FairyGUI-PixiJS-Example/](https://pk2016.github.io/FairyGUI-PixiJS-Example/)
 
 ## License
 This content is released under the [MIT License.](http://opensource.org/licenses/MIT)

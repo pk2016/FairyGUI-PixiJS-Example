@@ -1,7 +1,10 @@
 var __extends = (this && this.__extends) || (function () {
-    var extendStatics = Object.setPrototypeOf ||
-        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    }
     return function (d, b) {
         extendStatics(d, b);
         function __() { this.constructor = d; }
@@ -11,7 +14,7 @@ var __extends = (this && this.__extends) || (function () {
 define(["require", "exports", "./LoadingView", "./WindowA", "./WindowB", "./WindowWait"], function (require, exports, LoadingView_1, WindowA_1, WindowB_1, WindowWait_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    var Main = (function (_super) {
+    var Main = /** @class */ (function (_super) {
         __extends(Main, _super);
         function Main() {
             var _this = _super.call(this, {
@@ -45,28 +48,27 @@ define(["require", "exports", "./LoadingView", "./WindowA", "./WindowB", "./Wind
             _this.loadingView.addRelation(fgui.GRoot.inst, 24 /* Size */);
             //test.jpg actually is a binary file but just ends with fake postfix.
             var loader = new fgui.utils.AssetLoader();
-            loader.add("test", "images/test.jpg", { loadType: PIXI.loaders.Resource.LOAD_TYPE.XHR, xhrType: PIXI.loaders.Resource.XHR_RESPONSE_TYPE.BUFFER })
+            loader.add("test", "images/test.jpg", { loadType: PIXI.LoaderResource.LOAD_TYPE.XHR, xhrType: PIXI.LoaderResource.XHR_RESPONSE_TYPE.BUFFER })
                 .add("test@atlas0", "images/test@atlas0.png")
                 .add("test@atlas0_1", "images/test@atlas0_1.png")
                 .add("test@atlas0_2", "images/test@atlas0_2.png")
                 .add("test@atlas0_3", "images/test@atlas0_3.png")
                 .add("test@atlas0_4", "images/test@atlas0_4.png")
-                .on("progress", _this.loadProgress, _this)
-                .on("complete", _this.resLoaded, _this)
                 .load();
+            loader.onProgress.add(_this.loadProgress, _this);
+            loader.onComplete.add(_this.resLoaded, _this);
             return _this;
         }
         Main.prototype.loadProgress = function (loader) {
             var p = loader.progress;
             this.loadingView.setProgress(p);
             if (p >= 100) {
-                loader.off("progress", this.loadProgress, this);
+                loader.onProgress.detachAll();
                 this.loadingView.dispose();
                 this.loadingView = null;
             }
         };
-        Main.prototype.resLoaded = function (loader) {
-            loader.destroy();
+        Main.prototype.resLoaded = function () {
             fgui.UIPackage.addPackage("test");
             var ins = fgui.UIPackage.createObject("test", "main");
             ins.setSize(fgui.GRoot.inst.width, fgui.GRoot.inst.height);
@@ -188,7 +190,7 @@ define(["require", "exports", "./LoadingView", "./WindowA", "./WindowB", "./Wind
                 var cb = item.getChild("cb");
                 cb.selected = false;
                 item.getChild("mc").playing = false;
-                cb.on("__stateChanged" /* CHANGED */, _this.gridChkChanged, _this);
+                cb.on(fgui.StateChangeEvent.CHANGED, _this.gridChkChanged, _this);
                 item.getChild("t1").text = testNames[i];
                 item.getChild("t3").text = String(Math.floor(Math.random() * 10000));
             });
@@ -247,10 +249,10 @@ define(["require", "exports", "./LoadingView", "./WindowA", "./WindowB", "./Wind
             btnA.draggable = true;
             var btnB = ins.getChild("b");
             btnB.draggable = true;
-            btnB.on("__dragStart" /* START */, this.__onDragStart, this);
+            btnB.on(fgui.DragEvent.START, this.__onDragStart, this);
             var btnC = ins.getChild("c");
             btnC.icon = null;
-            btnC.on("__dragDrop" /* DROP */, this.__onDrop, this);
+            btnC.on(fgui.DragEvent.DROP, this.__onDrop, this);
             var btnD = ins.getChild("d");
             btnD.draggable = true;
             var bounds = ins.getChild("bounds");
@@ -265,7 +267,7 @@ define(["require", "exports", "./LoadingView", "./WindowA", "./WindowB", "./Wind
             btn.stopDrag();
             if (!this.ddi)
                 this.ddi = new fgui.utils.DragIndicator();
-            this.ddi.startDrag(btn, btn.icon, btn.icon, evt.data.pointerID);
+            this.ddi.startDrag(btn, btn.icon, btn.icon, evt.data.pointerId);
         };
         Main.prototype.__onDrop = function (evt, data) {
             var btn = fgui.GObject.castFromNativeObject(evt.currentTarget);

@@ -4,6 +4,7 @@
     "target": "es5",
     "module": "amd",
     "sourceMap": true,
+    "outDir": "../docs/js",
     "typeRoots": [
       "typings/"
     ]

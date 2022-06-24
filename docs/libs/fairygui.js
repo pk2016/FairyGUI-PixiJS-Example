@@ -1,5 +1,6 @@
-"use strict";
-var __extends = (this && this.__extends) || (function () {
+window.fgui = {};
+window.fairygui = window.fgui;
+window.__extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
         function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
@@ -9,12 +10,12 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-var fgui;
+
 (function (fgui) {
     var win = window;
     var hasPointer = !!(win.PointerEvent || win.MSPointerEvent);
     var hasTouch = 'ontouchstart' in window && PIXI.utils.isMobile.any;
-    var InteractiveEvents = /** @class */ (function () {
+    var InteractiveEvents = (function () {
         function InteractiveEvents() {
         }
         InteractiveEvents.Down = hasPointer ? "pointerdown" : hasTouch ? "touchstart" : "mousedown";
@@ -25,7 +26,6 @@ var fgui;
         InteractiveEvents.Move = hasPointer ? "pointermove" : hasTouch ? "touchmove" : "mousemove";
         InteractiveEvents.Over = hasPointer ? "pointerover" : hasTouch ? null : "mouseover";
         InteractiveEvents.Out = hasPointer ? "pointerout" : hasTouch ? null : "mouseout";
-        //mouse only
         InteractiveEvents.RightDown = "rightdown";
         InteractiveEvents.RightUp = "rightup";
         InteractiveEvents.RightClick = "rightclick";
@@ -64,7 +64,7 @@ var fgui;
         "Luminosity",
         "NormalNPM",
         "AddNPM",
-        "ScreenNPM" //  SCREEN_NPM
+        "ScreenNPM"
     ];
     ;
     ;
@@ -87,212 +87,212 @@ var fgui;
     function ParseOverflowType(value) {
         switch (value) {
             case "visible":
-                return 0 /* Visible */;
+                return 0;
             case "hidden":
-                return 1 /* Hidden */;
+                return 1;
             case "scroll":
-                return 2 /* Scroll */;
+                return 2;
             case "scale":
-                return 3 /* Scale */;
+                return 3;
             case "scaleFree":
-                return 4 /* ScaleFree */;
+                return 4;
             default:
-                return 0 /* Visible */;
+                return 0;
         }
     }
     fgui.ParseOverflowType = ParseOverflowType;
     function ParseScrollType(value) {
         switch (value) {
             case "horizontal":
-                return 0 /* Horizontal */;
+                return 0;
             case "vertical":
-                return 1 /* Vertical */;
+                return 1;
             case "both":
-                return 2 /* Both */;
+                return 2;
             default:
-                return 1 /* Vertical */;
+                return 1;
         }
     }
     fgui.ParseScrollType = ParseScrollType;
     function ParseLoaderFillType(value) {
         switch (value) {
             case "none":
-                return 0 /* None */;
+                return 0;
             case "scale":
-                return 1 /* Scale */;
+                return 1;
             case "scaleMatchHeight":
-                return 2 /* ScaleMatchHeight */;
+                return 2;
             case "scaleMatchWidth":
-                return 3 /* ScaleMatchWidth */;
+                return 3;
             case "scaleFree":
-                return 4 /* ScaleFree */;
+                return 4;
             case "scaleNoBorder":
-                return 5 /* ScaleNoBorder */;
+                return 5;
             default:
-                return 0 /* None */;
+                return 0;
         }
     }
     fgui.ParseLoaderFillType = ParseLoaderFillType;
     function ParseListLayoutType(value) {
         switch (value) {
             case "column":
-                return 0 /* SingleColumn */;
+                return 0;
             case "row":
-                return 1 /* SingleRow */;
+                return 1;
             case "flow_hz":
-                return 2 /* FlowHorizontal */;
+                return 2;
             case "flow_vt":
-                return 3 /* FlowVertical */;
+                return 3;
             case "pagination":
-                return 4 /* Pagination */;
+                return 4;
             default:
-                return 0 /* SingleColumn */;
+                return 0;
         }
     }
     fgui.ParseListLayoutType = ParseListLayoutType;
     function ParseListSelectionMode(value) {
         switch (value) {
             case "single":
-                return 0 /* Single */;
+                return 0;
             case "multiple":
-                return 1 /* Multiple */;
+                return 1;
             case "multipleSingleClick":
-                return 2 /* Multiple_SingleClick */;
+                return 2;
             case "none":
-                return 3 /* None */;
+                return 3;
             default:
-                return 0 /* Single */;
+                return 0;
         }
     }
     fgui.ParseListSelectionMode = ParseListSelectionMode;
     function ParsePackageItemType(value) {
         switch (value) {
             case "image":
-                return 0 /* Image */;
+                return 0;
             case "movieclip":
-                return 2 /* MovieClip */;
+                return 2;
             case "sound":
-                return 3 /* Sound */;
+                return 3;
             case "component":
-                return 4 /* Component */;
+                return 4;
             case "swf":
-                return 1 /* Swf */;
+                return 1;
             case "font":
-                return 6 /* Font */;
+                return 6;
             case "atlas":
-                return 7 /* Atlas */;
+                return 7;
             default:
-                return 5 /* Misc */;
+                return 5;
         }
     }
     fgui.ParsePackageItemType = ParsePackageItemType;
     function ParseProgressTitleType(value) {
         switch (value) {
             case "percent":
-                return 0 /* Percent */;
+                return 0;
             case "valueAndmax":
-                return 1 /* ValueAndMax */;
+                return 1;
             case "value":
-                return 2 /* Value */;
+                return 2;
             case "max":
-                return 3 /* Max */;
+                return 3;
             default:
-                return 0 /* Percent */;
+                return 0;
         }
     }
     fgui.ParseProgressTitleType = ParseProgressTitleType;
     function ParseScrollBarDisplayType(value) {
         switch (value) {
             case "default":
-                return 0 /* Default */;
+                return 0;
             case "visible":
-                return 1 /* Visible */;
+                return 1;
             case "auto":
-                return 2 /* Auto */;
+                return 2;
             case "hidden":
-                return 3 /* Hidden */;
+                return 3;
             default:
-                return 0 /* Default */;
+                return 0;
         }
     }
     fgui.ParseScrollBarDisplayType = ParseScrollBarDisplayType;
     function ParseFlipType(value) {
         switch (value) {
             case "hz":
-                return 1 /* Horizontal */;
+                return 1;
             case "vt":
-                return 2 /* Vertical */;
+                return 2;
             case "both":
-                return 3 /* Both */;
+                return 3;
             default:
-                return 0 /* None */;
+                return 0;
         }
     }
     fgui.ParseFlipType = ParseFlipType;
     function ParseButtonMode(value) {
         switch (value) {
             case "Common":
-                return 0 /* Common */;
+                return 0;
             case "Check":
-                return 1 /* Check */;
+                return 1;
             case "Radio":
-                return 2 /* Radio */;
+                return 2;
             default:
-                return 0 /* Common */;
+                return 0;
         }
     }
     fgui.ParseButtonMode = ParseButtonMode;
     function ParseAutoSizeType(value) {
         switch (value) {
             case "none":
-                return 0 /* None */;
+                return 0;
             case "both":
-                return 1 /* Both */;
+                return 1;
             case "height":
-                return 2 /* Height */;
+                return 2;
             case "shrink":
-                return 3 /* Shrink */;
+                return 3;
             default:
-                return 0 /* None */;
+                return 0;
         }
     }
     fgui.ParseAutoSizeType = ParseAutoSizeType;
     function ParseAlignType(value) {
         switch (value) {
             case "left":
-                return "left" /* Left */;
+                return "left";
             case "center":
-                return "center" /* Center */;
+                return "center";
             case "right":
-                return "right" /* Right */;
+                return "right";
             default:
-                return "left" /* Left */;
+                return "left";
         }
     }
     fgui.ParseAlignType = ParseAlignType;
     function ParseVertAlignType(value) {
         switch (value) {
             case "top":
-                return 0 /* Top */;
+                return 0;
             case "middle":
-                return 1 /* Middle */;
+                return 1;
             case "bottom":
-                return 2 /* Bottom */;
+                return 2;
             default:
-                return 0 /* Top */;
+                return 0;
         }
     }
     fgui.ParseVertAlignType = ParseVertAlignType;
     function ParseListChildrenRenderOrder(value) {
         switch (value) {
             case "ascent":
-                return 0 /* Ascent */;
+                return 0;
             case "descent":
-                return 1 /* Descent */;
+                return 1;
             case "arch":
-                return 2 /* Arch */;
+                return 2;
             default:
-                return 0 /* Ascent */;
+                return 0;
         }
     }
     fgui.ParseListChildrenRenderOrder = ParseListChildrenRenderOrder;
@@ -334,9 +334,9 @@ var fgui;
     }
     fgui.ParseEaseType = ParseEaseType;
 })(fgui || (fgui = {}));
-var fgui;
+
 (function (fgui) {
-    var GObject = /** @class */ (function () {
+    var GObject = (function () {
         function GObject() {
             this.$x = 0;
             this.$y = 0;
@@ -361,13 +361,9 @@ var fgui;
             this.$pixelSnapping = false;
             this.$handlingController = false;
             this.$lastColorComponents = null;
-            /**@internal */
             this.$rawWidth = 0;
-            /**@internal */
             this.$rawHeight = 0;
-            /**@internal */
             this.$initWidth = 0;
-            /**@internal */
             this.$initHeight = 0;
             this.$sourceWidth = 0;
             this.$sourceHeight = 0;
@@ -419,10 +415,10 @@ var fgui;
                 this.$x = xv;
                 this.$y = yv;
                 this.handleXYChanged();
-                this.updateGear(1 /* XY */);
+                this.updateGear(1);
                 if (this.$parent) {
                     this.$parent.setBoundsChangedFlag();
-                    this.$displayObject.emit("__xyChanged" /* XY_CHANGED */, this);
+                    this.$displayObject.emit(fgui.DisplayObjectEvent.XY_CHANGED, this);
                 }
                 if (GObject.draggingObject == this && !GObject.sUpdatingWhileDragging)
                     this.localToGlobalRect(0, 0, this.width, this.height, GObject.sGlobalRect);
@@ -450,8 +446,8 @@ var fgui;
                 r = this.root;
             this.setXY((r.width - this.width) / 2, (r.height - this.height) / 2);
             if (restraint) {
-                this.addRelation(r, 3 /* Center_Center */);
-                this.addRelation(r, 10 /* Middle_Middle */);
+                this.addRelation(r, 3);
+                this.addRelation(r, 10);
             }
         };
         Object.defineProperty(GObject.prototype, "width", {
@@ -501,12 +497,12 @@ var fgui;
                     else
                         this.applyPivot();
                 }
-                this.updateGear(2 /* Size */);
+                this.updateGear(2);
                 if (this.$parent) {
                     this.$relations.onOwnerSizeChanged(diffw, diffh);
                     this.$parent.setBoundsChangedFlag();
                 }
-                this.$displayObject.emit("__sizeChanged" /* SIZE_CHANGED */, this);
+                this.$displayObject.emit(fgui.DisplayObjectEvent.SIZE_CHANGED, this);
             }
         };
         GObject.prototype.ensureSizeCorrect = function () {
@@ -579,7 +575,7 @@ var fgui;
                 this.$scaleY = sy;
                 this.handleScaleChanged();
                 this.applyPivot();
-                this.updateGear(2 /* Size */);
+                this.updateGear(2);
             }
         };
         Object.defineProperty(GObject.prototype, "skewX", {
@@ -655,7 +651,7 @@ var fgui;
             if (this.$pivot.x != 0 || this.$pivot.y != 0 && this.$displayObject.transform) {
                 var vx = this.mapPivotWidth(this.$pivot.x), vy = this.mapPivotHeight(this.$pivot.y);
                 GObject.sHelperPoint.set(vx, vy);
-                this.$displayObject.transform.updateLocalTransform(); //TODO: sync with PIXI instead of update actively
+                this.$displayObject.transform.updateLocalTransform();
                 var trans = this.$displayObject.localTransform;
                 var p = trans.apply(GObject.sHelperPoint, GObject.sHelperPoint);
                 p.x -= trans.tx, p.y -= trans.ty;
@@ -689,7 +685,7 @@ var fgui;
                 if (this.$grayed != value) {
                     this.$grayed = value;
                     this.handleGrayedChanged();
-                    this.updateGear(3 /* Look */);
+                    this.updateGear(3);
                 }
             },
             enumerable: true,
@@ -716,7 +712,7 @@ var fgui;
                     if (this.$displayObject)
                         this.$displayObject.rotation = fgui.utils.NumberUtil.angleToRadian(this.normalizeRotation);
                     this.applyPivot();
-                    this.updateGear(3 /* Look */);
+                    this.updateGear(3);
                 }
             },
             enumerable: true,
@@ -750,7 +746,7 @@ var fgui;
         GObject.prototype.updateAlpha = function () {
             if (this.$displayObject)
                 this.$displayObject.alpha = this.$alpha;
-            this.updateGear(3 /* Look */);
+            this.updateGear(3);
         };
         Object.defineProperty(GObject.prototype, "visible", {
             get: function () {
@@ -765,18 +761,16 @@ var fgui;
                         this.$parent.childStateChanged(this);
                         this.$parent.setBoundsChangedFlag();
                     }
-                    this.emit("__visibleChanged" /* VISIBLE_CHANGED */, this.$visible, this);
+                    this.emit(fgui.DisplayObjectEvent.VISIBLE_CHANGED, this.$visible, this);
                 }
             },
             enumerable: true,
             configurable: true
         });
         Object.defineProperty(GObject.prototype, "internalVisible", {
-            /**@internal */
             get: function () {
                 return this.$internalVisible;
             },
-            /**@internal */
             set: function (value) {
                 if (value != this.$internalVisible) {
                     this.$internalVisible = value;
@@ -849,7 +843,7 @@ var fgui;
             get: function () {
                 if (this.$displayObject && this.$displayObject instanceof PIXI.Sprite)
                     return fgui.BlendModeMap[this.$displayObject.blendMode] || "None";
-                return fgui.BlendModeMap[0]; //Normal
+                return fgui.BlendModeMap[0];
             },
             set: function (value) {
                 if (!value || !value.length || !this.$displayObject || !(this.$displayObject instanceof PIXI.Sprite))
@@ -923,34 +917,34 @@ var fgui;
             var gear = this.$gears[index];
             if (gear == null) {
                 switch (index) {
-                    case 0 /* Display */:
+                    case 0:
                         gear = new fgui.GearDisplay(this);
                         break;
-                    case 1 /* XY */:
+                    case 1:
                         gear = new fgui.GearXY(this);
                         break;
-                    case 2 /* Size */:
+                    case 2:
                         gear = new fgui.GearSize(this);
                         break;
-                    case 3 /* Look */:
+                    case 3:
                         gear = new fgui.GearLook(this);
                         break;
-                    case 4 /* Color */:
+                    case 4:
                         if (fgui.isColorGear(this))
                             gear = new fgui.GearColor(this);
                         else
                             throw new Error("Invalid component type to add GearColor feature, please check the component named " + this.$name + " in the Editor.");
                         break;
-                    case 5 /* Animation */:
+                    case 5:
                         if (fgui.isAnimationGear(this))
                             gear = new fgui.GearAnimation(this);
                         else
                             throw new Error("Invalid component type to add GearAnimation feature, please check the component named " + this.$name + " in the Editor.");
                         break;
-                    case 6 /* Text */:
+                    case 6:
                         gear = new fgui.GearText(this);
                         break;
-                    case 7 /* Icon */:
+                    case 7:
                         gear = new fgui.GearIcon(this);
                         break;
                     default:
@@ -971,7 +965,6 @@ var fgui;
         GObject.prototype.hasGearController = function (index, c) {
             return this.$gears[index] && this.$gears[index].controller == c;
         };
-        /**@internal */
         GObject.prototype.lockGearDisplay = function () {
             var g = this.$gears[0];
             if (g && g.controller) {
@@ -982,7 +975,6 @@ var fgui;
             else
                 return 0;
         };
-        /**@internal */
         GObject.prototype.releaseGearDisplay = function (token) {
             var g = this.$gears[0];
             if (g && g.controller) {
@@ -1003,21 +995,21 @@ var fgui;
         };
         Object.defineProperty(GObject.prototype, "gearXY", {
             get: function () {
-                return this.getGear(1 /* XY */);
+                return this.getGear(1);
             },
             enumerable: true,
             configurable: true
         });
         Object.defineProperty(GObject.prototype, "gearSize", {
             get: function () {
-                return this.getGear(2 /* Size */);
+                return this.getGear(2);
             },
             enumerable: true,
             configurable: true
         });
         Object.defineProperty(GObject.prototype, "gearLook", {
             get: function () {
-                return this.getGear(3 /* Look */);
+                return this.getGear(3);
             },
             enumerable: true,
             configurable: true
@@ -1079,22 +1071,18 @@ var fgui;
             configurable: true
         });
         Object.defineProperty(GObject.prototype, "text", {
-            /** @virtual */
             get: function () {
                 return null;
             },
-            /** @virtual */
             set: function (value) {
             },
             enumerable: true,
             configurable: true
         });
         Object.defineProperty(GObject.prototype, "icon", {
-            /** @virtual */
             get: function () {
                 return null;
             },
-            /** @virtual */
             set: function (value) {
             },
             enumerable: true,
@@ -1128,7 +1116,7 @@ var fgui;
         GObject.prototype.off = function (type, listener, thisObject) {
             if (type == null)
                 return this;
-            if (this.$displayObject.listeners(type, true))
+            if (this.$displayObject.listeners(type))
                 this.$displayObject.off(type, listener, thisObject);
             return this;
         };
@@ -1140,7 +1128,7 @@ var fgui;
         };
         GObject.prototype.hasListener = function (event, handler) {
             if (!handler)
-                return this.$displayObject.listeners(event, true);
+                return this.$displayObject.listenerCount(event) > 0;
             else
                 return this.$displayObject.listeners(event).indexOf(handler) >= 0;
         };
@@ -1268,7 +1256,7 @@ var fgui;
         };
         GObject.prototype.handleControllerChanged = function (c) {
             this.$handlingController = true;
-            for (var i = 0; i < 8 /* Count */; i++) {
+            for (var i = 0; i < 8; i++) {
                 var gear = this.$gears[i];
                 if (gear != null && gear.controller == c)
                     gear.apply();
@@ -1294,7 +1282,8 @@ var fgui;
             this.$displayObject.scale.x = old.scale.x;
             this.$displayObject.scale.y = old.scale.y;
             this.$displayObject.interactive = old.interactive;
-            this.$displayObject.interactiveChildren = old.interactiveChildren;
+            if (this.$displayObject instanceof PIXI.Container && old instanceof PIXI.Container)
+                this.$displayObject.interactiveChildren = old.interactiveChildren;
         };
         GObject.prototype.handleXYChanged = function () {
             if (this.$displayObject) {
@@ -1332,13 +1321,6 @@ var fgui;
             enumerable: true,
             configurable: true
         });
-        /**
-         * update color appearance
-         * @param brightness value of the brigthness (-1 - 1, where -1 is black)
-         * @param contrast value of the contrast (-1 - 1)
-         * @param saturate The saturation amount (-1 - 1)
-         * @param hue The hue property of the color in degress (-1 - 1, where 1 is 360deg)
-         */
         GObject.prototype.updateColorComponents = function (brightness, contrast, saturate, hue) {
             if (!GObject.$colorHelper)
                 GObject.$colorHelper = new fgui.utils.ColorMatrix();
@@ -1367,7 +1349,6 @@ var fgui;
                 }
             }
         };
-        /**@internal */
         GObject.prototype.constructFromResource = function () {
         };
         GObject.prototype.setupBeforeAdd = function (xml) {
@@ -1494,8 +1475,8 @@ var fgui;
             this.reset();
             GObject.$dragBeginCancelled = false;
             evt.currentTarget = this.$displayObject;
-            this.$displayObject.emit("__dragStart" /* START */, evt, this);
-            if (!GObject.$dragBeginCancelled) //user may call obj.stopDrag in the DragStart event handler
+            this.$displayObject.emit(fgui.DragEvent.START, evt, this);
+            if (!GObject.$dragBeginCancelled)
                 this.dragBegin();
         };
         GObject.prototype.$moving2 = function (evt) {
@@ -1525,18 +1506,16 @@ var fgui;
             this.setXY(Math.round(pt.x), Math.round(pt.y));
             GObject.sUpdatingWhileDragging = false;
             evt.currentTarget = this.$displayObject;
-            this.$displayObject.emit("__dragMoving" /* MOVING */, evt, this);
+            this.$displayObject.emit(fgui.DragEvent.MOVING, evt, this);
         };
         GObject.prototype.$end2 = function (evt) {
             if (GObject.draggingObject == this) {
                 this.stopDrag();
                 evt.currentTarget = this.$displayObject;
-                this.$displayObject.emit("__dragEnd" /* END */, evt, this);
+                this.$displayObject.emit(fgui.DragEvent.END, evt, this);
             }
         };
         GObject.gInstanceCounter = 0;
-        //dragging
-        //-------------------------------------------------------------------
         GObject.sGlobalDragStart = new PIXI.Point();
         GObject.sGlobalRect = new PIXI.Rectangle();
         GObject.sHelperPoint = new PIXI.Point();
@@ -1545,10 +1524,9 @@ var fgui;
     }());
     fgui.GObject = GObject;
 })(fgui || (fgui = {}));
-/// <reference path="./GObject.ts" />
-var fgui;
+
 (function (fgui) {
-    var GComponent = /** @class */ (function (_super) {
+    var GComponent = (function (_super) {
         __extends(GComponent, _super);
         function GComponent() {
             var _this = _super.call(this) || this;
@@ -1575,7 +1553,7 @@ var fgui;
             var numChildren = this.$children.length;
             for (var i = numChildren - 1; i >= 0; --i) {
                 var obj = this.$children[i];
-                obj.parent = null; //avoid removeFromParent call
+                obj.parent = null;
                 obj.dispose();
             }
             this.$boundsChanged = false;
@@ -1712,7 +1690,7 @@ var fgui;
             var oldIndex = this.$children.indexOf(child);
             if (oldIndex == -1)
                 throw new Error("no such child found");
-            if (child.sortingOrder != 0) //no effect
+            if (child.sortingOrder != 0)
                 return;
             var cnt = this.$children.length;
             if (this.$sortingChildCount > 0) {
@@ -1725,7 +1703,7 @@ var fgui;
             var oldIndex = this.$children.indexOf(child);
             if (oldIndex == -1)
                 throw new Error("no such child found");
-            if (child.sortingOrder != 0) //no effect
+            if (child.sortingOrder != 0)
                 return oldIndex;
             var cnt = this.$children.length;
             if (this.$sortingChildCount > 0) {
@@ -1887,7 +1865,7 @@ var fgui;
             });
             if (myIndex < maxIndex) {
                 if (this.$applyingController != null)
-                    this.$children[maxIndex].handleControllerChanged(this.$applyingController); //TODO: twice
+                    this.$children[maxIndex].handleControllerChanged(this.$applyingController);
                 this.swapChildrenAt(myIndex, maxIndex);
             }
         };
@@ -1970,7 +1948,10 @@ var fgui;
             set: function (obj) {
                 if (!obj)
                     return;
-                obj.interactive = obj.interactiveChildren = false;
+                if (obj instanceof PIXI.Container)
+                    obj.interactive = false;
+                if (obj instanceof PIXI.MaskData && obj.maskObject)
+                    obj.maskObject.interactive = false;
                 if (obj instanceof PIXI.Graphics)
                     obj.isMask = true;
                 this.$rootContainer.mask = obj;
@@ -2005,7 +1986,7 @@ var fgui;
             this.$scrollPane = new fgui.ScrollPane(this, scroll, scrollBarMargin, scrollBarDisplay, flags, vtScrollBarRes, hzScrollBarRes, headerRes, footerRes);
         };
         GComponent.prototype.setupOverflow = function (overflow) {
-            if (overflow == 1 /* Hidden */) {
+            if (overflow == 1) {
                 if (this.$rootContainer == this.$container) {
                     this.$container = new PIXI.Container();
                     this.$rootContainer.addChild(this.$container);
@@ -2143,9 +2124,9 @@ var fgui;
                         }
                         else {
                             prev = this.$children[i - 1];
-                            if (yValue < prev.y + prev.actualHeight / 2) //top half part
+                            if (yValue < prev.y + prev.actualHeight / 2)
                                 yValue = prev.y;
-                            else //bottom half part
+                            else
                                 yValue = obj.y;
                             break;
                         }
@@ -2166,9 +2147,9 @@ var fgui;
                         }
                         else {
                             prev = this.$children[i - 1];
-                            if (xValue < prev.x + prev.actualWidth / 2) //top half part
+                            if (xValue < prev.x + prev.actualWidth / 2)
                                 xValue = prev.x;
-                            else //bottom half part
+                            else
                                 xValue = obj.x;
                             break;
                         }
@@ -2198,7 +2179,6 @@ var fgui;
                     this.$setChildIndex(child, oldIndex, index);
             }
         };
-        /**@internal */
         GComponent.prototype.constructFromResource = function () {
             this.constructInternal(null, 0);
         };
@@ -2228,23 +2208,23 @@ var fgui;
             if (str)
                 overflow = fgui.ParseOverflowType(str);
             else
-                overflow = 0 /* Visible */;
+                overflow = 0;
             str = xml.attributes.margin;
             if (str)
                 this.$margin.parse(str);
-            if (overflow == 2 /* Scroll */) {
+            if (overflow == 2) {
                 var scroll_1;
                 str = xml.attributes.scroll;
                 if (str)
                     scroll_1 = fgui.ParseScrollType(str);
                 else
-                    scroll_1 = 1 /* Vertical */;
+                    scroll_1 = 1;
                 var scrollBarDisplay = void 0;
                 str = xml.attributes.scrollBar;
                 if (str)
                     scrollBarDisplay = fgui.ParseScrollBarDisplayType(str);
                 else
-                    scrollBarDisplay = 0 /* Default */;
+                    scrollBarDisplay = 0;
                 var scrollBarFlags = void 0;
                 str = xml.attributes.scrollBarFlags;
                 if (str)
@@ -2357,14 +2337,13 @@ var fgui;
     }(fgui.GObject));
     fgui.GComponent = GComponent;
 })(fgui || (fgui = {}));
-/// <reference path="./GComponent.ts" />
-var fgui;
+
 (function (fgui) {
-    var GButton = /** @class */ (function (_super) {
+    var GButton = (function (_super) {
         __extends(GButton, _super);
         function GButton() {
             var _this = _super.call(this) || this;
-            _this.$mode = 0 /* Common */;
+            _this.$mode = 0;
             _this.$title = "";
             _this.$icon = "";
             _this.$pageOption = new fgui.controller.PageOption();
@@ -2386,7 +2365,7 @@ var fgui;
                 value = (this.$selected && this.$selectedIcon) ? this.$selectedIcon : this.$icon;
                 if (this.$iconObject != null)
                     this.$iconObject.icon = value;
-                this.updateGear(7 /* Icon */);
+                this.updateGear(7);
             },
             enumerable: true,
             configurable: true
@@ -2412,7 +2391,7 @@ var fgui;
                 this.$title = value;
                 if (this.$titleObject)
                     this.$titleObject.text = (this.$selected && this.$selectedTitle) ? this.$selectedTitle : this.$title;
-                this.updateGear(6 /* Text */);
+                this.updateGear(6);
             },
             enumerable: true,
             configurable: true
@@ -2470,7 +2449,7 @@ var fgui;
                 return this.$selected;
             },
             set: function (val) {
-                if (this.$mode == 0 /* Common */)
+                if (this.$mode == 0)
                     return;
                 if (this.$selected != val) {
                     this.$selected = val;
@@ -2501,7 +2480,7 @@ var fgui;
                             if (this.$relatedController.$autoRadioGroupDepth)
                                 this.$parent.adjustRadioGroupDepth(this, this.$relatedController);
                         }
-                        else if (this.$mode == 1 /* Check */ && this.$relatedController.selectedPageId == this.$pageOption.id)
+                        else if (this.$mode == 1 && this.$relatedController.selectedPageId == this.$pageOption.id)
                             this.$relatedController.oppositePageId = this.$pageOption.id;
                     }
                 }
@@ -2515,7 +2494,7 @@ var fgui;
             },
             set: function (value) {
                 if (this.$mode != value) {
-                    if (value == 0 /* Common */)
+                    if (value == 0)
                         this.selected = false;
                     this.$mode = value;
                 }
@@ -2565,14 +2544,14 @@ var fgui;
             configurable: true
         });
         GButton.prototype.addStateListener = function (listener, thisObj) {
-            this.on("__stateChanged" /* CHANGED */, listener, thisObj);
+            this.on(fgui.StateChangeEvent.CHANGED, listener, thisObj);
         };
         GButton.prototype.removeStateListener = function (listener, thisObj) {
-            this.off("__stateChanged" /* CHANGED */, listener, thisObj);
+            this.off(fgui.StateChangeEvent.CHANGED, listener, thisObj);
         };
         GButton.prototype.fireClick = function (downEffect) {
             if (downEffect === void 0) { downEffect = true; }
-            if (downEffect && this.$mode == 0 /* Common */) {
+            if (downEffect && this.$mode == 0) {
                 this.setState(GButton.OVER);
                 fgui.GTimer.inst.add(100, 1, this.setState, this, GButton.DOWN);
                 fgui.GTimer.inst.add(200, 1, this.setState, this, GButton.UP);
@@ -2648,7 +2627,7 @@ var fgui;
                 this.$title = this.$titleObject.text;
             if (this.$iconObject != null)
                 this.$icon = this.$iconObject.icon;
-            if (this.$mode == 0 /* Common */)
+            if (this.$mode == 0)
                 this.setState(GButton.UP);
             this.on(fgui.InteractiveEvents.Over, this.$rollover, this);
             this.on(fgui.InteractiveEvents.Out, this.$rollout, this);
@@ -2706,7 +2685,7 @@ var fgui;
         GButton.prototype.$mousedown = function (evt) {
             this.$down = true;
             fgui.GRoot.inst.on(fgui.InteractiveEvents.Up, this.$mouseup, this);
-            if (this.$mode == 0 /* Common */) {
+            if (this.$mode == 0) {
                 if (this.grayed && this.$buttonController && this.$buttonController.hasPage(GButton.DISABLED))
                     this.setState(GButton.SELECTED_DISABLED);
                 else
@@ -2723,7 +2702,7 @@ var fgui;
             if (this.$down) {
                 fgui.GRoot.inst.off(fgui.InteractiveEvents.Up, this.$mouseup, this);
                 this.$down = false;
-                if (this.$mode == 0 /* Common */) {
+                if (this.$mode == 0) {
                     if (this.grayed && this.$buttonController && this.$buttonController.hasPage(GButton.DISABLED))
                         this.setState(GButton.DISABLED);
                     else if (this.$over)
@@ -2736,14 +2715,14 @@ var fgui;
         GButton.prototype.$click = function (evt) {
             if (!this.$changeStateOnClick)
                 return;
-            if (this.$mode == 1 /* Check */) {
+            if (this.$mode == 1) {
                 this.selected = !this.$selected;
-                this.emit("__stateChanged" /* CHANGED */, this);
+                this.emit(fgui.StateChangeEvent.CHANGED, this);
             }
-            else if (this.$mode == 2 /* Radio */) {
+            else if (this.$mode == 2) {
                 if (!this.$selected) {
                     this.selected = true;
-                    this.emit("__stateChanged" /* CHANGED */, this);
+                    this.emit(fgui.StateChangeEvent.CHANGED, this);
                 }
             }
         };
@@ -2763,15 +2742,15 @@ var fgui;
     }(fgui.GComponent));
     fgui.GButton = GButton;
 })(fgui || (fgui = {}));
-var fgui;
+
 (function (fgui) {
-    var GComboBox = /** @class */ (function (_super) {
+    var GComboBox = (function (_super) {
         __extends(GComboBox, _super);
         function GComboBox() {
             var _this = _super.call(this) || this;
             _this.$visibleItemCount = 0;
             _this.$selectedIndex = 0;
-            _this.$popupDir = 1 /* Down */;
+            _this.$popupDir = 1;
             _this.$visibleItemCount = fgui.UIConfig.defaultComboBoxVisibleItemCount;
             _this.$itemsUpdated = true;
             _this.$selectedIndex = -1;
@@ -2789,7 +2768,7 @@ var fgui;
             set: function (value) {
                 if (this.$titleObject)
                     this.$titleObject.text = value;
-                this.updateGear(6 /* Text */);
+                this.updateGear(6);
             },
             enumerable: true,
             configurable: true
@@ -2804,7 +2783,7 @@ var fgui;
             set: function (value) {
                 if (this.$iconObject)
                     this.$iconObject.icon = value;
-                this.updateGear(7 /* Icon */);
+                this.updateGear(7);
             },
             enumerable: true,
             configurable: true
@@ -2948,11 +2927,11 @@ var fgui;
                 this.$list = this.$dropdown.getChild("list");
                 if (this.$list == null)
                     throw new Error(this.resourceURL + ": the dropdown component must have a GList child and named 'list'.");
-                this.$list.on("__itemClick" /* ItemClick */, this.$clickItem, this);
-                this.$list.addRelation(this.$dropdown, 14 /* Width */);
-                this.$list.removeRelation(this.$dropdown, 15 /* Height */);
-                this.$dropdown.addRelation(this.$list, 15 /* Height */);
-                this.$dropdown.removeRelation(this.$list, 14 /* Width */);
+                this.$list.on(fgui.ListEvent.ItemClick, this.$clickItem, this);
+                this.$list.addRelation(this.$dropdown, 14);
+                this.$list.removeRelation(this.$dropdown, 15);
+                this.$dropdown.addRelation(this.$list, 15);
+                this.$dropdown.removeRelation(this.$list, 14);
                 this.$dropdown.on("removed", this.$popupWinClosed, this);
             }
             if (!PIXI.utils.isMobile.any) {
@@ -2963,7 +2942,7 @@ var fgui;
         };
         GComboBox.prototype.dispose = function () {
             fgui.GTimer.inst.remove(this.delayedClickItem, this);
-            this.$list.off("__itemClick" /* ItemClick */, this.$clickItem, this);
+            this.$list.off(fgui.ListEvent.ItemClick, this.$clickItem, this);
             this.$dropdown.off("removed", this.$popupWinClosed, this);
             fgui.GRoot.inst.nativeStage.off(fgui.InteractiveEvents.Up, this.$mouseup, this);
             this.$popupWinClosed(null);
@@ -3017,9 +2996,9 @@ var fgui;
                 str_1 = xml.attributes.direction;
                 if (str_1) {
                     if (str_1 == "up")
-                        this.$popupDir = 2 /* Up */;
+                        this.$popupDir = 2;
                     else if (str_1 == "auto")
-                        this.$popupDir = 0 /* Auto */;
+                        this.$popupDir = 0;
                 }
             }
         };
@@ -3059,7 +3038,7 @@ var fgui;
                 this.text = this.$items[this.$selectedIndex];
             else
                 this.text = "";
-            this.emit("__stateChanged" /* CHANGED */, this);
+            this.emit(fgui.StateChangeEvent.CHANGED, this);
         };
         GComboBox.prototype.$rollover = function (evt) {
             this.$over = true;
@@ -3075,8 +3054,6 @@ var fgui;
         };
         GComboBox.prototype.$mousedown = function (evt) {
             evt.stopPropagation();
-            //if(evt.currentTarget instanceof PIXI.TextInput)   //TODO: TextInput
-            //    return;
             fgui.GRoot.inst.checkPopups(evt.target);
             this.$down = true;
             fgui.GRoot.inst.nativeStage.on(fgui.InteractiveEvents.Up, this.$mouseup, this);
@@ -3099,10 +3076,9 @@ var fgui;
     }(fgui.GComponent));
     fgui.GComboBox = GComboBox;
 })(fgui || (fgui = {}));
-/// <reference path="./GObject.ts" />
-var fgui;
+
 (function (fgui) {
-    var GGraph = /** @class */ (function (_super) {
+    var GGraph = (function (_super) {
         __extends(GGraph, _super);
         function GGraph() {
             var _this = _super.call(this) || this;
@@ -3164,10 +3140,7 @@ var fgui;
             g.beginFill(this.$fillColor, this.$fillAlpha);
             if (this.$type == 1) {
                 if (this.$corner && this.$corner.length >= 1) {
-                    //if (this.$corner.length == 1)
-                    g.drawRoundedRect(0, 0, w, h, this.$corner[0]); //PIXI does not support 4 corners with different radius, so only apply the first number in this array
-                    //else
-                    //    g.drawRoundedRect(0, 0, w, h, this.$corner[0], this.$corner[1], this.$corner[2], this.$corner[3]);
+                    g.drawRoundedRect(0, 0, w, h, this.$corner[0]);
                 }
                 else
                     g.drawRect(0, 0, w, h);
@@ -3215,7 +3188,7 @@ var fgui;
             var g = this.$displayObject;
             g.interactive = this.touchable;
             g.clear();
-            g.removeChildren(); //clear old
+            g.removeChildren();
             g.addChild(obj);
         };
         GGraph.prototype.createDisplayObject = function () {
@@ -3266,10 +3239,9 @@ var fgui;
     }(fgui.GObject));
     fgui.GGraph = GGraph;
 })(fgui || (fgui = {}));
-/// <reference path="./GObject.ts" />
-var fgui;
+
 (function (fgui) {
-    var GGroup = /** @class */ (function (_super) {
+    var GGroup = (function (_super) {
         __extends(GGroup, _super);
         function GGroup() {
             return _super !== null && _super.apply(this, arguments) || this;
@@ -3356,9 +3328,9 @@ var fgui;
     }(fgui.GObject));
     fgui.GGroup = GGroup;
 })(fgui || (fgui = {}));
-var fgui;
+
 (function (fgui) {
-    var GImage = /** @class */ (function (_super) {
+    var GImage = (function (_super) {
         __extends(GImage, _super);
         function GImage() {
             return _super.call(this) || this;
@@ -3368,7 +3340,7 @@ var fgui;
                 return false;
             },
             set: function (value) {
-                this.$touchable = false; //GImage has no interaction
+                this.$touchable = false;
             },
             enumerable: true,
             configurable: true
@@ -3379,7 +3351,7 @@ var fgui;
             },
             set: function (value) {
                 if (this.color != value) {
-                    this.updateGear(4 /* Color */);
+                    this.updateGear(4);
                     this.$content.tint = value;
                 }
             },
@@ -3394,9 +3366,9 @@ var fgui;
                 if (this.$flip != value) {
                     this.$flip = value;
                     var sx = false, sy = false;
-                    if (this.$flip == 1 /* Horizontal */ || this.$flip == 3 /* Both */)
+                    if (this.$flip == 1 || this.$flip == 3)
                         sx = true;
-                    if (this.$flip == 2 /* Vertical */ || this.$flip == 3 /* Both */)
+                    if (this.$flip == 2 || this.$flip == 3)
                         sy = true;
                     this.$content.flipX = sx;
                     this.$content.flipY = sy;
@@ -3441,7 +3413,7 @@ var fgui;
         };
         GImage.prototype.handleXYChanged = function () {
             _super.prototype.handleXYChanged.call(this);
-            if (this.$flip != 0 /* None */) {
+            if (this.$flip != 0) {
                 if (this.$content.scale.x == -1)
                     this.$content.x += this.width;
                 if (this.$content.scale.y == -1)
@@ -3466,9 +3438,9 @@ var fgui;
     }(fgui.GObject));
     fgui.GImage = GImage;
 })(fgui || (fgui = {}));
-var fgui;
+
 (function (fgui) {
-    var GLabel = /** @class */ (function (_super) {
+    var GLabel = (function (_super) {
         __extends(GLabel, _super);
         function GLabel() {
             return _super.call(this) || this;
@@ -3482,7 +3454,7 @@ var fgui;
             set: function (value) {
                 if (this.$iconObject != null)
                     this.$iconObject.icon = value;
-                this.updateGear(7 /* Icon */);
+                this.updateGear(7);
             },
             enumerable: true,
             configurable: true
@@ -3497,7 +3469,7 @@ var fgui;
             set: function (value) {
                 if (this.$titleObject)
                     this.$titleObject.text = value;
-                this.updateGear(6 /* Text */);
+                this.updateGear(6);
             },
             enumerable: true,
             configurable: true
@@ -3593,10 +3565,10 @@ var fgui;
     }(fgui.GComponent));
     fgui.GLabel = GLabel;
 })(fgui || (fgui = {}));
-var fgui;
+
 (function (fgui) {
     ;
-    var ItemInfo = /** @class */ (function () {
+    var ItemInfo = (function () {
         function ItemInfo() {
             this.width = 0;
             this.height = 0;
@@ -3605,7 +3577,7 @@ var fgui;
         }
         return ItemInfo;
     }());
-    var GList = /** @class */ (function (_super) {
+    var GList = (function (_super) {
         __extends(GList, _super);
         function GList() {
             var _this = _super.call(this) || this;
@@ -3615,24 +3587,23 @@ var fgui;
             _this.$columnGap = 0;
             _this.$lastSelectedIndex = 0;
             _this.$numItems = 0;
-            _this.$firstIndex = 0; //top left index
-            _this.$curLineItemCount = 0; //item count in one line
-            _this.$virtualListChanged = 0 /* None */;
-            //render sorting type
+            _this.$firstIndex = 0;
+            _this.$curLineItemCount = 0;
+            _this.$virtualListChanged = 0;
             _this.$apexIndex = 0;
-            _this.$childrenRenderOrder = 0 /* Ascent */;
-            _this.$itemInfoVer = 0; //is the item used in the current handling or not
-            _this.$enterCounter = 0; //because the handleScroll function can be re-entered, so this variable is used to avoid dead-lock
+            _this.$childrenRenderOrder = 0;
+            _this.$itemInfoVer = 0;
+            _this.$enterCounter = 0;
             _this.$trackBounds = true;
             _this.$pool = new fgui.utils.GObjectRecycler();
-            _this.$layout = 0 /* SingleColumn */;
+            _this.$layout = 0;
             _this.$autoResizeItem = true;
             _this.$lastSelectedIndex = -1;
-            _this.$selectionMode = 0 /* Single */;
+            _this.$selectionMode = 0;
             _this.opaque = true;
             _this.scrollItemToViewOnClick = true;
-            _this.$align = "left" /* Left */;
-            _this.$verticalAlign = 0 /* Top */;
+            _this.$align = "left";
+            _this.$verticalAlign = 0;
             _this.$container = new PIXI.Container();
             _this.$rootContainer.addChild(_this.$container);
             return _this;
@@ -3657,14 +3628,13 @@ var fgui;
             set: function (value) {
                 if (this.$apexIndex != value) {
                     this.$apexIndex = value;
-                    if (this.$childrenRenderOrder == 2 /* Arch */)
+                    if (this.$childrenRenderOrder == 2)
                         this.appendChildrenList();
                 }
             },
             enumerable: true,
             configurable: true
         });
-        /**@override */
         GList.prototype.appendChildrenList = function () {
             var cnt = this.$children.length;
             if (cnt == 0)
@@ -3672,7 +3642,7 @@ var fgui;
             var i;
             var child;
             switch (this.$childrenRenderOrder) {
-                case 0 /* Ascent */:
+                case 0:
                     {
                         for (i = 0; i < cnt; i++) {
                             child = this.$children[i];
@@ -3681,7 +3651,7 @@ var fgui;
                         }
                     }
                     break;
-                case 1 /* Descent */:
+                case 1:
                     {
                         for (i = cnt - 1; i >= 0; i--) {
                             child = this.$children[i];
@@ -3690,7 +3660,7 @@ var fgui;
                         }
                     }
                     break;
-                case 2 /* Arch */:
+                case 2:
                     {
                         for (i = 0; i < this.$apexIndex; i++) {
                             child = this.$children[i];
@@ -3706,18 +3676,16 @@ var fgui;
                     break;
             }
         };
-        /**@override */
         GList.prototype.setXY = function (xv, yv) {
             if (this.$x != xv || this.$y != yv) {
                 this.$x = xv;
                 this.$y = yv;
                 this.handleXYChanged();
-                this.updateGear(1 /* XY */);
+                this.updateGear(1);
                 if (fgui.GObject.draggingObject == this && !fgui.GObject.sUpdatingWhileDragging)
                     this.localToGlobalRect(0, 0, this.width, this.height, fgui.GObject.sGlobalRect);
             }
         };
-        /**@override */
         GList.prototype.$setChildIndex = function (child, oldIndex, index) {
             if (index === void 0) { index = 0; }
             var cnt = this.$children.length;
@@ -3731,7 +3699,7 @@ var fgui;
                 var displayIndex = 0;
                 var g = void 0;
                 var i = void 0;
-                if (this.$childrenRenderOrder == 0 /* Ascent */) {
+                if (this.$childrenRenderOrder == 0) {
                     for (i = 0; i < index; i++) {
                         g = this.$children[i];
                         if (g.inContainer)
@@ -3741,7 +3709,7 @@ var fgui;
                         displayIndex--;
                     this.$container.setChildIndex(child.displayObject, displayIndex);
                 }
-                else if (this.$childrenRenderOrder == 1 /* Descent */) {
+                else if (this.$childrenRenderOrder == 1) {
                     for (i = cnt - 1; i > index; i--) {
                         g = this.$children[i];
                         if (g.inContainer)
@@ -3757,7 +3725,6 @@ var fgui;
             }
             return index;
         };
-        /**@override */
         GList.prototype.childStateChanged = function (child) {
             var _this = this;
             if (this.$buildingDisplayList)
@@ -3776,7 +3743,7 @@ var fgui;
                 var cnt = this.$children.length;
                 if (!child.displayObject.parent) {
                     var index = 0;
-                    if (this.$childrenRenderOrder == 0 /* Ascent */) {
+                    if (this.$childrenRenderOrder == 0) {
                         for (var i_1 = 0; i_1 < cnt; i_1++) {
                             g = this.$children[i_1];
                             if (g == child)
@@ -3786,7 +3753,7 @@ var fgui;
                         }
                         this.$container.addChildAt(child.displayObject, index);
                     }
-                    else if (this.$childrenRenderOrder == 1 /* Descent */) {
+                    else if (this.$childrenRenderOrder == 1) {
                         for (i = cnt - 1; i >= 0; i--) {
                             g = this.$children[i];
                             if (g == child)
@@ -3811,7 +3778,7 @@ var fgui;
             fgui.GTimer.inst.remove(this.$refreshVirtualList, this);
             this.$pool.clear();
             if (this.$scrollPane)
-                this.$scrollPane.off("__scroll" /* SCROLL */, this.$scrolled, this);
+                this.$scrollPane.off(fgui.ScrollEvent.SCROLL, this.$scrolled, this);
             _super.prototype.dispose.call(this);
         };
         Object.defineProperty(GList.prototype, "layout", {
@@ -3836,7 +3803,7 @@ var fgui;
             set: function (value) {
                 if (this.$lineCount != value) {
                     this.$lineCount = value;
-                    if (this.$layout == 3 /* FlowVertical */ || this.$layout == 4 /* Pagination */) {
+                    if (this.$layout == 3 || this.$layout == 4) {
                         this.setBoundsChangedFlag();
                         if (this.$virtual)
                             this.setVirtualListChangedFlag(true);
@@ -3853,7 +3820,7 @@ var fgui;
             set: function (value) {
                 if (this.$columnCount != value) {
                     this.$columnCount = value;
-                    if (this.$layout == 2 /* FlowHorizontal */ || this.$layout == 4 /* Pagination */) {
+                    if (this.$layout == 2 || this.$layout == 4) {
                         this.setBoundsChangedFlag();
                         if (this.$virtual)
                             this.setVirtualListChangedFlag(true);
@@ -3931,7 +3898,7 @@ var fgui;
                 if (this.$virtual) {
                     if (this.$itemSize == null)
                         this.$itemSize = new PIXI.Point();
-                    this.$itemSize.copy(value);
+                    this.$itemSize.copyFrom(value);
                     this.setVirtualListChangedFlag(true);
                 }
             },
@@ -4032,7 +3999,7 @@ var fgui;
                 this.$children.splice(index, 1);
                 if (child.inContainer) {
                     this.$container.removeChild(child.displayObject);
-                    if (this.$childrenRenderOrder == 2 /* Arch */)
+                    if (this.$childrenRenderOrder == 2)
                         fgui.GTimer.inst.callLater(this.appendChildrenList, this);
                 }
                 if (dispose === true)
@@ -4086,7 +4053,7 @@ var fgui;
             },
             set: function (value) {
                 if (value >= 0 && value < this.numItems) {
-                    if (this.selectionMode != 0 /* Single */)
+                    if (this.selectionMode != 0)
                         this.clearSelection();
                     this.addSelection(value);
                 }
@@ -4125,10 +4092,10 @@ var fgui;
         };
         GList.prototype.addSelection = function (index, scrollIntoView) {
             if (scrollIntoView === void 0) { scrollIntoView = false; }
-            if (this.$selectionMode == 3 /* None */)
+            if (this.$selectionMode == 3)
                 return;
             this.checkVirtualList();
-            if (this.$selectionMode == 0 /* Single */)
+            if (this.$selectionMode == 0)
                 this.clearSelection();
             if (scrollIntoView)
                 this.scrollToView(index);
@@ -4148,7 +4115,7 @@ var fgui;
             }
         };
         GList.prototype.removeSelection = function (index) {
-            if (this.$selectionMode == 3 /* None */)
+            if (this.$selectionMode == 3)
                 return;
             var obj = null;
             if (this.$virtual) {
@@ -4269,15 +4236,15 @@ var fgui;
             var k, i;
             var obj;
             switch (key) {
-                case 38 /* Up */:
-                    if (this.$layout == 0 /* SingleColumn */ || this.$layout == 3 /* FlowVertical */) {
+                case 38:
+                    if (this.$layout == 0 || this.$layout == 3) {
                         index--;
                         if (index >= 0) {
                             this.clearSelection();
                             this.addSelection(index, true);
                         }
                     }
-                    else if (this.$layout == 2 /* FlowHorizontal */ || this.$layout == 4 /* Pagination */) {
+                    else if (this.$layout == 2 || this.$layout == 4) {
                         current = this.$children[index];
                         k = 0;
                         for (i = index - 1; i >= 0; i--) {
@@ -4298,15 +4265,15 @@ var fgui;
                         }
                     }
                     break;
-                case 39 /* Right */:
-                    if (this.$layout == 1 /* SingleRow */ || this.$layout == 2 /* FlowHorizontal */ || this.$layout == 4 /* Pagination */) {
+                case 39:
+                    if (this.$layout == 1 || this.$layout == 2 || this.$layout == 4) {
                         index++;
                         if (index < this.$children.length) {
                             this.clearSelection();
                             this.addSelection(index, true);
                         }
                     }
-                    else if (this.$layout == 3 /* FlowVertical */) {
+                    else if (this.$layout == 3) {
                         current = this.$children[index];
                         k = 0;
                         var cnt = this.$children.length;
@@ -4328,15 +4295,15 @@ var fgui;
                         }
                     }
                     break;
-                case 40 /* Down */:
-                    if (this.$layout == 0 /* SingleColumn */ || this.$layout == 3 /* FlowVertical */) {
+                case 40:
+                    if (this.$layout == 0 || this.$layout == 3) {
                         index++;
                         if (index < this.$children.length) {
                             this.clearSelection();
                             this.addSelection(index, true);
                         }
                     }
-                    else if (this.$layout == 2 /* FlowHorizontal */ || this.$layout == 4 /* Pagination */) {
+                    else if (this.$layout == 2 || this.$layout == 4) {
                         current = this.$children[index];
                         k = 0;
                         var cnt = this.$children.length;
@@ -4358,15 +4325,15 @@ var fgui;
                         }
                     }
                     break;
-                case 37 /* Left */:
-                    if (this.$layout == 1 /* SingleRow */ || this.$layout == 2 /* FlowHorizontal */ || this.$layout == 4 /* Pagination */) {
+                case 37:
+                    if (this.$layout == 1 || this.$layout == 2 || this.$layout == 4) {
                         index--;
                         if (index >= 0) {
                             this.clearSelection();
                             this.addSelection(index, true);
                         }
                     }
-                    else if (this.$layout == 3 /* FlowVertical */) {
+                    else if (this.$layout == 3) {
                         current = this.$children[index];
                         k = 0;
                         for (i = index - 1; i >= 0; i--) {
@@ -4398,21 +4365,21 @@ var fgui;
             this.setSelectionOnEvent(item);
             if (this.$scrollPane && this.scrollItemToViewOnClick)
                 this.$scrollPane.scrollToView(item, true);
-            this.emit("__itemClick" /* ItemClick */, evt, item);
+            this.emit(fgui.ListEvent.ItemClick, evt, item);
         };
         GList.prototype.setSelectionOnEvent = function (button) {
-            if (!(button instanceof fgui.GButton) || this.$selectionMode == 3 /* None */)
+            if (!(button instanceof fgui.GButton) || this.$selectionMode == 3)
                 return;
             var dontChangeLastIndex = false;
             var index = this.childIndexToItemIndex(this.getChildIndex(button));
-            if (this.$selectionMode == 0 /* Single */) {
+            if (this.$selectionMode == 0) {
                 if (!button.selected) {
                     this.clearSelectionExcept(button);
                     button.selected = true;
                 }
             }
             else {
-                if (fgui.utils.DOMEventManager.inst.isKeyPressed(16 /* Shift */)) {
+                if (fgui.utils.DOMEventManager.inst.isKeyPressed(16)) {
                     if (!button.selected) {
                         if (this.$lastSelectedIndex != -1) {
                             var min = Math.min(this.$lastSelectedIndex, index);
@@ -4439,7 +4406,7 @@ var fgui;
                             button.selected = true;
                     }
                 }
-                else if (fgui.utils.DOMEventManager.inst.isKeyPressed(17 /* Ctrl */) || this.$selectionMode == 2 /* Multiple_SingleClick */)
+                else if (fgui.utils.DOMEventManager.inst.isKeyPressed(17) || this.$selectionMode == 2)
                     button.selected = !button.selected;
                 else {
                     if (!button.selected) {
@@ -4464,13 +4431,13 @@ var fgui;
                 itemCount = curCount;
             if (this.$virtual) {
                 var lineCount = Math.ceil(itemCount / this.$curLineItemCount);
-                if (this.$layout == 0 /* SingleColumn */ || this.$layout == 2 /* FlowHorizontal */)
+                if (this.$layout == 0 || this.$layout == 2)
                     this.viewHeight = lineCount * this.$itemSize.y + Math.max(0, lineCount - 1) * this.$lineGap;
                 else
                     this.viewWidth = lineCount * this.$itemSize.x + Math.max(0, lineCount - 1) * this.$columnGap;
             }
             else if (itemCount == 0) {
-                if (this.$layout == 0 /* SingleColumn */ || this.$layout == 2 /* FlowHorizontal */)
+                if (this.$layout == 0 || this.$layout == 2)
                     this.viewHeight = minSize;
                 else
                     this.viewWidth = minSize;
@@ -4485,14 +4452,14 @@ var fgui;
                     i--;
                 }
                 if (i < 0) {
-                    if (this.$layout == 0 /* SingleColumn */ || this.$layout == 2 /* FlowHorizontal */)
+                    if (this.$layout == 0 || this.$layout == 2)
                         this.viewHeight = minSize;
                     else
                         this.viewWidth = minSize;
                 }
                 else {
                     var size = 0;
-                    if (this.$layout == 0 /* SingleColumn */ || this.$layout == 2 /* FlowHorizontal */) {
+                    if (this.$layout == 0 || this.$layout == 2) {
                         size = obj.y + obj.height;
                         if (size < minSize)
                             size = minSize;
@@ -4544,7 +4511,7 @@ var fgui;
                     resultPoint = new PIXI.Point();
                 var saved = void 0;
                 var index = void 0;
-                if (this.$layout == 0 /* SingleColumn */ || this.$layout == 2 /* FlowHorizontal */) {
+                if (this.$layout == 0 || this.$layout == 2) {
                     saved = yValue;
                     GList.$lastPosHelper = yValue;
                     index = this.getIndexOnPos1(false);
@@ -4552,7 +4519,7 @@ var fgui;
                     if (index < this.$virtualItems.length && saved - yValue > this.$virtualItems[index].height / 2 && index < this.$realNumItems)
                         yValue += this.$virtualItems[index].height + this.$lineGap;
                 }
-                else if (this.$layout == 1 /* SingleRow */ || this.$layout == 3 /* FlowVertical */) {
+                else if (this.$layout == 1 || this.$layout == 3) {
                     saved = xValue;
                     GList.$lastPosHelper = xValue;
                     index = this.getIndexOnPos2(false);
@@ -4590,12 +4557,12 @@ var fgui;
                 var ii = this.$virtualItems[index];
                 var pos = 0;
                 var i = void 0;
-                if (this.$layout == 0 /* SingleColumn */ || this.$layout == 2 /* FlowHorizontal */) {
+                if (this.$layout == 0 || this.$layout == 2) {
                     for (i = 0; i < index; i += this.$curLineItemCount)
                         pos += this.$virtualItems[i].height + this.$lineGap;
                     rect = new PIXI.Rectangle(0, pos, this.$itemSize.x, ii.height);
                 }
-                else if (this.$layout == 1 /* SingleRow */ || this.$layout == 3 /* FlowVertical */) {
+                else if (this.$layout == 1 || this.$layout == 3) {
                     for (i = 0; i < index; i += this.$curLineItemCount)
                         pos += this.$virtualItems[i].width + this.$columnGap;
                     rect = new PIXI.Rectangle(pos, 0, ii.width, this.$itemSize.y);
@@ -4604,7 +4571,6 @@ var fgui;
                     var page = index / (this.$curLineItemCount * this.$curLineItemCount2);
                     rect = new PIXI.Rectangle(page * this.viewWidth + (index % this.$curLineItemCount) * (ii.width + this.$columnGap), (index / this.$curLineItemCount) % this.$curLineItemCount2 * (ii.height + this.$lineGap), ii.width, ii.height);
                 }
-                //the position will be also changed if the height of its parent (if changeable) is being changed, so here we need to forcely set this to true
                 snapToFirst = true;
                 if (this.$scrollPane != null)
                     this.$scrollPane.scrollToView(rect, ani, snapToFirst);
@@ -4623,7 +4589,7 @@ var fgui;
         GList.prototype.childIndexToItemIndex = function (index) {
             if (!this.$virtual)
                 return index;
-            if (this.$layout == 4 /* Pagination */) {
+            if (this.$layout == 4) {
                 for (var i = this.$firstIndex; i < this.$realNumItems; i++) {
                     if (this.$virtualItems[i].obj != null) {
                         index--;
@@ -4643,7 +4609,7 @@ var fgui;
         GList.prototype.itemIndexToChildIndex = function (index) {
             if (!this.$virtual)
                 return index;
-            if (this.$layout == 4 /* Pagination */)
+            if (this.$layout == 4)
                 return this.getChildIndex(this.$virtualItems[index].obj);
             else {
                 if (this.$loop && this.$numItems > 0) {
@@ -4669,7 +4635,7 @@ var fgui;
                 if (this.$scrollPane == null)
                     throw new Error("Virtual list must be scrollable");
                 if (loop) {
-                    if (this.$layout == 2 /* FlowHorizontal */ || this.$layout == 3 /* FlowVertical */)
+                    if (this.$layout == 2 || this.$layout == 3)
                         throw new Error("Virtual list with loop mode is not supported for both FlowHorizontal and FlowVertical layout");
                     this.$scrollPane.bouncebackEffect = false;
                 }
@@ -4688,7 +4654,7 @@ var fgui;
                     }
                     this.returnToPool(obj);
                 }
-                if (this.$layout == 0 /* SingleColumn */ || this.$layout == 2 /* FlowHorizontal */) {
+                if (this.$layout == 0 || this.$layout == 2) {
                     this.$scrollPane.scrollSpeed = this.$itemSize.y;
                     if (this.$loop)
                         this.$scrollPane.$loop = 2;
@@ -4698,7 +4664,7 @@ var fgui;
                     if (this.$loop)
                         this.$scrollPane.$loop = 1;
                 }
-                this.$scrollPane.on("__scroll" /* SCROLL */, this.$scrolled, this);
+                this.$scrollPane.on(fgui.ScrollEvent.SCROLL, this.$scrolled, this);
                 this.setVirtualListChangedFlag(true);
             }
         };
@@ -4716,10 +4682,9 @@ var fgui;
                         throw new Error("list.itemRenderer is required");
                     this.$numItems = value;
                     if (this.$loop)
-                        this.$realNumItems = this.$numItems * 6; //enlarge for loop
+                        this.$realNumItems = this.$numItems * 6;
                     else
                         this.$realNumItems = this.$numItems;
-                    //increase only
                     var oldCount = this.$virtualItems.length;
                     if (this.$realNumItems > oldCount) {
                         for (i = oldCount; i < this.$realNumItems; i++) {
@@ -4733,9 +4698,8 @@ var fgui;
                         for (i = this.$realNumItems; i < oldCount; i++)
                             this.$virtualItems[i].selected = false;
                     }
-                    if (this.$virtualListChanged != 0 /* None */)
+                    if (this.$virtualListChanged != 0)
                         fgui.GTimer.inst.remove(this.$refreshVirtualList, this);
-                    //refresh now
                     this.$refreshVirtualList();
                 }
                 else {
@@ -4763,7 +4727,7 @@ var fgui;
             this.setVirtualListChangedFlag(false);
         };
         GList.prototype.checkVirtualList = function () {
-            if (this.$virtualListChanged != 0 /* None */) {
+            if (this.$virtualListChanged != 0) {
                 this.$refreshVirtualList();
                 fgui.GTimer.inst.remove(this.$refreshVirtualList, this);
             }
@@ -4771,19 +4735,19 @@ var fgui;
         GList.prototype.setVirtualListChangedFlag = function (layoutChanged) {
             if (layoutChanged === void 0) { layoutChanged = false; }
             if (layoutChanged)
-                this.$virtualListChanged = 2 /* SizeChanged */;
-            else if (this.$virtualListChanged == 0 /* None */)
-                this.$virtualListChanged = 1 /* ContentChanged */;
+                this.$virtualListChanged = 2;
+            else if (this.$virtualListChanged == 0)
+                this.$virtualListChanged = 1;
             fgui.GTimer.inst.callLater(this.$refreshVirtualList, this);
         };
         GList.prototype.$refreshVirtualList = function () {
-            var layoutChanged = this.$virtualListChanged == 2 /* SizeChanged */;
-            this.$virtualListChanged = 0 /* None */;
+            var layoutChanged = this.$virtualListChanged == 2;
+            this.$virtualListChanged = 0;
             this.$eventLocked = true;
             if (layoutChanged) {
-                if (this.$layout == 0 /* SingleColumn */ || this.$layout == 1 /* SingleRow */)
+                if (this.$layout == 0 || this.$layout == 1)
                     this.$curLineItemCount = 1;
-                else if (this.$layout == 2 /* FlowHorizontal */) {
+                else if (this.$layout == 2) {
                     if (this.$columnCount > 0)
                         this.$curLineItemCount = this.$columnCount;
                     else {
@@ -4792,7 +4756,7 @@ var fgui;
                             this.$curLineItemCount = 1;
                     }
                 }
-                else if (this.$layout == 3 /* FlowVertical */) {
+                else if (this.$layout == 3) {
                     if (this.$lineCount > 0)
                         this.$curLineItemCount = this.$lineCount;
                     else {
@@ -4801,8 +4765,7 @@ var fgui;
                             this.$curLineItemCount = 1;
                     }
                 }
-                else //pagination
-                 {
+                else {
                     if (this.$columnCount > 0)
                         this.$curLineItemCount = this.$columnCount;
                     else {
@@ -4824,7 +4787,7 @@ var fgui;
                 var i = void 0;
                 var len = Math.ceil(this.$realNumItems / this.$curLineItemCount) * this.$curLineItemCount;
                 var len2 = Math.min(this.$curLineItemCount, this.$realNumItems);
-                if (this.$layout == 0 /* SingleColumn */ || this.$layout == 2 /* FlowHorizontal */) {
+                if (this.$layout == 0 || this.$layout == 2) {
                     for (i = 0; i < len; i += this.$curLineItemCount)
                         ch += this.$virtualItems[i].height + this.$lineGap;
                     if (ch > 0)
@@ -4838,7 +4801,7 @@ var fgui;
                             cw -= this.$columnGap;
                     }
                 }
-                else if (this.$layout == 1 /* SingleRow */ || this.$layout == 3 /* FlowVertical */) {
+                else if (this.$layout == 1 || this.$layout == 3) {
                     for (i = 0; i < len; i += this.$curLineItemCount)
                         cw += this.$virtualItems[i].width + this.$columnGap;
                     if (cw > 0)
@@ -4988,11 +4951,11 @@ var fgui;
             if (this.$eventLocked)
                 return;
             this.$enterCounter = 0;
-            if (this.$layout == 0 /* SingleColumn */ || this.$layout == 2 /* FlowHorizontal */) {
+            if (this.$layout == 0 || this.$layout == 2) {
                 this.handleScroll1(forceUpdate);
                 this.handleArchOrder1();
             }
-            else if (this.$layout == 1 /* SingleRow */ || this.$layout == 3 /* FlowVertical */) {
+            else if (this.$layout == 1 || this.$layout == 3) {
                 this.handleScroll2(forceUpdate);
                 this.handleArchOrder2();
             }
@@ -5008,8 +4971,7 @@ var fgui;
             }
             var pos = this.$scrollPane.scrollingPosY;
             var max = pos + this.$scrollPane.viewHeight;
-            var end = max == this.$scrollPane.contentHeight; //indicates we need to scroll to end in spite of content size changing
-            //find the first item from current pos
+            var end = max == this.$scrollPane.contentHeight;
             GList.$lastPosHelper = pos;
             var newFirstIndex = this.getIndexOnPos1(forceUpdate);
             if (newFirstIndex == this.$firstIndex && !forceUpdate)
@@ -5048,7 +5010,6 @@ var fgui;
                     }
                 }
                 if (ii.obj == null) {
-                    //search for a most suitable item to reuse in order to render or create less item when refresh
                     if (forward) {
                         for (j = reuseIndex; j >= oldFirstIndex; j--) {
                             ii2 = this.$virtualItems[j];
@@ -5093,13 +5054,12 @@ var fgui;
                 else
                     needRender = forceUpdate;
                 if (needRender) {
-                    if (this.$autoResizeItem && (this.$layout == 0 /* SingleColumn */ || this.$columnCount > 0))
+                    if (this.$autoResizeItem && (this.$layout == 0 || this.$columnCount > 0))
                         ii.obj.setSize(partSize, ii.obj.height, true);
                     this.itemRenderer(curIndex % this.$numItems, ii.obj);
                     if (curIndex % this.$curLineItemCount == 0) {
                         deltaSize += Math.ceil(ii.obj.height) - ii.height;
                         if (curIndex == newFirstIndex && oldFirstIndex > newFirstIndex) {
-                            //when scrolling down, we need to make compensation for the position to avoid flickering if the item's size changes
                             firstItemDeltaSize = Math.ceil(ii.obj.height) - ii.height;
                         }
                     }
@@ -5108,7 +5068,7 @@ var fgui;
                 }
                 ii.updateFlag = this.$itemInfoVer;
                 ii.obj.setXY(curX, curY);
-                if (curIndex == newFirstIndex) //pad one more
+                if (curIndex == newFirstIndex)
                     max += ii.height;
                 curX += ii.width + this.$columnGap;
                 if (curIndex % this.$curLineItemCount == this.$curLineItemCount - 1) {
@@ -5128,8 +5088,8 @@ var fgui;
             }
             if (deltaSize != 0 || firstItemDeltaSize != 0)
                 this.$scrollPane.changeContentSizeOnScrolling(0, deltaSize, 0, firstItemDeltaSize);
-            if (curIndex > 0 && this.numChildren > 0 && this.$container.y < 0 && this.getChildAt(0).y > -this.$container.y) //last page is not full
-                this.handleScroll1(false); //recursive
+            if (curIndex > 0 && this.numChildren > 0 && this.$container.y < 0 && this.getChildAt(0).y > -this.$container.y)
+                this.handleScroll1(false);
         };
         GList.prototype.handleScroll2 = function (forceUpdate) {
             this.$enterCounter++;
@@ -5222,7 +5182,7 @@ var fgui;
                 else
                     needRender = forceUpdate;
                 if (needRender) {
-                    if (this.$autoResizeItem && (this.$layout == 1 /* SingleRow */ || this.$lineCount > 0))
+                    if (this.$autoResizeItem && (this.$layout == 1 || this.$lineCount > 0))
                         ii.obj.setSize(ii.obj.width, partSize, true);
                     this.itemRenderer(curIndex % this.$numItems, ii.obj);
                     if (curIndex % this.$curLineItemCount == 0) {
@@ -5267,7 +5227,6 @@ var fgui;
             pos = GList.$lastPosHelper;
             var oldFirstIndex = this.$firstIndex;
             this.$firstIndex = newFirstIndex;
-            //height-sync is not supported in pagnation mode, so just only render 1 page
             var reuseIndex = oldFirstIndex;
             var virtualItemCount = this.$virtualItems.length;
             var pageSize = this.$curLineItemCount * this.$curLineItemCount2;
@@ -5284,7 +5243,6 @@ var fgui;
             var partWidth = (this.$scrollPane.viewWidth - this.$columnGap * (this.$curLineItemCount - 1)) / this.$curLineItemCount;
             var partHeight = (this.$scrollPane.viewHeight - this.$lineGap * (this.$curLineItemCount2 - 1)) / this.$curLineItemCount2;
             this.$itemInfoVer++;
-            //add mark for items used this time
             for (i = startIndex; i < lastIndex; i++) {
                 if (i >= this.$realNumItems)
                     continue;
@@ -5309,7 +5267,6 @@ var fgui;
                 if (ii.updateFlag != this.$itemInfoVer)
                     continue;
                 if (ii.obj == null) {
-                    //find if any free item can be used
                     while (reuseIndex < virtualItemCount) {
                         ii2 = this.$virtualItems[reuseIndex];
                         if (ii2.obj != null && ii2.updateFlag != this.$itemInfoVer) {
@@ -5359,7 +5316,6 @@ var fgui;
                     ii.height = Math.ceil(ii.obj.height);
                 }
             }
-            //layout
             var borderX = (startIndex / pageSize) * viewWidth;
             var xx = borderX;
             var yy = 0;
@@ -5385,7 +5341,6 @@ var fgui;
                 else
                     xx += ii.width + this.$columnGap;
             }
-            //release items not used
             for (i = reuseIndex; i < virtualItemCount; i++) {
                 ii = this.$virtualItems[i];
                 if (ii.updateFlag != this.$itemInfoVer && ii.obj != null) {
@@ -5397,7 +5352,7 @@ var fgui;
             }
         };
         GList.prototype.handleArchOrder1 = function () {
-            if (this.$childrenRenderOrder == 2 /* Arch */) {
+            if (this.$childrenRenderOrder == 2) {
                 var mid = this.$scrollPane.posY + this.viewHeight / 2;
                 var minDist = Number.POSITIVE_INFINITY;
                 var dist = 0;
@@ -5417,7 +5372,7 @@ var fgui;
             }
         };
         GList.prototype.handleArchOrder2 = function () {
-            if (this.childrenRenderOrder == 2 /* Arch */) {
+            if (this.childrenRenderOrder == 2) {
                 var mid = this.$scrollPane.posX + this.viewWidth / 2;
                 var minDist = Number.POSITIVE_INFINITY;
                 var dist = 0;
@@ -5440,15 +5395,15 @@ var fgui;
             var newOffsetX = 0;
             var newOffsetY = 0;
             if (contentHeight < this.viewHeight) {
-                if (this.$verticalAlign == 1 /* Middle */)
+                if (this.$verticalAlign == 1)
                     newOffsetY = Math.floor((this.viewHeight - contentHeight) / 2);
-                else if (this.$verticalAlign == 2 /* Bottom */)
+                else if (this.$verticalAlign == 2)
                     newOffsetY = this.viewHeight - contentHeight;
             }
             if (contentWidth < this.viewWidth) {
-                if (this.$align == "center" /* Center */)
+                if (this.$align == "center")
                     newOffsetX = Math.floor((this.viewWidth - contentWidth) / 2);
-                else if (this.$align == "right" /* Right */)
+                else if (this.$align == "right")
                     newOffsetX = this.viewWidth - contentWidth;
             }
             if (newOffsetX != this.$alignOffset.x || newOffsetY != this.$alignOffset.y) {
@@ -5461,7 +5416,6 @@ var fgui;
                 }
             }
         };
-        /**@override */
         GList.prototype.updateBounds = function () {
             if (this.$virtual)
                 return;
@@ -5481,7 +5435,7 @@ var fgui;
             var lineSize = 0;
             var lineStart = 0;
             var ratio;
-            if (this.$layout == 0 /* SingleColumn */) {
+            if (this.$layout == 0) {
                 for (i = 0; i < cnt; i++) {
                     child = this.getChildAt(i);
                     if (this.foldInvisibleItems && !child.visible)
@@ -5498,7 +5452,7 @@ var fgui;
                 cw = Math.ceil(maxWidth);
                 ch = curY;
             }
-            else if (this.$layout == 1 /* SingleRow */) {
+            else if (this.$layout == 1) {
                 for (i = 0; i < cnt; i++) {
                     child = this.getChildAt(i);
                     if (this.foldInvisibleItems && !child.visible)
@@ -5515,7 +5469,7 @@ var fgui;
                 cw = curX;
                 ch = Math.ceil(maxHeight);
             }
-            else if (this.$layout == 2 /* FlowHorizontal */) {
+            else if (this.$layout == 2) {
                 if (this.$autoResizeItem && this.$columnCount > 0) {
                     for (i = 0; i < cnt; i++) {
                         child = this.getChildAt(i);
@@ -5540,7 +5494,6 @@ var fgui;
                                 if (child.height > maxHeight)
                                     maxHeight = child.height;
                             }
-                            //new line
                             curY += Math.ceil(maxHeight) + this.$lineGap;
                             maxHeight = 0;
                             j = 0;
@@ -5560,7 +5513,6 @@ var fgui;
                             curX += this.$columnGap;
                         if (this.$columnCount != 0 && j >= this.$columnCount
                             || this.$columnCount == 0 && curX + child.width > viewWidth && maxHeight != 0) {
-                            //new line
                             curX = 0;
                             curY += Math.ceil(maxHeight) + this.$lineGap;
                             maxHeight = 0;
@@ -5578,7 +5530,7 @@ var fgui;
                     cw = Math.ceil(maxWidth);
                 }
             }
-            else if (this.$layout == 3 /* FlowVertical */) {
+            else if (this.$layout == 3) {
                 if (this.$autoResizeItem && this.$lineCount > 0) {
                     for (i = 0; i < cnt; i++) {
                         child = this.getChildAt(i);
@@ -5603,7 +5555,6 @@ var fgui;
                                 if (child.width > maxWidth)
                                     maxWidth = child.width;
                             }
-                            //new line
                             curX += Math.ceil(maxWidth) + this.$columnGap;
                             maxWidth = 0;
                             j = 0;
@@ -5640,8 +5591,7 @@ var fgui;
                     ch = Math.ceil(maxHeight);
                 }
             }
-            else //pagination
-             {
+            else {
                 var eachHeight = void 0;
                 if (this.$autoResizeItem && this.$lineCount > 0)
                     eachHeight = Math.floor((viewHeight - (this.$lineCount - 1) * this.$lineGap) / this.$lineCount);
@@ -5669,7 +5619,6 @@ var fgui;
                                 if (child.height > maxHeight)
                                     maxHeight = child.height;
                             }
-                            //new line
                             curY += Math.ceil(maxHeight) + this.$lineGap;
                             maxHeight = 0;
                             j = 0;
@@ -5678,7 +5627,6 @@ var fgui;
                             k++;
                             if (this.$lineCount != 0 && k >= this.$lineCount
                                 || this.$lineCount == 0 && curY + child.height > viewHeight) {
-                                //new page
                                 page++;
                                 curY = 0;
                                 k = 0;
@@ -5697,15 +5645,13 @@ var fgui;
                             child.setSize(child.width, eachHeight, true);
                         if (this.$columnCount != 0 && j >= this.$columnCount
                             || this.$columnCount == 0 && curX + child.width > viewWidth && maxHeight != 0) {
-                            //new line
                             curX = 0;
                             curY += Math.ceil(maxHeight) + this.$lineGap;
                             maxHeight = 0;
                             j = 0;
                             k++;
                             if (this.$lineCount != 0 && k >= this.$lineCount
-                                || this.$lineCount == 0 && curY + child.height > viewHeight && maxWidth != 0) //new page
-                             {
+                                || this.$lineCount == 0 && curY + child.height > viewHeight && maxWidth != 0) {
                                 page++;
                                 curY = 0;
                                 k = 0;
@@ -5739,7 +5685,7 @@ var fgui;
             if (str)
                 overflow = fgui.ParseOverflowType(str);
             else
-                overflow = 0 /* Visible */;
+                overflow = 0;
             str = xml.attributes.margin;
             if (str)
                 this.$margin.parse(str);
@@ -5749,19 +5695,19 @@ var fgui;
             str = xml.attributes.vAlign;
             if (str)
                 this.$verticalAlign = fgui.ParseVertAlignType(str);
-            if (overflow == 2 /* Scroll */) {
+            if (overflow == 2) {
                 var scroll_2;
                 str = xml.attributes.scroll;
                 if (str)
                     scroll_2 = fgui.ParseScrollType(str);
                 else
-                    scroll_2 = 1 /* Vertical */;
+                    scroll_2 = 1;
                 var scrollBarDisplay = void 0;
                 str = xml.attributes.scrollBar;
                 if (str)
                     scrollBarDisplay = fgui.ParseScrollBarDisplayType(str);
                 else
-                    scrollBarDisplay = 0 /* Default */;
+                    scrollBarDisplay = 0;
                 var scrollBarFlags = void 0;
                 str = xml.attributes.scrollBarFlags;
                 if (str)
@@ -5800,9 +5746,9 @@ var fgui;
                 this.$columnGap = parseInt(str);
             str = xml.attributes.lineItemCount;
             if (str) {
-                if (this.$layout == 2 /* FlowHorizontal */ || this.$layout == 4 /* Pagination */)
+                if (this.$layout == 2 || this.$layout == 4)
                     this.$columnCount = parseInt(str);
-                else if (this.$layout == 3 /* FlowVertical */)
+                else if (this.$layout == 3)
                     this.$lineCount = parseInt(str);
             }
             str = xml.attributes.lineItemCount2;
@@ -5815,14 +5761,14 @@ var fgui;
             if (str)
                 this.$defaultItem = str;
             str = xml.attributes.autoItemSize;
-            if (this.$layout == 1 /* SingleRow */ || this.$layout == 0 /* SingleColumn */)
+            if (this.$layout == 1 || this.$layout == 0)
                 this.$autoResizeItem = str != "false";
             else
                 this.$autoResizeItem = str == "true";
             str = xml.attributes.renderOrder;
             if (str) {
                 this.$childrenRenderOrder = fgui.ParseListChildrenRenderOrder(str);
-                if (this.$childrenRenderOrder == 2 /* Arch */) {
+                if (this.$childrenRenderOrder == 2) {
                     str = xml.attributes.apex;
                     if (str)
                         this.$apexIndex = parseInt(str);
@@ -5867,11 +5813,11 @@ var fgui;
     }(fgui.GComponent));
     fgui.GList = GList;
 })(fgui || (fgui = {}));
-var fgui;
+
 (function (fgui) {
     var utils;
     (function (utils) {
-        var Recycler = /** @class */ (function () {
+        var Recycler = (function () {
             function Recycler() {
                 this.$count = 0;
                 this.$pool = {};
@@ -5922,12 +5868,11 @@ var fgui;
         utils.Recycler = Recycler;
     })(utils = fgui.utils || (fgui.utils = {}));
 })(fgui || (fgui = {}));
-/// <reference path="./Recycler.ts" />
-var fgui;
+
 (function (fgui) {
     var utils;
     (function (utils) {
-        var GObjectRecycler = /** @class */ (function (_super) {
+        var GObjectRecycler = (function (_super) {
             __extends(GObjectRecycler, _super);
             function GObjectRecycler() {
                 return _super.call(this) || this;
@@ -5944,18 +5889,16 @@ var fgui;
                 _super.prototype.clear.call(this);
             };
             GObjectRecycler.prototype.createObject = function (id) {
-                return fgui.UIPackage.createObjectFromURL(id); //id = url
+                return fgui.UIPackage.createObjectFromURL(id);
             };
             return GObjectRecycler;
         }(utils.Recycler));
         utils.GObjectRecycler = GObjectRecycler;
     })(utils = fgui.utils || (fgui.utils = {}));
 })(fgui || (fgui = {}));
-/// <reference path="./GObject.ts" />
-/// <reference path="./utils/GObjectRecycler.ts" />
-var fgui;
+
 (function (fgui) {
-    var GLoader = /** @class */ (function (_super) {
+    var GLoader = (function (_super) {
         __extends(GLoader, _super);
         function GLoader() {
             var _this = _super.call(this) || this;
@@ -5965,13 +5908,12 @@ var fgui;
             _this.$contentSourceHeight = 0;
             _this.$contentWidth = 0;
             _this.$contentHeight = 0;
-            /**overwrite this for load resources by your own way */
             _this.$loadingTexture = null;
             _this.$playing = true;
             _this.$url = "";
-            _this.$fill = 0 /* None */;
-            _this.$align = "left" /* Left */;
-            _this.$verticalAlign = 0 /* Top */;
+            _this.$fill = 0;
+            _this.$align = "left";
+            _this.$verticalAlign = 0;
             _this.$showErrorSign = true;
             _this.$color = 0xFFFFFF;
             return _this;
@@ -5995,7 +5937,7 @@ var fgui;
                     return;
                 this.$url = value;
                 this.loadContent();
-                this.updateGear(7 /* Icon */);
+                this.updateGear(7);
             },
             enumerable: true,
             configurable: true
@@ -6071,7 +6013,7 @@ var fgui;
                     this.$playing = value;
                     if (this.$content instanceof fgui.MovieClip)
                         this.$content.playing = value;
-                    this.updateGear(5 /* Animation */);
+                    this.updateGear(5);
                 }
             },
             enumerable: true,
@@ -6086,7 +6028,7 @@ var fgui;
                     this.$frame = value;
                     if (this.$content instanceof fgui.MovieClip)
                         this.$content.currentFrame = value;
-                    this.updateGear(5 /* Animation */);
+                    this.updateGear(5);
                 }
             },
             enumerable: true,
@@ -6099,7 +6041,7 @@ var fgui;
             set: function (value) {
                 if (this.$color != value) {
                     this.$color = value;
-                    this.updateGear(4 /* Color */);
+                    this.updateGear(4);
                     this.applyColor();
                 }
             },
@@ -6163,7 +6105,7 @@ var fgui;
             this.$contentItem = fgui.UIPackage.getItemByURL(itemURL);
             if (this.$contentItem) {
                 this.$contentItem.load();
-                if (this.$contentItem.type == 0 /* Image */) {
+                if (this.$contentItem.type == 0) {
                     if (this.$contentItem.texture == null) {
                         this.setErrorState();
                     }
@@ -6175,7 +6117,7 @@ var fgui;
                         this.updateLayout();
                     }
                 }
-                else if (this.$contentItem.type == 2 /* MovieClip */) {
+                else if (this.$contentItem.type == 2) {
                     this.switchToMovieMode(true);
                     this.$contentSourceWidth = this.$contentItem.width;
                     this.$contentSourceHeight = this.$contentItem.height;
@@ -6207,35 +6149,30 @@ var fgui;
         };
         GLoader.prototype.loadExternal = function () {
             var _this = this;
-            var texture = PIXI.utils.TextureCache[this.$url];
-            if (!texture) {
-                var baseTex = PIXI.BaseTexture.fromImage(this.$url);
-                if (!baseTex.hasLoaded) {
-                    baseTex.once("loaded", function () { return _this.$loadResCompleted(texture); });
-                    baseTex.once("error", function () { return _this.$loadResCompleted(null); });
-                    texture = new PIXI.Texture(baseTex);
-                    this.$loadingTexture = texture;
-                }
+            var texture = PIXI.Texture.from(this.$url, true);
+            this.$loadingTexture = texture;
+            texture.once("update", function () {
+                if (!texture.width || !texture.height)
+                    _this.$loadResCompleted(null);
                 else
-                    texture = new PIXI.Texture(baseTex);
-                PIXI.Texture.addToCache(texture, this.$url);
-                return;
-            }
-            this.$loadResCompleted(texture);
+                    _this.$loadResCompleted(texture);
+            });
         };
-        /**free the resource you loaded */
         GLoader.prototype.freeExternal = function (texture) {
             PIXI.Texture.removeFromCache(texture);
             texture.destroy(texture.baseTexture != null);
         };
         GLoader.prototype.$loadResCompleted = function (res) {
-            this.$loadingTexture = null;
             if (res)
                 this.onExternalLoadSuccess(res);
-            else
+            else {
                 this.onExternalLoadFailed();
+                this.$loadingTexture.removeAllListeners();
+                this.freeExternal(this.$loadingTexture);
+                this.$loadingTexture = null;
+            }
+            this.$loadingTexture = null;
         };
-        /**content loaded */
         GLoader.prototype.onExternalLoadSuccess = function (texture) {
             this.$container.removeChildren();
             if (!this.$content || !(this.$content instanceof fgui.UIImage)) {
@@ -6245,7 +6182,6 @@ var fgui;
             }
             else
                 this.$container.addChild(this.$content);
-            //baseTexture loaded, so update frame info
             texture.frame = new PIXI.Rectangle(0, 0, texture.baseTexture.width, texture.baseTexture.height);
             this.$content.texture = texture;
             this.$contentSourceWidth = texture.width;
@@ -6300,21 +6236,21 @@ var fgui;
             }
             else {
                 var sx = 1, sy = 1;
-                if (this.$fill != 0 /* None */) {
+                if (this.$fill != 0) {
                     sx = this.width / this.$contentSourceWidth;
                     sy = this.height / this.$contentSourceHeight;
                     if (sx != 1 || sy != 1) {
-                        if (this.$fill == 2 /* ScaleMatchHeight */)
+                        if (this.$fill == 2)
                             sx = sy;
-                        else if (this.$fill == 3 /* ScaleMatchWidth */)
+                        else if (this.$fill == 3)
                             sy = sx;
-                        else if (this.$fill == 1 /* Scale */) {
+                        else if (this.$fill == 1) {
                             if (sx > sy)
                                 sx = sy;
                             else
                                 sy = sx;
                         }
-                        else if (this.$fill == 5 /* ScaleNoBorder */) {
+                        else if (this.$fill == 5) {
                             if (sx > sy)
                                 sy = sx;
                             else
@@ -6330,13 +6266,13 @@ var fgui;
                 }
                 else
                     this.$content.scale.set(sx, sy);
-                if (this.$align == "center" /* Center */)
+                if (this.$align == "center")
                     this.$content.x = Math.floor((this.width - this.$contentWidth) / 2);
-                else if (this.$align == "right" /* Right */)
+                else if (this.$align == "right")
                     this.$content.x = this.width - this.$contentWidth;
-                if (this.$verticalAlign == 1 /* Middle */)
+                if (this.$verticalAlign == 1)
                     this.$content.y = Math.floor((this.height - this.$contentHeight) / 2);
-                else if (this.$verticalAlign == 2 /* Bottom */)
+                else if (this.$verticalAlign == 2)
                     this.$content.y = this.height - this.$contentHeight;
             }
         };
@@ -6345,8 +6281,9 @@ var fgui;
             if (this.$content && this.$content.parent)
                 this.$container.removeChild(this.$content);
             if (this.$loadingTexture) {
-                this.$loadingTexture.baseTexture.removeAllListeners();
+                this.$loadingTexture.removeAllListeners();
                 this.freeExternal(this.$loadingTexture);
+                this.$loadingTexture = null;
             }
             if (this.$contentItem == null && this.$content instanceof fgui.UIImage)
                 this.freeExternal(this.$content.texture);
@@ -6357,7 +6294,7 @@ var fgui;
         GLoader.prototype.handleSizeChanged = function () {
             if (!this.$updatingLayout)
                 this.updateLayout();
-            var rect = this.$container.hitArea; //TODO: hitArea can be Rectangle | Circle | Ellipse | Polygon | RoundedRectangle
+            var rect = this.$container.hitArea;
             rect.x = rect.y = 0;
             rect.width = this.width;
             rect.height = this.height;
@@ -6393,10 +6330,9 @@ var fgui;
     }(fgui.GObject));
     fgui.GLoader = GLoader;
 })(fgui || (fgui = {}));
-/// <reference path="./GObject.ts" />
-var fgui;
+
 (function (fgui) {
-    var GMovieClip = /** @class */ (function (_super) {
+    var GMovieClip = (function (_super) {
         __extends(GMovieClip, _super);
         function GMovieClip() {
             return _super.call(this) || this;
@@ -6421,7 +6357,7 @@ var fgui;
                 return false;
             },
             set: function (value) {
-                this.$touchable = false; //GMovieClip has no interaction
+                this.$touchable = false;
             },
             enumerable: true,
             configurable: true
@@ -6447,7 +6383,7 @@ var fgui;
             set: function (value) {
                 if (this.$movieClip.playing != value) {
                     this.$movieClip.playing = value;
-                    this.updateGear(5 /* Animation */);
+                    this.updateGear(5);
                 }
             },
             enumerable: true,
@@ -6460,23 +6396,12 @@ var fgui;
             set: function (value) {
                 if (this.$movieClip.currentFrame != value) {
                     this.$movieClip.currentFrame = value;
-                    this.updateGear(5 /* Animation */);
+                    this.updateGear(5);
                 }
             },
             enumerable: true,
             configurable: true
         });
-        /**
-         * Modify the playing settings for the current MovieClip object, there are two ways to call this method:
-         * 1) pass whole parameters:
-                startFrame: number;
-                endFrame: number;
-                repeatCount: number;
-                loopEndAt: number;
-                endCallback: (target?: MovieClip) => void;
-                endCallbackContext: any;
-         * 2) just pass 1 object which implements MovieClipSettings (recommended)
-         */
         GMovieClip.prototype.setPlaySettings = function () {
             var args = [];
             for (var _i = 0; _i < arguments.length; _i++) {
@@ -6513,9 +6438,9 @@ var fgui;
     }(fgui.GObject));
     fgui.GMovieClip = GMovieClip;
 })(fgui || (fgui = {}));
-var fgui;
+
 (function (fgui) {
-    var GProgressBar = /** @class */ (function (_super) {
+    var GProgressBar = (function (_super) {
         __extends(GProgressBar, _super);
         function GProgressBar() {
             var _this = _super.call(this) || this;
@@ -6528,7 +6453,7 @@ var fgui;
             _this.$barStartX = 0;
             _this.$barStartY = 0;
             _this.$tweenValue = 0;
-            _this.$titleType = 0 /* Percent */;
+            _this.$titleType = 0;
             _this.$value = 50;
             _this.$max = 100;
             return _this;
@@ -6599,16 +6524,16 @@ var fgui;
             var percent = this.$max != 0 ? Math.min(val / this.$max, 1) : 0;
             if (this.$titleObject) {
                 switch (this.$titleType) {
-                    case 0 /* Percent */:
+                    case 0:
                         this.$titleObject.text = Math.round(percent * 100) + "%";
                         break;
-                    case 1 /* ValueAndMax */:
+                    case 1:
                         this.$titleObject.text = Math.round(val) + "/" + Math.round(this.$max);
                         break;
-                    case 2 /* Value */:
+                    case 2:
                         this.$titleObject.text = "" + Math.round(val);
                         break;
-                    case 3 /* Max */:
+                    case 3:
                         this.$titleObject.text = "" + Math.round(this.$max);
                         break;
                 }
@@ -6684,14 +6609,14 @@ var fgui;
             this.$tweener = null;
             _super.prototype.dispose.call(this);
         };
-        GProgressBar.easeLinear = fgui.ParseEaseType("linear"); // createjs.Ease.getPowIn(1);
+        GProgressBar.easeLinear = fgui.ParseEaseType("linear");
         return GProgressBar;
     }(fgui.GComponent));
     fgui.GProgressBar = GProgressBar;
 })(fgui || (fgui = {}));
-var fgui;
+
 (function (fgui) {
-    var LineInfo = /** @class */ (function () {
+    var LineInfo = (function () {
         function LineInfo() {
             this.width = 0;
             this.height = 0;
@@ -6726,11 +6651,11 @@ var fgui;
         return LineInfo;
     }());
     fgui.LineInfo = LineInfo;
-    var GTextField = /** @class */ (function (_super) {
+    var GTextField = (function (_super) {
         __extends(GTextField, _super);
         function GTextField() {
             var _this = _super.call(this) || this;
-            _this.$verticalAlign = 0 /* Top */;
+            _this.$verticalAlign = 0;
             _this.$offset = new PIXI.Point();
             _this.$singleLine = true;
             _this.$text = "";
@@ -6739,17 +6664,17 @@ var fgui;
             _this.$style = new PIXI.TextStyle({
                 fontSize: 12,
                 fontFamily: fgui.UIConfig.defaultFont,
-                align: "left" /* Left */,
+                align: "left",
                 leading: 3,
                 fill: 0
             });
-            _this.$verticalAlign = 0 /* Top */;
+            _this.$verticalAlign = 0;
             _this.$text = "";
-            _this.$autoSize = 1 /* Both */;
+            _this.$autoSize = 1;
             _this.$widthAutoSize = true;
             _this.$heightAutoSize = true;
             _this.$bitmapPool = [];
-            _this.touchable = false; //base GTextField has no interaction
+            _this.touchable = false;
             return _this;
         }
         GTextField.prototype.createDisplayObject = function () {
@@ -6789,7 +6714,7 @@ var fgui;
             if (this.$text == value)
                 return;
             this.$text = value;
-            this.updateGear(6 /* Text */);
+            this.updateGear(6);
             if (this.parent && this.parent.$inProgressBuilding)
                 this.renderNow();
             else
@@ -6814,7 +6739,7 @@ var fgui;
         GTextField.prototype.setColor = function (value) {
             if (this.$color != value) {
                 this.$color = value;
-                this.updateGear(4 /* Color */);
+                this.updateGear(4);
                 this.$style.fill = this.$color;
                 this.render();
             }
@@ -6834,7 +6759,7 @@ var fgui;
                 if (this.$style.lineHeight > 0)
                     return this.$style.lineHeight;
                 if (!this.$fontProperties)
-                    return (+this.$style.fontSize) + this.$style.strokeThickness; //rough value
+                    return (+this.$style.fontSize) + this.$style.strokeThickness;
                 return this.$fontProperties.fontSize + this.$style.strokeThickness + this.$style.leading;
             },
             set: function (lh) {
@@ -6930,10 +6855,9 @@ var fgui;
         });
         Object.defineProperty(GTextField.prototype, "underline", {
             get: function () {
-                return false; //TODO: not supported yet
+                return false;
             },
             set: function (value) {
-                //TODO: not supported yet
             },
             enumerable: true,
             configurable: true
@@ -7035,8 +6959,8 @@ var fgui;
             set: function (value) {
                 if (this.$autoSize != value) {
                     this.$autoSize = value;
-                    this.$widthAutoSize = (value == 1 /* Both */ || value == 3 /* Shrink */);
-                    this.$heightAutoSize = (value == 1 /* Both */ || value == 2 /* Height */);
+                    this.$widthAutoSize = (value == 1 || value == 3);
+                    this.$heightAutoSize = (value == 1 || value == 2);
                     this.render();
                 }
             },
@@ -7072,7 +6996,7 @@ var fgui;
             }
             if (!this.$sizeDirty && (this.$widthAutoSize || this.$heightAutoSize)) {
                 this.$sizeDirty = true;
-                this.emit("__sizeDelayChange" /* SIZE_DELAY_CHANGE */, this);
+                this.emit(fgui.DisplayObjectEvent.SIZE_DELAY_CHANGE, this);
             }
         };
         GTextField.prototype.applyStyle = function () {
@@ -7104,19 +7028,19 @@ var fgui;
             this.applyStyle();
             this.$textField.$updateMinHeight();
             var wordWrap = !this.$widthAutoSize && this.multipleLine;
-            this.$textField.width = this.$textField.style.wordWrapWidth = (wordWrap || this.autoSize == 0 /* None */) ? Math.ceil(this.width) : 10000;
+            this.$textField.width = this.$textField.style.wordWrapWidth = (wordWrap || this.autoSize == 0) ? Math.ceil(this.width) : 10000;
             this.$textField.style.wordWrap = wordWrap;
             this.$textField.style.breakWords = wordWrap;
-            this.$textField.text = this.$text; //trigger t.dirty = true
+            this.$textField.text = this.$text;
             this.$fontProperties = PIXI.TextMetrics.measureFont(this.$style.toFontString());
             this.$textWidth = Math.ceil(this.$textField.textWidth);
             if (this.$textWidth > 0)
-                this.$textWidth += GTextField.GUTTER_X * 2; //margin gap
+                this.$textWidth += GTextField.GUTTER_X * 2;
             this.$textHeight = Math.ceil(this.$textField.textHeight);
             if (this.$textHeight > 0)
-                this.$textHeight += GTextField.GUTTER_Y * 2; //margin gap
+                this.$textHeight += GTextField.GUTTER_Y * 2;
             var w = this.width, h = this.height;
-            if (this.autoSize == 3 /* Shrink */)
+            if (this.autoSize == 3)
                 this.shrinkTextField();
             else {
                 this.$textField.scale.set(1, 1);
@@ -7124,18 +7048,15 @@ var fgui;
                     w = this.$textWidth;
                     this.$textField.width = w;
                 }
+                if (this.$heightAutoSize) {
+                    h = this.$textHeight;
+                    if (this.$textField.height != this.$textHeight)
+                        this.$textField.height = this.$textHeight;
+                }
                 else {
-                    w = this.width;
-                    if (this.$heightAutoSize) {
-                        h = this.$textHeight;
-                        if (this.$textField.height != this.$textHeight)
-                            this.$textField.height = this.$textHeight;
-                    }
-                    else {
-                        h = this.height;
-                        if (this.$textHeight > h)
-                            this.$textHeight = h;
-                    }
+                    h = this.height;
+                    if (this.$textHeight > h)
+                        this.$textHeight = h;
                 }
             }
             if (updateBounds) {
@@ -7247,10 +7168,10 @@ var fgui;
                     line = LineInfo.get();
                     line.height = lineHeight;
                     line.textHeight = lineTextHeight;
-                    if (lineBuffer.length == 0) { //the line cannt fit even a char
+                    if (lineBuffer.length == 0) {
                         line.text = ch;
                     }
-                    else if (wordChars > 0 && wordEnd > 0) { //if word had broken, move it to new line
+                    else if (wordChars > 0 && wordEnd > 0) {
                         lineBuffer += ch;
                         var len = lineBuffer.length - wordChars;
                         line.text = fgui.utils.StringUtil.trimRight(lineBuffer.substr(0, len));
@@ -7331,9 +7252,9 @@ var fgui;
                 var charX = GTextField.GUTTER_X;
                 var lineIndent = 0;
                 var charIndent = 0;
-                if (_this.align == "center" /* Center */)
+                if (_this.align == "center")
                     lineIndent = (rectWidth - line.width) / 2;
-                else if (_this.align == "right" /* Right */)
+                else if (_this.align == "right")
                     lineIndent = rectWidth - line.width;
                 else
                     lineIndent = 0;
@@ -7393,7 +7314,7 @@ var fgui;
                     this.$textField.height = this.height;
                 }
                 else {
-                    if (this.$autoSize == 3 /* Shrink */)
+                    if (this.$autoSize == 3)
                         this.shrinkTextField();
                     else {
                         if (!this.$widthAutoSize) {
@@ -7415,17 +7336,17 @@ var fgui;
         };
         GTextField.prototype.layoutAlign = function () {
             var tw = this.$textWidth, th = this.$textHeight;
-            if (this.autoSize == 3 /* Shrink */) {
+            if (this.autoSize == 3) {
                 tw *= this.displayObject.scale.x;
                 th *= this.displayObject.scale.y;
             }
-            if (this.$verticalAlign == 0 /* Top */ || th == 0)
+            if (this.$verticalAlign == 0 || th == 0)
                 this.$offset.y = GTextField.GUTTER_Y;
             else {
                 var dh = Math.max(0, this.height - th);
-                if (this.$verticalAlign == 1 /* Middle */)
+                if (this.$verticalAlign == 1)
                     this.$offset.y = dh * .5;
-                else if (this.$verticalAlign == 2 /* Bottom */)
+                else if (this.$verticalAlign == 2)
                     this.$offset.y = dh;
             }
             var xPos = 0;
@@ -7474,8 +7395,8 @@ var fgui;
             str = xml.attributes.autoSize;
             if (str) {
                 this.autoSize = fgui.ParseAutoSizeType(str);
-                this.$widthAutoSize = (this.$autoSize == 1 /* Both */ || this.$autoSize == 3 /* Shrink */);
-                this.$heightAutoSize = (this.$autoSize == 1 /* Both */ || this.$autoSize == 2 /* Height */);
+                this.$widthAutoSize = (this.$autoSize == 1 || this.$autoSize == 3);
+                this.$heightAutoSize = (this.$autoSize == 1 || this.$autoSize == 2);
             }
             this.underline = xml.attributes.underline == "true";
             this.italic = xml.attributes.italic == "true";
@@ -7504,23 +7425,21 @@ var fgui;
     }(fgui.GObject));
     fgui.GTextField = GTextField;
 })(fgui || (fgui = {}));
-/// <reference path="./GTextField.ts" />
-var fgui;
+
 (function (fgui) {
-    var TextBlock = /** @class */ (function () {
+    var TextBlock = (function () {
         function TextBlock() {
         }
         return TextBlock;
     }());
     fgui.TextBlock = TextBlock;
-    //TOOD: impl
-    var GRichTextField = /** @class */ (function (_super) {
+    var GRichTextField = (function (_super) {
         __extends(GRichTextField, _super);
         function GRichTextField() {
             var _this = _super.call(this) || this;
             _this.$textField.interactive = true;
             _this.$textField.interactiveChildren = false;
-            _this.on("__linkClick" /* LinkClick */, _this.$clickLink, _this);
+            _this.on(fgui.TextEvent.LinkClick, _this.$clickLink, _this);
             return _this;
         }
         Object.defineProperty(GRichTextField.prototype, "ubbEnabled", {
@@ -7554,28 +7473,26 @@ var fgui;
                 if (this.$text == null)
                     this.$text = "";
                 this.$textField.width = this.width;
-                //if(this.$ubbEnabled)
-                //this.textFlow = utils.StringUtil.parseUBB(this.$text);   //TODO: parser impl
-                this.updateGear(6 /* Text */);
+                this.updateGear(6);
                 this.render();
             },
             enumerable: true,
             configurable: true
         });
         GRichTextField.prototype.$clickLink = function (block) {
-            this.emit("__linkClick" /* LinkClick */, block.text, this);
+            this.emit(fgui.TextEvent.LinkClick, block.text, this);
         };
         GRichTextField.prototype.dispose = function () {
-            this.off("__linkClick" /* LinkClick */, this.$clickLink, this);
+            this.off(fgui.TextEvent.LinkClick, this.$clickLink, this);
             _super.prototype.dispose.call(this);
         };
         return GRichTextField;
     }(fgui.GTextField));
     fgui.GRichTextField = GRichTextField;
 })(fgui || (fgui = {}));
-var fgui;
+
 (function (fgui) {
-    var GRootMouseStatus = /** @class */ (function () {
+    var GRootMouseStatus = (function () {
         function GRootMouseStatus() {
             this.touchDown = false;
             this.mouseX = 0;
@@ -7584,7 +7501,7 @@ var fgui;
         return GRootMouseStatus;
     }());
     fgui.GRootMouseStatus = GRootMouseStatus;
-    var GRoot = /** @class */ (function (_super) {
+    var GRoot = (function (_super) {
         __extends(GRoot, _super);
         function GRoot() {
             var _this = _super.call(this) || this;
@@ -7594,13 +7511,10 @@ var fgui;
             _this.$popupStack = [];
             _this.$justClosedPopups = [];
             _this.$uid = GRoot.uniqueID++;
-            fgui.utils.DOMEventManager.inst.on("__mouseWheel" /* MOUSE_WHEEL */, _this.dispatchMouseWheel, _this);
+            fgui.utils.DOMEventManager.inst.on(fgui.DisplayObjectEvent.MOUSE_WHEEL, _this.dispatchMouseWheel, _this);
             return _this;
         }
         Object.defineProperty(GRoot, "inst", {
-            /**
-             * the singleton instance of the GRoot object
-             */
             get: function () {
                 if (GRoot.$inst == null)
                     new GRoot();
@@ -7610,25 +7524,17 @@ var fgui;
             configurable: true
         });
         Object.defineProperty(GRoot, "globalMouseStatus", {
-            /**
-             * the current mouse/pointer data
-             */
             get: function () {
                 return GRoot.$gmStatus;
             },
             enumerable: true,
             configurable: true
         });
-        /**
-         * the main entry to lauch the UI root, e.g.: GRoot.inst.attachTo(app, options)
-         * @param app your PIXI.Application instance to be used in this GRoot instance
-         * @param stageOptions stage rotation / resize options
-         */
         GRoot.prototype.attachTo = function (app, stageOptions) {
-            createjs.Ticker = null; //no need this one
+            createjs.Ticker = null;
             fgui.GTimer.inst.setTicker(app.ticker);
             if (this.$uiStage) {
-                this.$uiStage.off("__sizeChanged" /* SIZE_CHANGED */, this.$winResize, this);
+                this.$uiStage.off(fgui.DisplayObjectEvent.SIZE_CHANGED, this.$winResize, this);
                 this.$uiStage.nativeStage.off(fgui.InteractiveEvents.Down, this.$stageDown, this);
                 this.$uiStage.nativeStage.off(fgui.InteractiveEvents.Up, this.$stageUp, this);
                 this.$uiStage.nativeStage.off(fgui.InteractiveEvents.Move, this.$stageMove, this);
@@ -7636,7 +7542,7 @@ var fgui;
                 this.$uiStage.dispose();
             }
             this.$uiStage = new fgui.UIStage(app, stageOptions);
-            this.$uiStage.on("__sizeChanged" /* SIZE_CHANGED */, this.$winResize, this);
+            this.$uiStage.on(fgui.DisplayObjectEvent.SIZE_CHANGED, this.$winResize, this);
             this.$uiStage.nativeStage.on(fgui.InteractiveEvents.Down, this.$stageDown, this);
             this.$uiStage.nativeStage.on(fgui.InteractiveEvents.Up, this.$stageUp, this);
             this.$uiStage.nativeStage.on(fgui.InteractiveEvents.Move, this.$stageMove, this);
@@ -7646,7 +7552,7 @@ var fgui;
                 this.$modalLayer = new fgui.GGraph();
                 this.$modalLayer.setSize(this.width, this.height);
                 this.$modalLayer.drawRect(0, 0, 0, fgui.UIConfig.modalLayerColor, fgui.UIConfig.modalLayerAlpha);
-                this.$modalLayer.addRelation(this, 24 /* Size */);
+                this.$modalLayer.addRelation(this, 24);
             }
         };
         Object.defineProperty(GRoot.prototype, "uniqueID", {
@@ -7707,18 +7613,13 @@ var fgui;
         });
         GRoot.prototype.dispatchMouseWheel = function (evt) {
             var childUnderMouse = this.getObjectUnderPoint(GRoot.globalMouseStatus.mouseX, GRoot.globalMouseStatus.mouseY);
-            if (childUnderMouse != null) { //bubble
+            if (childUnderMouse != null) {
                 while (childUnderMouse.parent && childUnderMouse.parent != this) {
-                    childUnderMouse.emit("__mouseWheel" /* MOUSE_WHEEL */, evt);
+                    childUnderMouse.emit(fgui.DisplayObjectEvent.MOUSE_WHEEL, evt);
                     childUnderMouse = childUnderMouse.parent;
                 }
             }
         };
-        /**
-         * get the objects which are placed underneath the given stage coordinate
-         * @param globalX the stage X
-         * @param globalY the stage Y
-         */
         GRoot.prototype.getObjectUnderPoint = function (globalX, globalY) {
             GRoot.sHelperPoint.set(globalX, globalY);
             var ret = this.$uiStage.applicationContext.renderer.plugins.interaction.hitTest(GRoot.sHelperPoint, this.nativeStage);
@@ -7766,7 +7667,7 @@ var fgui;
             if (fgui.UIConfig.globalModalWaiting != null) {
                 if (this.$modalWaitPane == null) {
                     this.$modalWaitPane = fgui.UIPackage.createObjectFromURL(fgui.UIConfig.globalModalWaiting);
-                    this.$modalWaitPane.addRelation(this, 24 /* Size */);
+                    this.$modalWaitPane.addRelation(this, 24);
                 }
                 this.$modalWaitPane.setSize(this.width, this.height);
                 this.addChild(this.$modalWaitPane);
@@ -7817,7 +7718,7 @@ var fgui;
         });
         GRoot.prototype.showPopup = function (popup, target, dir) {
             if (target === void 0) { target = null; }
-            if (dir === void 0) { dir = 0 /* Auto */; }
+            if (dir === void 0) { dir = 0; }
             if (this.$popupStack.length > 0) {
                 var k = this.$popupStack.indexOf(popup);
                 if (k != -1) {
@@ -7842,8 +7743,8 @@ var fgui;
             if (xx + popup.width > this.width)
                 xx = xx + sizeW - popup.width;
             yy = pos.y + sizeH;
-            if ((dir == 0 /* Auto */ && yy + popup.height > this.height)
-                || dir == 2 /* Up */) {
+            if ((dir == 0 && yy + popup.height > this.height)
+                || dir == 2) {
                 yy = pos.y - popup.height - 1;
                 if (yy < 0) {
                     yy = 0;
@@ -7960,7 +7861,7 @@ var fgui;
         GRoot.prototype.setFocus = function (value) {
             if (this.$focusedObject != value) {
                 this.$focusedObject = value;
-                this.emit("__focusChanged" /* CHANGED */, this);
+                this.emit(fgui.FocusEvent.CHANGED, this);
             }
         };
         GRoot.prototype.adjustModalLayer = function () {
@@ -7984,7 +7885,6 @@ var fgui;
             GRoot.$gmStatus.mouseX = evt.data.global.x;
             GRoot.$gmStatus.mouseY = evt.data.global.y;
             GRoot.$gmStatus.touchDown = true;
-            //check focus
             var mc = evt.target;
             while (mc && mc != this.nativeStage) {
                 if (fgui.isUIObject(mc)) {
@@ -8049,9 +7949,9 @@ var fgui;
     }(fgui.GComponent));
     fgui.GRoot = GRoot;
 })(fgui || (fgui = {}));
-var fgui;
+
 (function (fgui) {
-    var GScrollBar = /** @class */ (function (_super) {
+    var GScrollBar = (function (_super) {
         __extends(GScrollBar, _super);
         function GScrollBar() {
             var _this = _super.call(this) || this;
@@ -8198,9 +8098,9 @@ var fgui;
     }(fgui.GComponent));
     fgui.GScrollBar = GScrollBar;
 })(fgui || (fgui = {}));
-var fgui;
+
 (function (fgui) {
-    var GSlider = /** @class */ (function (_super) {
+    var GSlider = (function (_super) {
         __extends(GSlider, _super);
         function GSlider() {
             var _this = _super.call(this) || this;
@@ -8210,7 +8110,7 @@ var fgui;
             _this.$barMaxHeight = 0;
             _this.$barMaxWidthDelta = 0;
             _this.$barMaxHeightDelta = 0;
-            _this.$titleType = 0 /* Percent */;
+            _this.$titleType = 0;
             _this.$value = 50;
             _this.$max = 100;
             _this.$clickPos = new PIXI.Point();
@@ -8259,16 +8159,16 @@ var fgui;
         GSlider.prototype.updateWidthPercent = function (percent) {
             if (this.$titleObject) {
                 switch (this.$titleType) {
-                    case 0 /* Percent */:
+                    case 0:
                         this.$titleObject.text = Math.round(percent * 100) + "%";
                         break;
-                    case 1 /* ValueAndMax */:
+                    case 1:
                         this.$titleObject.text = this.$value + "/" + this.$max;
                         break;
-                    case 2 /* Value */:
+                    case 2:
                         this.$titleObject.text = "" + this.$value;
                         break;
-                    case 3 /* Max */:
+                    case 3:
                         this.$titleObject.text = "" + this.$max;
                         break;
                 }
@@ -8345,7 +8245,7 @@ var fgui;
             var newValue = Math.round(this.$max * percent);
             if (newValue != this.$value) {
                 this.$value = newValue;
-                this.emit("__stateChanged" /* CHANGED */, this);
+                this.emit(fgui.StateChangeEvent.CHANGED, this);
             }
             this.updateWidthPercent(percent);
         };
@@ -8367,20 +8267,180 @@ var fgui;
     }(fgui.GComponent));
     fgui.GSlider = GSlider;
 })(fgui || (fgui = {}));
-var fgui;
+
+(function (fgui) {
+    var utils;
+    (function (utils) {
+        var InputDelegate = (function () {
+            function InputDelegate(tf) {
+                this.$inited = false;
+                this.$restrictString = null;
+                this.$restrictRegex = null;
+                this.$focused = false;
+                this.$textField = tf;
+                this.$input = new fgui.InputElement(tf);
+            }
+            InputDelegate.prototype.initialize = function () {
+                if (this.$inited)
+                    return;
+                this.$input.$addToStage();
+                this.$input.on("updateText", this.updateText, this);
+                this.$input.on(fgui.FocusEvent.CHANGED, this.focusHandler, this);
+                this.$textField.on(fgui.InteractiveEvents.Down, this.textFieldDownHandler, this);
+                this.$inited = true;
+            };
+            InputDelegate.prototype.textFieldDownHandler = function () {
+                this.$onFocus();
+            };
+            InputDelegate.prototype.destroy = function () {
+                if (!this.$inited)
+                    return;
+                this.$input.$removeFromStage();
+                this.$textField.off(fgui.InteractiveEvents.Down, this.textFieldDownHandler, this);
+                fgui.GRoot.inst.off(fgui.InteractiveEvents.Down, this.onStageDown, this);
+                this.$input.off("updateText", this.updateText, this);
+                this.$input.off(fgui.FocusEvent.CHANGED, this.focusHandler, this);
+                this.$inited = false;
+            };
+            Object.defineProperty(InputDelegate.prototype, "text", {
+                get: function () {
+                    return this.$input.text;
+                },
+                set: function (v) {
+                    this.$input.text = v;
+                },
+                enumerable: true,
+                configurable: true
+            });
+            InputDelegate.prototype.setColor = function (v) {
+                return this.$input.setColor(v);
+            };
+            InputDelegate.prototype.updateText = function () {
+                var textValue = this.$input.text;
+                var isChanged = false;
+                if (this.$restrictRegex != null) {
+                    var result = textValue.match(this.$restrictRegex);
+                    if (result)
+                        textValue = result.join("");
+                    else
+                        textValue = "";
+                    isChanged = true;
+                }
+                if (isChanged && this.$input.text != textValue)
+                    this.$input.text = textValue;
+                this.$textField.text = this.$input.text;
+                this.$textField.emit(fgui.TextEvent.Change, this.$textField);
+            };
+            InputDelegate.prototype.onStageDown = function (e) {
+                var target = fgui.GObject.castFromNativeObject(e.currentTarget);
+                if (target != this.$textField)
+                    this.$input.$hide();
+            };
+            InputDelegate.prototype.focusHandler = function (type) {
+                if (type == "focus") {
+                    if (!this.$focused) {
+                        this.$focused = true;
+                        this.$textField.$isTyping = true;
+                        this.$textField.alpha = 0;
+                        this.$textField.emit(fgui.FocusEvent.CHANGED, "focus", this.$textField);
+                        this.$textField.emit(fgui.TextEvent.FocusIn, this.$textField);
+                    }
+                }
+                else if (type == "blur") {
+                    if (this.$focused) {
+                        this.$focused = false;
+                        fgui.GRoot.inst.off(fgui.InteractiveEvents.Down, this.onStageDown, this);
+                        this.$textField.$isTyping = false;
+                        this.$textField.alpha = 1;
+                        this.$input.$onBlur();
+                        this.$textField.emit(fgui.FocusEvent.CHANGED, "blur", this.$textField);
+                        this.$textField.emit(fgui.TextEvent.FocusOut, this.$textField);
+                    }
+                }
+            };
+            Object.defineProperty(InputDelegate.prototype, "isFocused", {
+                get: function () {
+                    return this.$focused;
+                },
+                enumerable: true,
+                configurable: true
+            });
+            InputDelegate.prototype.$getProperty = function (name) {
+                return this.$inited && this.$input.getAttribute(name) || null;
+            };
+            InputDelegate.prototype.$setProperty = function (name, value) {
+                if (!this.$inited)
+                    return;
+                this.$input.setAttribute(name, value);
+            };
+            Object.defineProperty(InputDelegate.prototype, "$restrict", {
+                get: function () {
+                    return this.$restrictString;
+                },
+                set: function (v) {
+                    this.$restrictString = v;
+                    if (this.$restrictString != null && this.$restrictString.length > 0)
+                        this.$restrictRegex = new RegExp(this.$restrictString);
+                    else
+                        this.$restrictRegex = null;
+                },
+                enumerable: true,
+                configurable: true
+            });
+            Object.defineProperty(InputDelegate.prototype, "type", {
+                get: function () {
+                    return this.$type;
+                },
+                set: function (v) {
+                    if (v != this.$type)
+                        this.$type = v;
+                },
+                enumerable: true,
+                configurable: true
+            });
+            InputDelegate.prototype.tryHideInput = function () {
+                if (!this.$textField.visible && this.$input)
+                    this.$input.$removeFromStage();
+            };
+            InputDelegate.prototype.$updateProperties = function () {
+                if (this.isFocused) {
+                    this.$input.resetInput();
+                    this.tryHideInput();
+                    return;
+                }
+                this.$input.text = this.$textField.text;
+                this.$input.resetInput();
+                this.tryHideInput();
+            };
+            InputDelegate.prototype.$onFocus = function () {
+                var _this = this;
+                if (!this.$textField.visible || this.$focused)
+                    return;
+                fgui.GRoot.inst.off(fgui.InteractiveEvents.Down, this.onStageDown, this);
+                fgui.GTimer.inst.callLater(function () {
+                    fgui.GRoot.inst.on(fgui.InteractiveEvents.Down, _this.onStageDown, _this);
+                }, this);
+                this.$input.$show();
+            };
+            return InputDelegate;
+        }());
+        utils.InputDelegate = InputDelegate;
+    })(utils = fgui.utils || (fgui.utils = {}));
+})(fgui || (fgui = {}));
+
 (function (fgui) {
     ;
-    var GTextInput = /** @class */ (function (_super) {
+    var GTextInput = (function (_super) {
         __extends(GTextInput, _super);
         function GTextInput() {
             var _this = _super.call(this) || this;
             _this.$util = null;
-            /**@internal */
             _this.$isTyping = false;
             _this.focusable = true;
-            _this.editable = true; //init
-            _this.type = "text" /* TEXT */;
+            _this.editable = true;
+            _this.type = "text";
             _this.on("removed", _this.removed, _this);
+            _this.on("added", _this.added, _this);
             _this.$util.initialize();
             return _this;
         }
@@ -8398,6 +8458,10 @@ var fgui;
         GTextInput.prototype.removed = function (disp) {
             if (this.$util)
                 this.$util.destroy();
+        };
+        GTextInput.prototype.added = function (disp) {
+            if (this.$util)
+                this.$util.initialize();
         };
         GTextInput.prototype.requestFocus = function () {
             this.root.focus = this;
@@ -8489,10 +8553,10 @@ var fgui;
         });
         Object.defineProperty(GTextInput.prototype, "password", {
             get: function () {
-                return this.type == "password" /* PASSWORD */;
+                return this.type == "password";
             },
             set: function (v) {
-                this.type = "password" /* PASSWORD */;
+                this.type = "password";
             },
             enumerable: true,
             configurable: true
@@ -8510,6 +8574,7 @@ var fgui;
         GTextInput.prototype.dispose = function () {
             _super.prototype.dispose.call(this);
             this.off("removed", this.removed, this);
+            this.off("added", this.added, this);
             this.$util.destroy();
             this.$util = null;
         };
@@ -8521,17 +8586,15 @@ var fgui;
             if (this.$isTyping)
                 this.decorateInputbox();
             var origText = this.$text;
-            if (this.type == "password" /* PASSWORD */)
+            if (this.type == "password")
                 this.$text = this.changeToPassText(this.$text);
             _super.prototype.renderNow.call(this, updateBounds);
             this.$text = origText;
         };
         GTextInput.prototype.decorateInputbox = function () {
-            //draw underlines?
         };
         GTextInput.prototype.setupBeforeAdd = function (xml) {
             _super.prototype.setupBeforeAdd.call(this, xml);
-            //this.promptText = xml.attributes.prompt;  //this will be available once UBB has implemented.
             var str = xml.attributes.maxLength;
             if (str != null)
                 this.maxLength = parseInt(str);
@@ -8544,22 +8607,22 @@ var fgui;
             else {
                 str = xml.attributes.keyboardType;
                 if (str == "4")
-                    this.type = "number" /* NUMBER */;
+                    this.type = "number";
                 else if (str == "3")
-                    this.type = "url" /* URL */;
+                    this.type = "url";
                 else if (str == "5")
-                    this.type = "tel" /* TEL */;
+                    this.type = "tel";
                 else if (str == "6")
-                    this.type = "email" /* EMAIL */;
+                    this.type = "email";
             }
         };
         return GTextInput;
     }(fgui.GTextField));
     fgui.GTextInput = GTextInput;
 })(fgui || (fgui = {}));
-var fgui;
+
 (function (fgui) {
-    var GTimer = /** @class */ (function () {
+    var GTimer = (function () {
         function GTimer() {
             this.$enumIdx = 0;
             this.$enumCount = 0;
@@ -8582,7 +8645,6 @@ var fgui;
             }
             return null;
         };
-        //repeat <= 0 means loop
         GTimer.prototype.add = function (delayInMs, repeat, callback, thisObj, callbackParam) {
             var item = this.findItem(callback, thisObj);
             if (!item) {
@@ -8670,8 +8732,8 @@ var fgui;
         };
         GTimer.prototype.setTicker = function (ticker) {
             if (this.$ticker) {
-                this.$ticker.remove(this.advance, this, PIXI.UPDATE_PRIORITY.NORMAL);
-                this.$ticker.remove(this.tickTween, this, PIXI.UPDATE_PRIORITY.HIGH);
+                this.$ticker.remove(this.advance);
+                this.$ticker.remove(this.tickTween);
             }
             this.$ticker = ticker;
             this.$ticker.add(this.advance, this, PIXI.UPDATE_PRIORITY.NORMAL);
@@ -8683,7 +8745,7 @@ var fgui;
         return GTimer;
     }());
     fgui.GTimer = GTimer;
-    var TimerItem = /** @class */ (function () {
+    var TimerItem = (function () {
         function TimerItem() {
             this.delay = 0;
             this.counter = 0;
@@ -8709,9 +8771,9 @@ var fgui;
         return TimerItem;
     }());
 })(fgui || (fgui = {}));
-var fgui;
+
 (function (fgui) {
-    var GearBase = /** @class */ (function () {
+    var GearBase = (function () {
         function GearBase(owner) {
             this.$lockToken = 0;
             this.$owner = owner;
@@ -8831,10 +8893,9 @@ var fgui;
     }());
     fgui.GearBase = GearBase;
 })(fgui || (fgui = {}));
-/// <reference path="./GearBase.ts" />
-var fgui;
+
 (function (fgui) {
-    var GearAnimation = /** @class */ (function (_super) {
+    var GearAnimation = (function (_super) {
         __extends(GearAnimation, _super);
         function GearAnimation(owner) {
             return _super.call(this, owner) || this;
@@ -8880,7 +8941,7 @@ var fgui;
         return GearAnimation;
     }(fgui.GearBase));
     fgui.GearAnimation = GearAnimation;
-    var GearAnimationValue = /** @class */ (function () {
+    var GearAnimationValue = (function () {
         function GearAnimationValue(playing, frame) {
             if (playing === void 0) { playing = true; }
             if (frame === void 0) { frame = 0; }
@@ -8890,9 +8951,9 @@ var fgui;
         return GearAnimationValue;
     }());
 })(fgui || (fgui = {}));
-var fgui;
+
 (function (fgui) {
-    var GearColor = /** @class */ (function (_super) {
+    var GearColor = (function (_super) {
         __extends(GearColor, _super);
         function GearColor(owner) {
             var _this = _super.call(this, owner) || this;
@@ -8930,9 +8991,9 @@ var fgui;
     }(fgui.GearBase));
     fgui.GearColor = GearColor;
 })(fgui || (fgui = {}));
-var fgui;
+
 (function (fgui) {
-    var GearDisplay = /** @class */ (function (_super) {
+    var GearDisplay = (function (_super) {
         __extends(GearDisplay, _super);
         function GearDisplay(owner) {
             var _this = _super.call(this, owner) || this;
@@ -8972,9 +9033,9 @@ var fgui;
     }(fgui.GearBase));
     fgui.GearDisplay = GearDisplay;
 })(fgui || (fgui = {}));
-var fgui;
+
 (function (fgui) {
-    var GearIcon = /** @class */ (function (_super) {
+    var GearIcon = (function (_super) {
         __extends(GearIcon, _super);
         function GearIcon(owner) {
             return _super.call(this, owner) || this;
@@ -9007,9 +9068,9 @@ var fgui;
     }(fgui.GearBase));
     fgui.GearIcon = GearIcon;
 })(fgui || (fgui = {}));
-var fgui;
+
 (function (fgui) {
-    var GearLook = /** @class */ (function (_super) {
+    var GearLook = (function (_super) {
         __extends(GearLook, _super);
         function GearLook(owner) {
             return _super.call(this, owner) || this;
@@ -9045,7 +9106,7 @@ var fgui;
                 if (this.$tweener) {
                     if (this.$tweenTarget.alpha === gv.alpha && this.$tweenTarget.rotation === gv.rotation)
                         return;
-                    this.$tweener.gotoAndStop(this.$tweener.duration); //set to end
+                    this.$tweener.gotoAndStop(this.$tweener.duration);
                     this.$tweener = null;
                 }
                 var a_1 = gv.alpha != this.$owner.alpha;
@@ -9088,7 +9149,7 @@ var fgui;
                 this.$lockToken = 0;
             }
             this.$tweener = null;
-            this.$owner.emit("__gearStop" /* GEAR_STOP */, this);
+            this.$owner.emit(fgui.GearEvent.GEAR_STOP, this);
         };
         GearLook.prototype.updateState = function () {
             if (this.$controller == null || this.$owner.$gearLocked || this.$owner.$inProgressBuilding)
@@ -9105,7 +9166,7 @@ var fgui;
         return GearLook;
     }(fgui.GearBase));
     fgui.GearLook = GearLook;
-    var GearLookValue = /** @class */ (function () {
+    var GearLookValue = (function () {
         function GearLookValue(alpha, rotation, grayed) {
             if (alpha === void 0) { alpha = 0; }
             if (rotation === void 0) { rotation = 0; }
@@ -9117,9 +9178,9 @@ var fgui;
         return GearLookValue;
     }());
 })(fgui || (fgui = {}));
-var fgui;
+
 (function (fgui) {
-    var GearSize = /** @class */ (function (_super) {
+    var GearSize = (function (_super) {
         __extends(GearSize, _super);
         function GearSize(owner) {
             return _super.call(this, owner) || this;
@@ -9155,7 +9216,7 @@ var fgui;
                 if (this.$tweener) {
                     if (this.$tweenTarget.width != gv.width || this.$tweenTarget.height != gv.height
                         || this.$tweenTarget.scaleX != gv.scaleX || this.$tweenTarget.scaleY != gv.scaleY) {
-                        this.$tweener.gotoAndStop(this.$tweener.duration); //set to end
+                        this.$tweener.gotoAndStop(this.$tweener.duration);
                         this.$tweener = null;
                     }
                     else
@@ -9202,7 +9263,7 @@ var fgui;
                 this.$lockToken = 0;
             }
             this.$tweener = null;
-            this.$owner.emit("__gearStop" /* GEAR_STOP */, this);
+            this.$owner.emit(fgui.GearEvent.GEAR_STOP, this);
         };
         GearSize.prototype.updateState = function () {
             if (this.$controller == null || this.$owner.$gearLocked || this.$owner.$inProgressBuilding)
@@ -9232,7 +9293,7 @@ var fgui;
         return GearSize;
     }(fgui.GearBase));
     fgui.GearSize = GearSize;
-    var GearSizeValue = /** @class */ (function () {
+    var GearSizeValue = (function () {
         function GearSizeValue(width, height, scaleX, scaleY) {
             if (width === void 0) { width = 0; }
             if (height === void 0) { height = 0; }
@@ -9246,9 +9307,9 @@ var fgui;
         return GearSizeValue;
     }());
 })(fgui || (fgui = {}));
-var fgui;
+
 (function (fgui) {
-    var GearText = /** @class */ (function (_super) {
+    var GearText = (function (_super) {
         __extends(GearText, _super);
         function GearText(owner) {
             return _super.call(this, owner) || this;
@@ -9281,9 +9342,9 @@ var fgui;
     }(fgui.GearBase));
     fgui.GearText = GearText;
 })(fgui || (fgui = {}));
-var fgui;
+
 (function (fgui) {
-    var GearXY = /** @class */ (function (_super) {
+    var GearXY = (function (_super) {
         __extends(GearXY, _super);
         function GearXY(owner) {
             return _super.call(this, owner) || this;
@@ -9315,7 +9376,7 @@ var fgui;
                 if (this.$tweener) {
                     if (this.$tweenTarget.x === pt.x && this.$tweenTarget.y === pt.y)
                         return;
-                    this.$tweener.gotoAndStop(this.$tweener.duration); //set to end
+                    this.$tweener.gotoAndStop(this.$tweener.duration);
                     this.$tweener = null;
                 }
                 if (this.$owner.x != pt.x || this.$owner.y != pt.y) {
@@ -9351,7 +9412,7 @@ var fgui;
                 this.$lockToken = 0;
             }
             this.$tweener = null;
-            this.$owner.emit("__gearStop" /* GEAR_STOP */, this);
+            this.$owner.emit(fgui.GearEvent.GEAR_STOP, this);
         };
         GearXY.prototype.updateState = function () {
             if (this.$controller == null || this.$owner.$gearLocked || this.$owner.$inProgressBuilding)
@@ -9380,27 +9441,27 @@ var fgui;
     }(fgui.GearBase));
     fgui.GearXY = GearXY;
 })(fgui || (fgui = {}));
-var fgui;
+
 (function (fgui) {
     fgui.isAnimationGear = function (obj) {
         return obj && "playing" in obj && "frame" in obj;
     };
 })(fgui || (fgui = {}));
-var fgui;
+
 (function (fgui) {
     fgui.isColorGear = function (obj) {
         return obj && "color" in obj;
     };
 })(fgui || (fgui = {}));
-var fgui;
+
 (function (fgui) {
     fgui.isColorableTitle = function (obj) {
         return obj && "titleColor" in obj && "fontSize" in obj;
     };
 })(fgui || (fgui = {}));
-var fgui;
+
 (function (fgui) {
-    var PopupMenu = /** @class */ (function () {
+    var PopupMenu = (function () {
         function PopupMenu(resourceURL) {
             if (resourceURL === void 0) { resourceURL = null; }
             if (!resourceURL) {
@@ -9412,14 +9473,14 @@ var fgui;
             this.$contentPane.on("added", this.$addedToStage, this);
             this.$list = this.$contentPane.getChild("list");
             this.$list.removeChildrenToPool();
-            this.$list.addRelation(this.$contentPane, 14 /* Width */);
-            this.$list.removeRelation(this.$contentPane, 15 /* Height */);
-            this.$contentPane.addRelation(this.$list, 15 /* Height */);
-            this.$list.on("__itemClick" /* ItemClick */, this.$clickItem, this);
+            this.$list.addRelation(this.$contentPane, 14);
+            this.$list.removeRelation(this.$contentPane, 15);
+            this.$contentPane.addRelation(this.$list, 15);
+            this.$list.on(fgui.ListEvent.ItemClick, this.$clickItem, this);
         }
         PopupMenu.prototype.dispose = function () {
             fgui.GTimer.inst.remove(this.$delayClickItem, this);
-            this.$list.off("__itemClick" /* ItemClick */, this.$clickItem, this);
+            this.$list.off(fgui.ListEvent.ItemClick, this.$clickItem, this);
             this.$contentPane.off("added", this.$addedToStage, this);
             this.$contentPane.dispose();
         };
@@ -9565,9 +9626,9 @@ var fgui;
     }());
     fgui.PopupMenu = PopupMenu;
 })(fgui || (fgui = {}));
-var fgui;
+
 (function (fgui) {
-    var RelationItem = /** @class */ (function () {
+    var RelationItem = (function () {
         function RelationItem(owner) {
             this.$owner = owner;
             this.$defs = [];
@@ -9596,9 +9657,9 @@ var fgui;
             configurable: true
         });
         RelationItem.prototype.add = function (relationType, usePercent) {
-            if (relationType == 24 /* Size */) {
-                this.add(14 /* Width */, usePercent);
-                this.add(15 /* Height */, usePercent);
+            if (relationType == 24) {
+                this.add(14, usePercent);
+                this.add(15, usePercent);
                 return;
             }
             var length = this.$defs.length;
@@ -9610,25 +9671,24 @@ var fgui;
             this.internalAdd(relationType, usePercent);
         };
         RelationItem.prototype.internalAdd = function (relationType, usePercent) {
-            if (relationType == 24 /* Size */) {
-                this.internalAdd(14 /* Width */, usePercent);
-                this.internalAdd(15 /* Height */, usePercent);
+            if (relationType == 24) {
+                this.internalAdd(14, usePercent);
+                this.internalAdd(15, usePercent);
                 return;
             }
             var info = new RelationDef();
             info.percent = usePercent;
             info.type = relationType;
             this.$defs.push(info);
-            //CENTER relation will cause float pixel, so enable the auto-pixel-snapping here
-            if (usePercent || relationType == 1 /* Left_Center */ || relationType == 3 /* Center_Center */ || relationType == 5 /* Right_Center */
-                || relationType == 8 /* Top_Middle */ || relationType == 10 /* Middle_Middle */ || relationType == 12 /* Bottom_Middle */)
+            if (usePercent || relationType == 1 || relationType == 3 || relationType == 5
+                || relationType == 8 || relationType == 10 || relationType == 12)
                 this.$owner.pixelSnapping = true;
         };
         RelationItem.prototype.remove = function (relationType) {
             if (relationType === void 0) { relationType = 0; }
-            if (relationType == 24 /* Size */) {
-                this.remove(14 /* Width */);
-                this.remove(15 /* Height */);
+            if (relationType == 24) {
+                this.remove(14);
+                this.remove(15);
                 return;
             }
             var dc = this.$defs.length;
@@ -9668,20 +9728,20 @@ var fgui;
             var oy = this.$owner.y;
             this.$defs.forEach(function (info) {
                 switch (info.type) {
-                    case 3 /* Center_Center */:
-                    case 5 /* Right_Center */:
+                    case 3:
+                    case 5:
                         _this.$owner.x -= dWidth / 2;
                         break;
-                    case 4 /* Right_Left */:
-                    case 6 /* Right_Right */:
+                    case 4:
+                    case 6:
                         _this.$owner.x -= dWidth;
                         break;
-                    case 10 /* Middle_Middle */:
-                    case 12 /* Bottom_Middle */:
+                    case 10:
+                    case 12:
                         _this.$owner.y -= dHeight / 2;
                         break;
-                    case 11 /* Bottom_Top */:
-                    case 13 /* Bottom_Bottom */:
+                    case 11:
+                    case 13:
                         _this.$owner.y -= dHeight;
                         break;
                 }
@@ -9689,7 +9749,7 @@ var fgui;
             if (ox != this.$owner.x || oy != this.$owner.y) {
                 ox = this.$owner.x - ox;
                 oy = this.$owner.y - oy;
-                this.$owner.updateGearFromRelations(1 /* XY */, ox, oy);
+                this.$owner.updateGearFromRelations(1, ox, oy);
                 if (this.$owner.parent != null && this.$owner.parent.$transitions.length > 0) {
                     this.$owner.parent.$transitions.forEach(function (t) {
                         t.updateFromRelations(_this.$owner.id, ox, oy);
@@ -9700,45 +9760,45 @@ var fgui;
         RelationItem.prototype.applyOnXYChanged = function (info, dx, dy) {
             var tmp;
             switch (info.type) {
-                case 0 /* Left_Left */:
-                case 1 /* Left_Center */:
-                case 2 /* Left_Right */:
-                case 3 /* Center_Center */:
-                case 4 /* Right_Left */:
-                case 5 /* Right_Center */:
-                case 6 /* Right_Right */:
+                case 0:
+                case 1:
+                case 2:
+                case 3:
+                case 4:
+                case 5:
+                case 6:
                     this.$owner.x += dx;
                     break;
-                case 7 /* Top_Top */:
-                case 8 /* Top_Middle */:
-                case 9 /* Top_Bottom */:
-                case 10 /* Middle_Middle */:
-                case 11 /* Bottom_Top */:
-                case 12 /* Bottom_Middle */:
-                case 13 /* Bottom_Bottom */:
+                case 7:
+                case 8:
+                case 9:
+                case 10:
+                case 11:
+                case 12:
+                case 13:
                     this.$owner.y += dy;
                     break;
-                case 14 /* Width */:
-                case 15 /* Height */:
+                case 14:
+                case 15:
                     break;
-                case 16 /* LeftExt_Left */:
-                case 17 /* LeftExt_Right */:
+                case 16:
+                case 17:
                     tmp = this.$owner.x;
                     this.$owner.x += dx;
                     this.$owner.width = this.$owner.$rawWidth - (this.$owner.x - tmp);
                     break;
-                case 18 /* RightExt_Left */:
-                case 19 /* RightExt_Right */:
+                case 18:
+                case 19:
                     this.$owner.width = this.$owner.$rawWidth + dx;
                     break;
-                case 20 /* TopExt_Top */:
-                case 21 /* TopExt_Bottom */:
+                case 20:
+                case 21:
                     tmp = this.$owner.y;
                     this.$owner.y += dy;
                     this.$owner.height = this.$owner.$rawHeight - (this.$owner.y - tmp);
                     break;
-                case 22 /* BottomExt_Top */:
-                case 23 /* BottomExt_Bottom */:
+                case 22:
+                case 23:
                     this.$owner.height = this.$owner.$rawHeight + dy;
                     break;
             }
@@ -9755,83 +9815,83 @@ var fgui;
             }
             var v, tmp;
             switch (info.type) {
-                case 0 /* Left_Left */:
+                case 0:
                     break;
-                case 1 /* Left_Center */:
+                case 1:
                     v = this.$owner.x - (targetX + this.$targetWidth / 2);
                     if (info.percent)
                         v = v / this.$targetWidth * this.$target.$rawWidth;
                     this.$owner.x = targetX + this.$target.$rawWidth / 2 + v;
                     break;
-                case 2 /* Left_Right */:
+                case 2:
                     v = this.$owner.x - (targetX + this.$targetWidth);
                     if (info.percent)
                         v = v / this.$targetWidth * this.$target.$rawWidth;
                     this.$owner.x = targetX + this.$target.$rawWidth + v;
                     break;
-                case 3 /* Center_Center */:
+                case 3:
                     v = this.$owner.x + this.$owner.$rawWidth / 2 - (targetX + this.$targetWidth / 2);
                     if (info.percent)
                         v = v / this.$targetWidth * this.$target.$rawWidth;
                     this.$owner.x = targetX + this.$target.$rawWidth / 2 + v - this.$owner.$rawWidth / 2;
                     break;
-                case 4 /* Right_Left */:
+                case 4:
                     v = this.$owner.x + this.$owner.$rawWidth - targetX;
                     if (info.percent)
                         v = v / this.$targetWidth * this.$target.$rawWidth;
                     this.$owner.x = targetX + v - this.$owner.$rawWidth;
                     break;
-                case 5 /* Right_Center */:
+                case 5:
                     v = this.$owner.x + this.$owner.$rawWidth - (targetX + this.$targetWidth / 2);
                     if (info.percent)
                         v = v / this.$targetWidth * this.$target.$rawWidth;
                     this.$owner.x = targetX + this.$target.$rawWidth / 2 + v - this.$owner.$rawWidth;
                     break;
-                case 6 /* Right_Right */:
+                case 6:
                     v = this.$owner.x + this.$owner.$rawWidth - (targetX + this.$targetWidth);
                     if (info.percent)
                         v = v / this.$targetWidth * this.$target.$rawWidth;
                     this.$owner.x = targetX + this.$target.$rawWidth + v - this.$owner.$rawWidth;
                     break;
-                case 7 /* Top_Top */:
+                case 7:
                     break;
-                case 8 /* Top_Middle */:
+                case 8:
                     v = this.$owner.y - (targetY + this.$targetHeight / 2);
                     if (info.percent)
                         v = v / this.$targetHeight * this.$target.$rawHeight;
                     this.$owner.y = targetY + this.$target.$rawHeight / 2 + v;
                     break;
-                case 9 /* Top_Bottom */:
+                case 9:
                     v = this.$owner.y - (targetY + this.$targetHeight);
                     if (info.percent)
                         v = v / this.$targetHeight * this.$target.$rawHeight;
                     this.$owner.y = targetY + this.$target.$rawHeight + v;
                     break;
-                case 10 /* Middle_Middle */:
+                case 10:
                     v = this.$owner.y + this.$owner.$rawHeight / 2 - (targetY + this.$targetHeight / 2);
                     if (info.percent)
                         v = v / this.$targetHeight * this.$target.$rawHeight;
                     this.$owner.y = targetY + this.$target.$rawHeight / 2 + v - this.$owner.$rawHeight / 2;
                     break;
-                case 11 /* Bottom_Top */:
+                case 11:
                     v = this.$owner.y + this.$owner.$rawHeight - targetY;
                     if (info.percent)
                         v = v / this.$targetHeight * this.$target.$rawHeight;
                     this.$owner.y = targetY + v - this.$owner.$rawHeight;
                     break;
-                case 12 /* Bottom_Middle */:
+                case 12:
                     v = this.$owner.y + this.$owner.$rawHeight - (targetY + this.$targetHeight / 2);
                     if (info.percent)
                         v = v / this.$targetHeight * this.$target.$rawHeight;
                     this.$owner.y = targetY + this.$target.$rawHeight / 2 + v - this.$owner.$rawHeight;
                     break;
-                case 13 /* Bottom_Bottom */:
+                case 13:
                     v = this.$owner.y + this.$owner.$rawHeight - (targetY + this.$targetHeight);
                     if (info.percent)
                         v = v / this.$targetHeight * this.$target.$rawHeight;
                     this.$owner.y = targetY + this.$target.$rawHeight + v - this.$owner.$rawHeight;
                     break;
-                case 14 /* Width */:
+                case 14:
                     if (this.$owner.$inProgressBuilding && this.$owner == this.$target.parent)
                         v = this.$owner.sourceWidth - this.$target.$initWidth;
                     else
@@ -9843,7 +9903,7 @@ var fgui;
                     else
                         this.$owner.width = this.$target.$rawWidth + v;
                     break;
-                case 15 /* Height */:
+                case 15:
                     if (this.$owner.$inProgressBuilding && this.$owner == this.$target.parent)
                         v = this.$owner.sourceHeight - this.$target.$initHeight;
                     else
@@ -9855,9 +9915,9 @@ var fgui;
                     else
                         this.$owner.height = this.$target.$rawHeight + v;
                     break;
-                case 16 /* LeftExt_Left */:
+                case 16:
                     break;
-                case 17 /* LeftExt_Right */:
+                case 17:
                     v = this.$owner.x - (targetX + this.$targetWidth);
                     if (info.percent)
                         v = v / this.$targetWidth * this.$target.$rawWidth;
@@ -9865,9 +9925,9 @@ var fgui;
                     this.$owner.x = targetX + this.$target.$rawWidth + v;
                     this.$owner.width = this.$owner.$rawWidth - (this.$owner.x - tmp);
                     break;
-                case 18 /* RightExt_Left */:
+                case 18:
                     break;
-                case 19 /* RightExt_Right */:
+                case 19:
                     if (this.$owner.$inProgressBuilding && this.$owner == this.$target.parent)
                         v = this.$owner.sourceWidth - (targetX + this.$target.$initWidth);
                     else
@@ -9881,9 +9941,9 @@ var fgui;
                     else
                         this.$owner.width = targetX + this.$target.$rawWidth + v;
                     break;
-                case 20 /* TopExt_Top */:
+                case 20:
                     break;
-                case 21 /* TopExt_Bottom */:
+                case 21:
                     v = this.$owner.y - (targetY + this.$targetHeight);
                     if (info.percent)
                         v = v / this.$targetHeight * this.$target.$rawHeight;
@@ -9891,9 +9951,9 @@ var fgui;
                     this.$owner.y = targetY + this.$target.$rawHeight + v;
                     this.$owner.height = this.$owner.$rawHeight - (this.$owner.y - tmp);
                     break;
-                case 22 /* BottomExt_Top */:
+                case 22:
                     break;
-                case 23 /* BottomExt_Bottom */:
+                case 23:
                     if (this.$owner.$inProgressBuilding && this.$owner == this.$target.parent)
                         v = this.$owner.sourceHeight - (targetY + this.$target.$initHeight);
                     else
@@ -9911,18 +9971,18 @@ var fgui;
         };
         RelationItem.prototype.addRefTarget = function (target) {
             if (target != this.$owner.parent)
-                target.on("__xyChanged" /* XY_CHANGED */, this.$targetXYChanged, this);
-            target.on("__sizeChanged" /* SIZE_CHANGED */, this.$targetSizeChanged, this);
-            target.on("__sizeDelayChange" /* SIZE_DELAY_CHANGE */, this.$targetSizeWillChange, this);
+                target.on(fgui.DisplayObjectEvent.XY_CHANGED, this.$targetXYChanged, this);
+            target.on(fgui.DisplayObjectEvent.SIZE_CHANGED, this.$targetSizeChanged, this);
+            target.on(fgui.DisplayObjectEvent.SIZE_DELAY_CHANGE, this.$targetSizeWillChange, this);
             this.$targetX = this.$target.x;
             this.$targetY = this.$target.y;
             this.$targetWidth = this.$target.$rawWidth;
             this.$targetHeight = this.$target.$rawHeight;
         };
         RelationItem.prototype.releaseRefTarget = function (target) {
-            target.off("__xyChanged" /* XY_CHANGED */, this.$targetXYChanged, this);
-            target.off("__sizeChanged" /* SIZE_CHANGED */, this.$targetSizeChanged, this);
-            target.off("__sizeDelayChange" /* SIZE_DELAY_CHANGE */, this.$targetSizeWillChange, this);
+            target.off(fgui.DisplayObjectEvent.XY_CHANGED, this.$targetXYChanged, this);
+            target.off(fgui.DisplayObjectEvent.SIZE_CHANGED, this.$targetSizeChanged, this);
+            target.off(fgui.DisplayObjectEvent.SIZE_DELAY_CHANGE, this.$targetSizeWillChange, this);
         };
         RelationItem.prototype.$targetXYChanged = function (evt) {
             var _this = this;
@@ -9944,7 +10004,7 @@ var fgui;
             if (ox != this.$owner.x || oy != this.$owner.y) {
                 ox = this.$owner.x - ox;
                 oy = this.$owner.y - oy;
-                this.$owner.updateGearFromRelations(1 /* XY */, ox, oy);
+                this.$owner.updateGearFromRelations(1, ox, oy);
                 if (this.$owner.parent != null && this.$owner.parent.$transitions.length > 0) {
                     this.$owner.parent.$transitions.forEach(function (t) {
                         t.updateFromRelations(_this.$owner.id, ox, oy);
@@ -9970,7 +10030,7 @@ var fgui;
             if (ox != this.$owner.x || oy != this.$owner.y) {
                 ox = this.$owner.x - ox;
                 oy = this.$owner.y - oy;
-                this.$owner.updateGearFromRelations(1 /* XY */, ox, oy);
+                this.$owner.updateGearFromRelations(1, ox, oy);
                 if (this.$owner.parent != null && this.$owner.parent.$transitions.length > 0) {
                     this.$owner.parent.$transitions.forEach(function (t) {
                         t.updateFromRelations(_this.$owner.id, ox, oy);
@@ -9980,7 +10040,7 @@ var fgui;
             if (ow != this.$owner.$rawWidth || oh != this.$owner.$rawHeight) {
                 ow = this.$owner.$rawWidth - ow;
                 oh = this.$owner.$rawHeight - oh;
-                this.$owner.updateGearFromRelations(2 /* Size */, ow, oh);
+                this.$owner.updateGearFromRelations(2, ow, oh);
             }
             this.$owner.relations.$dealing = null;
         };
@@ -9990,7 +10050,7 @@ var fgui;
         return RelationItem;
     }());
     fgui.RelationItem = RelationItem;
-    var RelationDef = /** @class */ (function () {
+    var RelationDef = (function () {
         function RelationDef() {
         }
         RelationDef.prototype.copyFrom = function (source) {
@@ -10001,9 +10061,9 @@ var fgui;
     }());
     fgui.RelationDef = RelationDef;
 })(fgui || (fgui = {}));
-var fgui;
+
 (function (fgui) {
-    var Relations = /** @class */ (function () {
+    var Relations = (function () {
         function Relations(owner) {
             this.sizeDirty = false;
             this.$owner = owner;
@@ -10143,7 +10203,6 @@ var fgui;
                         target = _this.$owner.parent;
                 }
                 else {
-                    //call from the component's constructor
                     target = _this.$owner.getChildById(targetId);
                 }
                 if (target)
@@ -10174,15 +10233,15 @@ var fgui;
             "topext-top",
             "topext-bottom",
             "bottomext-top",
-            "bottomext-bottom" //23
+            "bottomext-bottom"
         ];
         return Relations;
     }());
     fgui.Relations = Relations;
 })(fgui || (fgui = {}));
-var fgui;
+
 (function (fgui) {
-    var ScrollPane = /** @class */ (function (_super) {
+    var ScrollPane = (function (_super) {
         __extends(ScrollPane, _super);
         function ScrollPane(owner, scrollType, scrollBarMargin, scrollBarDisplay, flags, vtScrollBarRes, hzScrollBarRes, headerRes, footerRes) {
             var _this = _super.call(this) || this;
@@ -10199,24 +10258,24 @@ var fgui;
             _this.$scrollSpeed = fgui.UIConfig.defaultScrollSpeed;
             _this.$mouseWheelSpeed = _this.$scrollSpeed * 2;
             _this.$decelerationRate = fgui.UIConfig.defaultScrollDecelerationRate;
-            _this.$displayOnLeft = (flags & 1 /* DisplayOnLeft */) != 0;
-            _this.$snapToItem = (flags & 2 /* SnapToItem */) != 0;
-            _this.$displayOnDemand = (flags & 4 /* DisplayOnDemand */) != 0;
-            _this.$pageMode = (flags & 8 /* PageMode */) != 0;
-            if (flags & 16 /* TouchEffect */)
+            _this.$displayOnLeft = (flags & 1) != 0;
+            _this.$snapToItem = (flags & 2) != 0;
+            _this.$displayOnDemand = (flags & 4) != 0;
+            _this.$pageMode = (flags & 8) != 0;
+            if (flags & 16)
                 _this.$touchEffect = true;
-            else if (flags & 32 /* DisableTouchEffect */)
+            else if (flags & 32)
                 _this.$touchEffect = false;
             else
                 _this.$touchEffect = fgui.UIConfig.defaultScrollTouchEffect;
-            if (flags & 64 /* BounceEffect */)
+            if (flags & 64)
                 _this.$bouncebackEffect = true;
-            else if (flags & 128 /* DisableBounceEffect */)
+            else if (flags & 128)
                 _this.$bouncebackEffect = false;
             else
                 _this.$bouncebackEffect = fgui.UIConfig.defaultScrollBounceEffect;
-            _this.$inertiaDisabled = (flags & 256 /* DisableInertia */) != 0;
-            if ((flags & 512 /* DisableScissorRect */) == 0)
+            _this.$inertiaDisabled = (flags & 256) != 0;
+            if ((flags & 512) == 0)
                 _this.$maskContainer.scrollRect = new PIXI.Rectangle();
             _this.$scrollBarVisible = true;
             _this.$mouseWheelEnabled = true;
@@ -10225,7 +10284,7 @@ var fgui;
             _this.$aniFlag = 0;
             _this.$footerLockedSize = 0;
             _this.$headerLockedSize = 0;
-            if (scrollBarDisplay == 0 /* Default */)
+            if (scrollBarDisplay == 0)
                 scrollBarDisplay = fgui.UIConfig.defaultScrollBarDisplay;
             _this.$viewSize = new PIXI.Point();
             _this.$contentSize = new PIXI.Point();
@@ -10242,8 +10301,8 @@ var fgui;
             _this.$lastTouchPos = new PIXI.Point();
             _this.$lastTouchGlobalPos = new PIXI.Point();
             var res;
-            if (scrollBarDisplay != 3 /* Hidden */) {
-                if (_this.$scrollType == 2 /* Both */ || _this.$scrollType == 1 /* Vertical */) {
+            if (scrollBarDisplay != 3) {
+                if (_this.$scrollType == 2 || _this.$scrollType == 1) {
                     var res_1 = vtScrollBarRes ? vtScrollBarRes : fgui.UIConfig.verticalScrollBar;
                     if (res_1) {
                         _this.$vtScrollBar = fgui.UIPackage.createObjectFromURL(res_1);
@@ -10253,7 +10312,7 @@ var fgui;
                         _this.$owner.$rootContainer.addChild(_this.$vtScrollBar.displayObject);
                     }
                 }
-                if (_this.$scrollType == 2 /* Both */ || _this.$scrollType == 0 /* Horizontal */) {
+                if (_this.$scrollType == 2 || _this.$scrollType == 0) {
                     res = hzScrollBarRes ? hzScrollBarRes : fgui.UIConfig.horizontalScrollBar;
                     if (res) {
                         _this.$hzScrollBar = fgui.UIPackage.createObjectFromURL(res);
@@ -10263,7 +10322,7 @@ var fgui;
                         _this.$owner.$rootContainer.addChild(_this.$hzScrollBar.displayObject);
                     }
                 }
-                _this.$scrollBarDisplayAuto = scrollBarDisplay == 2 /* Auto */;
+                _this.$scrollBarDisplayAuto = scrollBarDisplay == 2;
                 if (_this.$scrollBarDisplayAuto) {
                     _this.$scrollBarVisible = false;
                     if (_this.$vtScrollBar)
@@ -10285,12 +10344,12 @@ var fgui;
                     throw new Error("Cannot create scrollPane.footer from " + res);
             }
             if (_this.$header != null || _this.$footer != null)
-                _this.$refreshBarAxis = (_this.$scrollType == 2 /* Both */ || _this.$scrollType == 1 /* Vertical */) ? "y" : "x";
+                _this.$refreshBarAxis = (_this.$scrollType == 2 || _this.$scrollType == 1) ? "y" : "x";
             _this.setSize(owner.width, owner.height);
             _this.$owner.on(fgui.InteractiveEvents.Over, _this.$rollOver, _this);
             _this.$owner.on(fgui.InteractiveEvents.Out, _this.$rollOut, _this);
             _this.$owner.on(fgui.InteractiveEvents.Down, _this.$mouseDown, _this);
-            _this.$owner.on("__mouseWheel" /* MOUSE_WHEEL */, _this.$mouseWheel, _this);
+            _this.$owner.on(fgui.DisplayObjectEvent.MOUSE_WHEEL, _this.$mouseWheel, _this);
             return _this;
         }
         ScrollPane.prototype.dispose = function () {
@@ -10311,7 +10370,7 @@ var fgui;
             this.$owner.off(fgui.InteractiveEvents.Over, this.$rollOver, this);
             this.$owner.off(fgui.InteractiveEvents.Out, this.$rollOut, this);
             this.$owner.off(fgui.InteractiveEvents.Down, this.$mouseDown, this);
-            this.$owner.off("__mouseWheel" /* MOUSE_WHEEL */, this.$mouseWheel, this);
+            this.$owner.off(fgui.DisplayObjectEvent.MOUSE_WHEEL, this.$mouseWheel, this);
         };
         Object.defineProperty(ScrollPane.prototype, "owner", {
             get: function () {
@@ -10756,19 +10815,13 @@ var fgui;
                 fgui.GTimer.inst.addLoop(1, this.tweenUpdate, this);
             }
         };
-        /**
-         * @internal
-         */
         ScrollPane.prototype.onOwnerSizeChanged = function () {
             this.setSize(this.$owner.width, this.$owner.height);
             this.posChanged(false);
         };
-        /**
-         * @internal
-         */
         ScrollPane.prototype.handleControllerChanged = function (c) {
             if (this.$pageController == c) {
-                if (this.$scrollType == 0 /* Horizontal */)
+                if (this.$scrollType == 0)
                     this.currentPageX = c.selectedIndex;
                 else
                     this.currentPageY = c.selectedIndex;
@@ -10777,21 +10830,18 @@ var fgui;
         ScrollPane.prototype.updatePageController = function () {
             if (this.$pageController != null && !this.$pageController.$updating) {
                 var index = void 0;
-                if (this.$scrollType == 0 /* Horizontal */)
+                if (this.$scrollType == 0)
                     index = this.currentPageX;
                 else
                     index = this.currentPageY;
                 if (index < this.$pageController.pageCount) {
                     var c = this.$pageController;
-                    this.$pageController = null; //prevent from handleControllerChanged calling
+                    this.$pageController = null;
                     c.selectedIndex = index;
                     this.$pageController = c;
                 }
             }
         };
-        /**
-         * @internal
-         */
         ScrollPane.prototype.adjustMaskContainer = function () {
             var mx, my;
             if (this.$displayOnLeft && this.$vtScrollBar != null)
@@ -10857,9 +10907,6 @@ var fgui;
             this.$contentSize.y = h;
             this.handleSizeChanged();
         };
-        /**
-         * @internal
-         */
         ScrollPane.prototype.changeContentSizeOnScrolling = function (deltaWidth, deltaHeight, deltaPosX, deltaPosY) {
             var isRightmost = this.$xPos == this.$overlapSize.x;
             var isBottom = this.$yPos == this.$overlapSize.y;
@@ -10867,7 +10914,6 @@ var fgui;
             this.$contentSize.y += deltaHeight;
             this.handleSizeChanged();
             if (this.$tweening == 1) {
-                //if the last scroll is CLINGING-SIDE, then just continue to cling
                 if (deltaWidth != 0 && isRightmost && this.$tweenChange.x < 0) {
                     this.$xPos = this.$overlapSize.x;
                     this.$tweenChange.x = -this.$xPos - this.$tweenStart.x;
@@ -10878,7 +10924,6 @@ var fgui;
                 }
             }
             else if (this.$tweening == 2) {
-                //re-pos to ensure the scrolling will go on smooth
                 if (deltaPosX != 0) {
                     this.$container.x -= deltaPosX;
                     this.$tweenStart.x -= deltaPosX;
@@ -10903,7 +10948,6 @@ var fgui;
                 }
             }
             else {
-                //if the last scroll is CLINGING-SIDE, then just continue to cling
                 if (deltaWidth != 0 && isRightmost) {
                     this.$xPos = this.$overlapSize.x;
                     this.$container.x = -this.$xPos;
@@ -10950,7 +10994,6 @@ var fgui;
             }
             if (this.$vtScrollBar) {
                 if (this.$viewSize.y < this.$vtScrollBar.minSize)
-                    //use this.$vtScrollBar.displayObject.visible instead of this.$vtScrollBar.visible... ScrollBar actually is not in its owner's display tree, so vtScrollBar.visible will not work
                     this.$vtScrollBar.displayObject.visible = false;
                 else {
                     this.$vtScrollBar.displayObject.visible = this.$scrollBarVisible && !this.$vScrollNone;
@@ -10977,15 +11020,14 @@ var fgui;
                 rect.height = this.$viewSize.y;
                 this.$maskContainer.scrollRect = rect;
             }
-            if (this.$scrollType == 0 /* Horizontal */ || this.$scrollType == 2 /* Both */)
+            if (this.$scrollType == 0 || this.$scrollType == 2)
                 this.$overlapSize.x = Math.ceil(Math.max(0, this.$contentSize.x - this.$viewSize.x));
             else
                 this.$overlapSize.x = 0;
-            if (this.$scrollType == 1 /* Vertical */ || this.$scrollType == 2 /* Both */)
+            if (this.$scrollType == 1 || this.$scrollType == 2)
                 this.$overlapSize.y = Math.ceil(Math.max(0, this.$contentSize.y - this.$viewSize.y));
             else
                 this.$overlapSize.y = 0;
-            //bounds checking
             this.$xPos = fgui.utils.NumberUtil.clamp(this.$xPos, 0, this.$overlapSize.x);
             this.$yPos = fgui.utils.NumberUtil.clamp(this.$yPos, 0, this.$overlapSize.y);
             if (this.$refreshBarAxis != null) {
@@ -11039,9 +11081,8 @@ var fgui;
                 this.$yPos = -ScrollPane.sEndPos.y;
             }
             this.refresh2();
-            //Events.dispatch(Events.SCROLL, this.$owner.displayObject);
-            this.emit("__scroll" /* SCROLL */, this);
-            if (this.$needRefresh) { //developer might modify position in the callback, so here refresh again to avoid flickering
+            this.emit(fgui.ScrollEvent.SCROLL, this);
+            if (this.$needRefresh) {
                 this.$needRefresh = false;
                 fgui.GTimer.inst.remove(this.refresh, this);
                 this.refresh2();
@@ -11115,9 +11156,9 @@ var fgui;
                 this.$owner.globalToLocal(e.data.global.x, e.data.global.y)
                 : this.$owner.globalToLocal(fgui.GRoot.globalMouseStatus.mouseX, fgui.GRoot.globalMouseStatus.mouseY, ScrollPane.sHelperPoint);
             this.$containerPos.set(this.$container.x, this.$container.y);
-            this.$beginTouchPos.copy(globalMouse);
-            this.$lastTouchPos.copy(globalMouse);
-            this.$lastTouchGlobalPos.copy(globalMouse);
+            this.$beginTouchPos.copyFrom(globalMouse);
+            this.$lastTouchPos.copyFrom(globalMouse);
+            this.$lastTouchGlobalPos.copyFrom(globalMouse);
             this.$isHoldAreaDone = false;
             this.$velocity.set(0, 0);
             this.$velocityScale = 1;
@@ -11135,9 +11176,8 @@ var fgui;
             var globalMouse = this.$owner.globalToLocal(fgui.GRoot.globalMouseStatus.mouseX, fgui.GRoot.globalMouseStatus.mouseY, ScrollPane.sHelperPoint);
             var diff, diff2;
             var sv, sh;
-            if (this.$scrollType == 1 /* Vertical */) {
+            if (this.$scrollType == 1) {
                 if (!this.$isHoldAreaDone) {
-                    //gesture on vertical dir is being observed
                     ScrollPane.$gestureFlag |= 1;
                     diff = Math.abs(this.$beginTouchPos.y - globalMouse.y);
                     if (diff < sensitivity)
@@ -11150,9 +11190,9 @@ var fgui;
                 }
                 sv = true;
             }
-            else if (this.$scrollType == 0 /* Horizontal */) {
+            else if (this.$scrollType == 0) {
                 if (!this.$isHoldAreaDone) {
-                    ScrollPane.$gestureFlag |= 2; //gesture on horz dir is being observed
+                    ScrollPane.$gestureFlag |= 2;
                     diff = Math.abs(this.$beginTouchPos.x - globalMouse.x);
                     if (diff < sensitivity)
                         return;
@@ -11165,7 +11205,7 @@ var fgui;
                 sh = true;
             }
             else {
-                ScrollPane.$gestureFlag = 3; //both
+                ScrollPane.$gestureFlag = 3;
                 if (!this.$isHoldAreaDone) {
                     diff = Math.abs(this.$beginTouchPos.y - globalMouse.y);
                     if (diff < sensitivity) {
@@ -11182,7 +11222,7 @@ var fgui;
                 if (newPosY > 0) {
                     if (!this.$bouncebackEffect)
                         this.$container.y = 0;
-                    else if (this.$header != null && this.$header.height != 0) //TODO: height -> maxHeight
+                    else if (this.$header != null && this.$header.height != 0)
                         this.$container.y = Math.floor(Math.min(newPosY * 0.5, this.$header.height));
                     else
                         this.$container.y = Math.floor(Math.min(newPosY * 0.5, this.$viewSize.y * ScrollPane.PULL_DIST_RATIO));
@@ -11190,7 +11230,7 @@ var fgui;
                 else if (newPosY < -this.$overlapSize.y) {
                     if (!this.$bouncebackEffect)
                         this.$container.y = -this.$overlapSize.y;
-                    else if (this.$footer != null && this.$footer.height > 0) //TODO: height -> maxHeight
+                    else if (this.$footer != null && this.$footer.height > 0)
                         this.$container.y = Math.floor(Math.max((newPosY + this.$overlapSize.y) * 0.5, -this.$footer.height) - this.$overlapSize.y);
                     else
                         this.$container.y = Math.floor(Math.max((newPosY + this.$overlapSize.y) * 0.5, -this.$viewSize.y * ScrollPane.PULL_DIST_RATIO) - this.$overlapSize.y);
@@ -11202,7 +11242,7 @@ var fgui;
                 if (newPosX > 0) {
                     if (!this.$bouncebackEffect)
                         this.$container.x = 0;
-                    else if (this.$header != null && this.$header.width != 0) //TODO: width -> maxWidth
+                    else if (this.$header != null && this.$header.width != 0)
                         this.$container.x = Math.floor(Math.min(newPosX * 0.5, this.$header.width));
                     else
                         this.$container.x = Math.floor(Math.min(newPosX * 0.5, this.$viewSize.x * ScrollPane.PULL_DIST_RATIO));
@@ -11210,7 +11250,7 @@ var fgui;
                 else if (newPosX < 0 - this.$overlapSize.x) {
                     if (!this.$bouncebackEffect)
                         this.$container.x = -this.$overlapSize.x;
-                    else if (this.$footer != null && this.$footer.width > 0) //TODO: width -> maxWidth
+                    else if (this.$footer != null && this.$footer.width > 0)
                         this.$container.x = Math.floor(Math.max((newPosX + this.$overlapSize.x) * 0.5, -this.$footer.width) - this.$overlapSize.x);
                     else
                         this.$container.x = Math.floor(Math.max((newPosX + this.$overlapSize.x) * 0.5, -this.$viewSize.x * ScrollPane.PULL_DIST_RATIO) - this.$overlapSize.x);
@@ -11218,7 +11258,6 @@ var fgui;
                 else
                     this.$container.x = newPosX;
             }
-            //update acceleration
             var frameRate = fgui.GRoot.inst.applicationContext.ticker.FPS;
             var now = fgui.GTimer.inst.curTime / 1000;
             var deltaTime = Math.max(now - this.$lastMoveTime, 1 / frameRate);
@@ -11238,17 +11277,15 @@ var fgui;
                 this.$velocity.x = fgui.utils.NumberUtil.lerp(this.$velocity.x, deltaPositionX * 60 / frameRate / deltaTime, deltaTime * 10);
                 this.$velocity.y = fgui.utils.NumberUtil.lerp(this.$velocity.y, deltaPositionY * 60 / frameRate / deltaTime, deltaTime * 10);
             }
-            //in the inertia scrolling we need the offset value to screen space, so here we need to reocrd the offset ratio
             var deltaGlobalPositionX = this.$lastTouchGlobalPos.x - globalMouse.x;
             var deltaGlobalPositionY = this.$lastTouchGlobalPos.y - globalMouse.y;
             if (deltaPositionX != 0)
                 this.$velocityScale = Math.abs(deltaGlobalPositionX / deltaPositionX);
             else if (deltaPositionY != 0)
                 this.$velocityScale = Math.abs(deltaGlobalPositionY / deltaPositionY);
-            this.$lastTouchPos.copy(globalMouse);
-            this.$lastTouchGlobalPos.copy(globalMouse);
+            this.$lastTouchPos.copyFrom(globalMouse);
+            this.$lastTouchGlobalPos.copyFrom(globalMouse);
             this.$lastMoveTime = now;
-            //update position
             if (this.$overlapSize.x > 0)
                 this.$xPos = fgui.utils.NumberUtil.clamp(-this.$container.x, 0, this.$overlapSize.x);
             if (this.$overlapSize.y > 0)
@@ -11269,8 +11306,7 @@ var fgui;
             this.checkRefreshBar();
             if (this.$pageMode)
                 this.updatePageController();
-            this.emit("__scroll" /* SCROLL */, this);
-            //Events.dispatch(Events.SCROLL, this.$owner.displayObject);
+            this.emit(fgui.ScrollEvent.SCROLL, this);
         };
         ScrollPane.prototype.$mouseUp = function () {
             fgui.GRoot.inst.nativeStage.off(fgui.InteractiveEvents.Move, this.$mouseMove, this);
@@ -11309,14 +11345,12 @@ var fgui;
                 this.$tweenChange.set(ScrollPane.sEndPos.x - this.$tweenStart.x, ScrollPane.sEndPos.y - this.$tweenStart.y);
                 if (this.$tweenChange.x < -fgui.UIConfig.touchDragSensitivity || this.$tweenChange.y < -fgui.UIConfig.touchDragSensitivity) {
                     this.$refreshEventDispatching = true;
-                    this.emit("__pullDownRelease" /* PULL_DOWN_RELEASE */);
-                    //Events.dispatch(Events.PULLthis.$DOWNthis.$RELEASE, this.$owner.displayObject);
+                    this.emit(fgui.ScrollEvent.PULL_DOWN_RELEASE);
                     this.$refreshEventDispatching = false;
                 }
                 else if (this.$tweenChange.x > fgui.UIConfig.touchDragSensitivity || this.$tweenChange.y > fgui.UIConfig.touchDragSensitivity) {
                     this.$refreshEventDispatching = true;
-                    this.emit("__pullUpRelease" /* PULL_UP_RELEASE */);
-                    //Events.dispatch(Events.PULLthis.$UPthis.$RELEASE, this.$owner.displayObject);
+                    this.emit(fgui.ScrollEvent.PULL_UP_RELEASE);
                     this.$refreshEventDispatching = false;
                 }
                 if (this.$headerLockedSize > 0 && ScrollPane.sEndPos[this.$refreshBarAxis] == 0) {
@@ -11345,13 +11379,11 @@ var fgui;
                         this.$velocity.x = this.$velocity.x * factor;
                         this.$velocity.y = this.$velocity.y * factor;
                     }
-                    //calc dist & duration by speed
                     this.updateTargetAndDuration(this.$tweenStart, ScrollPane.sEndPos);
                 }
                 else
                     this.$tweenDuration.set(ScrollPane.TWEEN_DEFAULT_DURATION, ScrollPane.TWEEN_DEFAULT_DURATION);
                 ScrollPane.sOldChange.set(ScrollPane.sEndPos.x - this.$tweenStart.x, ScrollPane.sEndPos.y - this.$tweenStart.y);
-                //adjust
                 this.loopCheckingTarget(ScrollPane.sEndPos);
                 if (this.$pageMode || this.$snapToItem)
                     this.alignPosition(ScrollPane.sEndPos, true);
@@ -11526,7 +11558,6 @@ var fgui;
                 var change = inertialScrolling ? (pos - this.$containerPos[axis]) : (pos - this.$container[axis]);
                 var testPageSize = Math.min(this.$pageSize[axis], this.$contentSize[axis] - (page + 1) * this.$pageSize[axis]);
                 var delta = -pos - page * this.$pageSize[axis];
-                //page mode magnetic
                 if (Math.abs(change) > this.$pageSize[axis]) {
                     if (delta > testPageSize * 0.5)
                         page++;
@@ -11535,7 +11566,6 @@ var fgui;
                     if (delta > testPageSize * (change < 0 ? 0.3 : 0.7))
                         page++;
                 }
-                //re-calc dist
                 var dst = this.$pageSize[axis];
                 pos = -page * dst;
                 if (pos < -dst)
@@ -11576,7 +11606,6 @@ var fgui;
                 var v2 = Math.abs(v) * this.$velocityScale;
                 if (PIXI.utils.isMobile.any)
                     v2 *= Math.max(fgui.GRoot.inst.stageWrapper.designWidth, fgui.GRoot.inst.stageWrapper.designHeight) / Math.max(fgui.GRoot.inst.stageWidth, fgui.GRoot.inst.stageHeight);
-                //threshold, if too slow, stop it
                 var ratio = 0;
                 if (this.$pageMode || !PIXI.utils.isMobile.any) {
                     if (v2 > 500)
@@ -11594,7 +11623,6 @@ var fgui;
                     this.$velocity[axis] = v;
                     duration = Math.log(60 / v2) / Math.log(this.$decelerationRate) / 60;
                     var change = (v / 60 - 1) / (1 - this.$decelerationRate);
-                    //const change: number = Math.floor(v * duration * 0.4);
                     pos += change;
                 }
             }
@@ -11612,16 +11640,13 @@ var fgui;
             this.$tweenDuration[axis] = newDuration;
         };
         ScrollPane.prototype.killTween = function () {
-            //tweening == 1: set to end immediately
             if (this.$tweening == 1) {
                 this.$container.position.set(this.$tweenStart.x + this.$tweenChange.x, this.$tweenStart.y + this.$tweenChange.y);
-                this.emit("__scroll" /* SCROLL */, this);
-                //Events.dispatch(Events.SCROLL, this.$owner.displayObject);
+                this.emit(fgui.ScrollEvent.SCROLL, this);
             }
             this.$tweening = 0;
             fgui.GTimer.inst.remove(this.tweenUpdate, this);
-            this.emit("__scrollEnd" /* SCROLL_END */, this);
-            //Events.dispatch(Events.SCROLLthis.$END, this.$owner.displayObject);
+            this.emit(fgui.ScrollEvent.SCROLL_END, this);
         };
         ScrollPane.prototype.checkRefreshBar = function () {
             if (this.$header == null && this.$footer == null)
@@ -11684,16 +11709,13 @@ var fgui;
                 this.loopCheckingCurrent();
                 this.syncScrollBar(true);
                 this.checkRefreshBar();
-                this.emit("__scroll" /* SCROLL */, this);
-                this.emit("__scrollEnd" /* SCROLL_END */, this);
-                //Events.dispatch(Events.SCROLL, this.$owner.displayObject);
-                //Events.dispatch(Events.SCROLLthis.$END, this.$owner.displayObject);
+                this.emit(fgui.ScrollEvent.SCROLL, this);
+                this.emit(fgui.ScrollEvent.SCROLL_END, this);
             }
             else {
                 this.syncScrollBar(false);
                 this.checkRefreshBar();
-                this.emit("__scroll" /* SCROLL */, this);
-                //Events.dispatch(Events.SCROLL, this.$owner.displayObject);
+                this.emit(fgui.ScrollEvent.SCROLL, this);
             }
         };
         ScrollPane.prototype.runTween = function (axis) {
@@ -11723,8 +11745,7 @@ var fgui;
                 }
                 if (this.$tweening == 2 && this.$bouncebackEffect) {
                     if (newValue > 20 + threshold1 && this.$tweenChange[axis] > 0
-                        || newValue > threshold1 && this.$tweenChange[axis] == 0) //start to bounce
-                     {
+                        || newValue > threshold1 && this.$tweenChange[axis] == 0) {
                         this.$tweenTime[axis] = 0;
                         this.$tweenDuration[axis] = ScrollPane.TWEEN_DEFAULT_DURATION;
                         this.$tweenChange[axis] = -newValue + threshold1;
@@ -11753,23 +11774,23 @@ var fgui;
                 newValue = this.$container[axis];
             return newValue;
         };
-        ScrollPane.$easeTypeFunc = function (t, d) { return (t = t / d - 1) * t * t + 1; }; //cubic out
+        ScrollPane.$easeTypeFunc = function (t, d) { return (t = t / d - 1) * t * t + 1; };
         ScrollPane.$gestureFlag = 0;
         ScrollPane.sHelperPoint = new PIXI.Point();
         ScrollPane.sHelperRect = new PIXI.Rectangle();
         ScrollPane.sEndPos = new PIXI.Point();
         ScrollPane.sOldChange = new PIXI.Point();
         ScrollPane.TWEEN_DEFAULT_DURATION = .4;
-        ScrollPane.TWEEN_MANUALLY_SET_DURATION = 0.5; //tween duration used when call setPos(useAni=true)
-        ScrollPane.PULL_DIST_RATIO = 0.5; //pulldown / pullup distance ratio of the whole viewport
+        ScrollPane.TWEEN_MANUALLY_SET_DURATION = 0.5;
+        ScrollPane.PULL_DIST_RATIO = 0.5;
         return ScrollPane;
     }(PIXI.utils.EventEmitter));
     fgui.ScrollPane = ScrollPane;
 })(fgui || (fgui = {}));
-var fgui;
+
 (function (fgui) {
     ;
-    var Transition = /** @class */ (function () {
+    var Transition = (function () {
         function Transition(owner) {
             this.autoPlayRepeat = 1;
             this.autoPlayDelay = 0;
@@ -11782,7 +11803,7 @@ var fgui;
             this.$maxTime = 0;
             this.$owner = owner;
             this.$items = [];
-            this.$owner.on("__visibleChanged" /* VISIBLE_CHANGED */, this.$ownerVisibleChanged, this);
+            this.$owner.on(fgui.DisplayObjectEvent.VISIBLE_CHANGED, this.$ownerVisibleChanged, this);
         }
         Transition.prototype.$ownerVisibleChanged = function (vis, owner) {
             if ((this.$options & Transition.OPTION_AUTO_STOP_DISABLED) == 0 && vis === false)
@@ -11814,16 +11835,6 @@ var fgui;
         Transition.prototype.changeRepeat = function (value) {
             this.$totalTimes = value | 0;
         };
-        /**
-         * Play transition by specified settings:
-         * 1) pass whole parameters:
-                onComplete?: (...args:any[]) => void,
-                onCompleteObj?: any,
-                onCompleteParam?: any,
-                times: number,
-                delay: number
-         * 2) just pass 1 object which implements TransitionPlaySetting (recommended)
-         */
         Transition.prototype.play = function () {
             var args = [];
             for (var _i = 0; _i < arguments.length; _i++) {
@@ -11836,16 +11847,6 @@ var fgui;
             else
                 this.$play(args[0], args[1], args[2], args[3] || 1, args[4] || 0, false);
         };
-        /**
-         * Play transition by specified settings:
-         * 1) pass whole parameters:
-                onComplete?: (...args:any[]) => void,
-                onCompleteObj?: any,
-                onCompleteParam?: any,
-                times: number,
-                delay: number
-         * 2) just pass 1 object which implements TransitionPlaySetting (recommended)
-         */
         Transition.prototype.playReverse = function () {
             var args = [];
             for (var _i = 0; _i < arguments.length; _i++) {
@@ -11926,17 +11927,17 @@ var fgui;
                 item.target.releaseGearDisplay(item.lockToken);
                 item.lockToken = 0;
             }
-            if (item.type == 12 /* ColorFilter */ && item.filterCreated)
+            if (item.type == 12 && item.filterCreated)
                 item.target.filters = null;
             if (item.completed)
                 return;
             this.disposeTween(item);
-            if (item.type == 10 /* Transition */) {
+            if (item.type == 10) {
                 var trans = item.target.getTransition(item.value.s);
                 if (trans != null)
                     trans.stop(setToComplete, false);
             }
-            else if (item.type == 11 /* Shake */) {
+            else if (item.type == 11) {
                 fgui.GTimer.inst.remove(item.$shake, item);
                 item.target.$gearLocked = true;
                 item.target.setXY(item.target.x - item.startValue.f1, item.target.y - item.startValue.f2);
@@ -11950,7 +11951,7 @@ var fgui;
                         else
                             this.applyValue(item, this.$reversed ? item.endValue : item.startValue);
                     }
-                    else if (item.type != 9 /* Sound */)
+                    else if (item.type != 9)
                         this.applyValue(item, item.value);
                 }
             }
@@ -11958,18 +11959,18 @@ var fgui;
         Transition.prototype.dispose = function () {
             var _this = this;
             fgui.GTimer.inst.remove(this.internalPlay, this);
-            this.$owner.off("__visibleChanged" /* VISIBLE_CHANGED */, this.$ownerVisibleChanged, this);
+            this.$owner.off(fgui.DisplayObjectEvent.VISIBLE_CHANGED, this.$ownerVisibleChanged, this);
             this.$playing = false;
             this.$items.forEach(function (item) {
                 if (item.target == null || item.completed)
                     return;
                 _this.disposeTween(item);
-                if (item.type == 10 /* Transition */) {
+                if (item.type == 10) {
                     var trans = item.target.getTransition(item.value.s);
                     if (trans != null)
                         trans.dispose();
                 }
-                else if (item.type == 11 /* Shake */)
+                else if (item.type == 11)
                     fgui.GTimer.inst.remove(item.$shake, item);
             }, this);
         };
@@ -12000,49 +12001,49 @@ var fgui;
                 else
                     return;
                 switch (item.type) {
-                    case 0 /* XY */:
-                    case 1 /* Size */:
-                    case 3 /* Pivot */:
-                    case 2 /* Scale */:
-                    case 13 /* Skew */:
+                    case 0:
+                    case 1:
+                    case 3:
+                    case 2:
+                    case 13:
                         value.b1 = true;
                         value.b2 = true;
                         value.f1 = parseFloat(args[0]);
                         value.f2 = parseFloat(args[1]);
                         break;
-                    case 4 /* Alpha */:
+                    case 4:
                         value.f1 = parseFloat(args[0]);
                         break;
-                    case 5 /* Rotation */:
+                    case 5:
                         value.i = parseInt(args[0]);
                         break;
-                    case 6 /* Color */:
+                    case 6:
                         value.c = parseFloat(args[0]);
                         break;
-                    case 7 /* Animation */:
+                    case 7:
                         value.i = parseInt(args[0]);
                         if (args.length > 1)
                             value.b = args[1];
                         break;
-                    case 8 /* Visible */:
+                    case 8:
                         value.b = args[0];
                         break;
-                    case 9 /* Sound */:
+                    case 9:
                         value.s = args[0];
                         if (args.length > 1)
                             value.f1 = parseFloat(args[1]);
                         break;
-                    case 10 /* Transition */:
+                    case 10:
                         value.s = args[0];
                         if (args.length > 1)
                             value.i = parseInt(args[1]);
                         break;
-                    case 11 /* Shake */:
+                    case 11:
                         value.f1 = parseFloat(args[0]);
                         if (args.length > 1)
                             value.f2 = parseFloat(args[1]);
                         break;
-                    case 12 /* ColorFilter */:
+                    case 12:
                         value.f1 = parseFloat(args[0]);
                         value.f2 = parseFloat(args[1]);
                         value.f3 = parseFloat(args[2]);
@@ -12089,7 +12090,7 @@ var fgui;
         };
         Transition.prototype.updateFromRelations = function (targetId, dx, dy) {
             this.$items.forEach(function (item) {
-                if (item.type == 0 /* XY */ && item.targetId == targetId) {
+                if (item.type == 0 && item.targetId == targetId) {
                     if (item.tween) {
                         item.startValue.f1 += dx;
                         item.startValue.f2 += dy;
@@ -12159,9 +12160,9 @@ var fgui;
                 endValue = item.endValue;
             }
             switch (item.type) {
-                case 0 /* XY */:
-                case 1 /* Size */:
-                    if (item.type == 0 /* XY */) {
+                case 0:
+                case 1:
+                    if (item.type == 0) {
                         if (item.target == this.$owner) {
                             if (!startValue.b1)
                                 startValue.f1 = 0;
@@ -12192,22 +12193,22 @@ var fgui;
                     toProps.f1 = endValue.f1;
                     toProps.f2 = endValue.f2;
                     break;
-                case 2 /* Scale */:
-                case 13 /* Skew */:
+                case 2:
+                case 13:
                     item.value.f1 = startValue.f1;
                     item.value.f2 = startValue.f2;
                     toProps.f1 = endValue.f1;
                     toProps.f2 = endValue.f2;
                     break;
-                case 4 /* Alpha */:
+                case 4:
                     item.value.f1 = startValue.f1;
                     toProps.f1 = endValue.f1;
                     break;
-                case 5 /* Rotation */:
+                case 5:
                     item.value.i = startValue.i;
                     toProps.i = endValue.i;
                     break;
-                case 12 /* ColorFilter */:
+                case 12:
                     item.value.f1 = startValue.f1;
                     item.value.f2 = startValue.f2;
                     item.value.f3 = startValue.f3;
@@ -12306,7 +12307,6 @@ var fgui;
             var _this = this;
             if (this.$playing && this.$totalTasks == 0) {
                 if (this.$totalTimes < 0) {
-                    //the reason we don't call 'internalPlay' immediately here is because of the onChange handler issue, the handler's been calling all the time even the tween is in waiting/complete status.
                     fgui.GTimer.inst.callLater(this.internalPlay, this, 0);
                 }
                 else {
@@ -12344,7 +12344,7 @@ var fgui;
         Transition.prototype.applyValue = function (item, value) {
             item.target.$gearLocked = true;
             switch (item.type) {
-                case 0 /* XY */:
+                case 0:
                     if (item.target == this.$owner) {
                         var f1 = 0, f2 = 0;
                         if (!value.b1)
@@ -12365,33 +12365,33 @@ var fgui;
                         item.target.setXY(value.f1, value.f2);
                     }
                     break;
-                case 1 /* Size */:
+                case 1:
                     if (!value.b1)
                         value.f1 = item.target.width;
                     if (!value.b2)
                         value.f2 = item.target.height;
                     item.target.setSize(value.f1, value.f2);
                     break;
-                case 3 /* Pivot */:
+                case 3:
                     item.target.setPivot(value.f1, value.f2);
                     break;
-                case 4 /* Alpha */:
+                case 4:
                     item.target.alpha = value.f1;
                     break;
-                case 5 /* Rotation */:
+                case 5:
                     item.target.rotation = value.i;
                     break;
-                case 2 /* Scale */:
+                case 2:
                     item.target.setScale(value.f1, value.f2);
                     break;
-                case 13 /* Skew */:
+                case 13:
                     item.target.setSkew(value.f1, value.f2);
                     break;
-                case 6 /* Color */:
+                case 6:
                     if (fgui.isColorGear(item.target))
                         item.target.color = value.c;
                     break;
-                case 7 /* Animation */:
+                case 7:
                     if (fgui.isAnimationGear(item.target)) {
                         if (!value.b1)
                             value.i = item.target.frame;
@@ -12399,10 +12399,10 @@ var fgui;
                         item.target.playing = value.b;
                     }
                     break;
-                case 8 /* Visible */:
+                case 8:
                     item.target.visible = value.b;
                     break;
-                case 10 /* Transition */:
+                case 10:
                     var trans = item.target.getTransition(value.s);
                     if (trans != null) {
                         if (value.i == 0)
@@ -12419,24 +12419,22 @@ var fgui;
                         }
                     }
                     break;
-                case 9 /* Sound */:
-                    //ignore
+                case 9:
                     break;
-                case 11 /* Shake */:
-                    item.startValue.f1 = 0; //offsetX
-                    item.startValue.f2 = 0; //offsetY
-                    item.startValue.f3 = item.value.f2; //shakePeriod
+                case 11:
+                    item.startValue.f1 = 0;
+                    item.startValue.f2 = 0;
+                    item.startValue.f3 = item.value.f2;
                     fgui.GTimer.inst.add(1, 0, item.$shake, item, [this]);
                     this.$totalTasks++;
                     item.completed = false;
                     break;
-                case 12 /* ColorFilter */:
+                case 12:
                     item.target.updateColorComponents(value.f1, value.f2, value.f3, value.f4);
                     break;
             }
             item.target.$gearLocked = false;
         };
-        /**@internal */
         Transition.prototype.$shakeItem = function (item, elapsedMS) {
             var r = Math.ceil(item.value.f1 * item.startValue.f3 / item.value.f2);
             var rx = (Math.random() * 2 - 1) * r;
@@ -12485,49 +12483,49 @@ var fgui;
                 str = cxml.attributes.type;
                 switch (str) {
                     case "XY":
-                        item.type = 0 /* XY */;
+                        item.type = 0;
                         break;
                     case "Size":
-                        item.type = 1 /* Size */;
+                        item.type = 1;
                         break;
                     case "Scale":
-                        item.type = 2 /* Scale */;
+                        item.type = 2;
                         break;
                     case "Pivot":
-                        item.type = 3 /* Pivot */;
+                        item.type = 3;
                         break;
                     case "Alpha":
-                        item.type = 4 /* Alpha */;
+                        item.type = 4;
                         break;
                     case "Rotation":
-                        item.type = 5 /* Rotation */;
+                        item.type = 5;
                         break;
                     case "Color":
-                        item.type = 6 /* Color */;
+                        item.type = 6;
                         break;
                     case "Animation":
-                        item.type = 7 /* Animation */;
+                        item.type = 7;
                         break;
                     case "Visible":
-                        item.type = 8 /* Visible */;
+                        item.type = 8;
                         break;
                     case "Sound":
-                        item.type = 9 /* Sound */;
+                        item.type = 9;
                         break;
                     case "Transition":
-                        item.type = 10 /* Transition */;
+                        item.type = 10;
                         break;
                     case "Shake":
-                        item.type = 11 /* Shake */;
+                        item.type = 11;
                         break;
                     case "ColorFilter":
-                        item.type = 12 /* ColorFilter */;
+                        item.type = 12;
                         break;
                     case "Skew":
-                        item.type = 13 /* Skew */;
+                        item.type = 13;
                         break;
                     default:
-                        item.type = 14 /* Unknown */;
+                        item.type = 14;
                         break;
                 }
                 item.tween = cxml.attributes.tween == "true";
@@ -12564,10 +12562,10 @@ var fgui;
         Transition.prototype.decodeValue = function (type, str, value) {
             var arr;
             switch (type) {
-                case 0 /* XY */:
-                case 1 /* Size */:
-                case 3 /* Pivot */:
-                case 13 /* Skew */:
+                case 0:
+                case 1:
+                case 3:
+                case 13:
                     arr = str.split(",");
                     if (arr[0] == "-") {
                         value.b1 = false;
@@ -12584,21 +12582,21 @@ var fgui;
                         value.b2 = true;
                     }
                     break;
-                case 4 /* Alpha */:
+                case 4:
                     value.f1 = parseFloat(str);
                     break;
-                case 5 /* Rotation */:
+                case 5:
                     value.i = parseInt(str);
                     break;
-                case 2 /* Scale */:
+                case 2:
                     arr = str.split(",");
                     value.f1 = parseFloat(arr[0]);
                     value.f2 = parseFloat(arr[1]);
                     break;
-                case 6 /* Color */:
+                case 6:
                     value.c = fgui.utils.StringUtil.convertFromHtmlColor(str);
                     break;
-                case 7 /* Animation */:
+                case 7:
                     arr = str.split(",");
                     if (arr[0] == "-") {
                         value.b1 = false;
@@ -12609,10 +12607,10 @@ var fgui;
                     }
                     value.b = arr[1] == "p";
                     break;
-                case 8 /* Visible */:
+                case 8:
                     value.b = str == "true";
                     break;
-                case 9 /* Sound */:
+                case 9:
                     arr = str.split(",");
                     value.s = arr[0];
                     if (arr.length > 1) {
@@ -12625,7 +12623,7 @@ var fgui;
                     else
                         value.f1 = 1;
                     break;
-                case 10 /* Transition */:
+                case 10:
                     arr = str.split(",");
                     value.s = arr[0];
                     if (arr.length > 1)
@@ -12633,12 +12631,12 @@ var fgui;
                     else
                         value.i = 1;
                     break;
-                case 11 /* Shake */:
+                case 11:
                     arr = str.split(",");
                     value.f1 = parseFloat(arr[0]);
                     value.f2 = parseFloat(arr[1]);
                     break;
-                case 12 /* ColorFilter */:
+                case 12:
                     arr = str.split(",");
                     value.f1 = parseFloat(arr[0]);
                     value.f2 = parseFloat(arr[1]);
@@ -12654,7 +12652,7 @@ var fgui;
         return Transition;
     }());
     fgui.Transition = Transition;
-    var TransitionItem = /** @class */ (function () {
+    var TransitionItem = (function () {
         function TransitionItem() {
             this.time = 0;
             this.type = 0;
@@ -12670,13 +12668,12 @@ var fgui;
             this.startValue = new TransitionValue();
             this.endValue = new TransitionValue();
         }
-        /**@internal */
         TransitionItem.prototype.$shake = function (trans, elapsedMS) {
             trans.$shakeItem(this, elapsedMS);
         };
         return TransitionItem;
     }());
-    var TransitionValue = /** @class */ (function () {
+    var TransitionValue = (function () {
         function TransitionValue() {
             this.f1 = 0;
             this.f2 = 0;
@@ -12691,9 +12688,9 @@ var fgui;
         return TransitionValue;
     }());
 })(fgui || (fgui = {}));
-var fgui;
+
 (function (fgui) {
-    var Window = /** @class */ (function (_super) {
+    var Window = (function (_super) {
         __extends(Window, _super);
         function Window() {
             var _this = _super.call(this) || this;
@@ -12721,7 +12718,7 @@ var fgui;
                     if (this.$contentPane != null) {
                         this.addChild(this.$contentPane);
                         this.setSize(this.$contentPane.width, this.$contentPane.height);
-                        this.$contentPane.addRelation(this, 24 /* Size */);
+                        this.$contentPane.addRelation(this, 24);
                         this.$frame = this.$contentPane.getChild("frame");
                         if (this.$frame != null) {
                             this.closeButton = this.$frame.getChild("closeButton");
@@ -12763,14 +12760,14 @@ var fgui;
                 if (this.$dragArea != value) {
                     if (this.$dragArea != null) {
                         this.$dragArea.draggable = false;
-                        this.$dragArea.off("__dragStart" /* START */, this.$dragStart, this);
+                        this.$dragArea.off(fgui.DragEvent.START, this.$dragStart, this);
                     }
                     this.$dragArea = value;
                     if (this.$dragArea != null) {
                         if (this.$dragArea instanceof fgui.GGraph)
                             this.$dragArea.drawRect(0, 0, 0, 0, 0);
                         this.$dragArea.draggable = true;
-                        this.$dragArea.on("__dragStart" /* START */, this.$dragStart, this);
+                        this.$dragArea.on(fgui.DragEvent.START, this.$dragStart, this);
                     }
                 }
             },
@@ -12805,8 +12802,8 @@ var fgui;
             if (autoUpdate === void 0) { autoUpdate = false; }
             this.setXY(Math.round((r.width - this.width) * .5), Math.round((r.height - this.height) * .5));
             if (autoUpdate) {
-                this.addRelation(r, 3 /* Center_Center */);
-                this.addRelation(r, 10 /* Middle_Middle */);
+                this.addRelation(r, 3);
+                this.addRelation(r, 10);
             }
         };
         Window.prototype.toggleVisible = function () {
@@ -12933,7 +12930,7 @@ var fgui;
             this.off("removed", this.$onHidden, this);
             this.off(fgui.InteractiveEvents.Down, this.$mouseDown, this);
             if (this.$dragArea)
-                this.$dragArea.off("__dragStart" /* START */, this.$dragStart, this);
+                this.$dragArea.off(fgui.DragEvent.START, this.$dragStart, this);
             if (this.parent != null)
                 this.hideImmediately();
             if (this.$modalWaitPane)
@@ -12961,7 +12958,7 @@ var fgui;
         };
         Window.prototype.$dragStart = function (evt) {
             fgui.GObject.castFromNativeObject(evt.currentTarget).stopDrag();
-            this.startDrag(evt.data.pointerID);
+            this.startDrag(evt.data.pointerId);
         };
         return Window;
     }(fgui.GComponent));
@@ -12971,7 +12968,7 @@ var PIXI;
 (function (PIXI) {
     var extras;
     (function (extras) {
-        var InteractionManager = /** @class */ (function (_super) {
+        var InteractionManager = (function (_super) {
             __extends(InteractionManager, _super);
             function InteractionManager(renderer, options) {
                 var _this = _super.call(this, renderer, options) || this;
@@ -12983,7 +12980,6 @@ var PIXI;
             InteractionManager.prototype.mapPositionToPoint = function (point, x, y) {
                 var rect = void 0;
                 var dom = this.interactionDOMElement;
-                // IE 11 fix
                 if (!dom.parentElement) {
                     rect = { x: 0, y: 0, width: 0, height: 0 };
                 }
@@ -13011,18 +13007,139 @@ var PIXI;
                 point.set(newx, newy);
             };
             return InteractionManager;
-        }(PIXI.interaction.InteractionManager));
+        }(PIXI.InteractionManager));
         extras.InteractionManager = InteractionManager;
-        //override
-        PIXI.CanvasRenderer.registerPlugin("interaction", PIXI.extras.InteractionManager);
-        PIXI.WebGLRenderer.registerPlugin("interaction", PIXI.extras.InteractionManager);
+        PIXI.Renderer.registerPlugin("interaction", PIXI.extras.InteractionManager);
     })(extras = PIXI.extras || (PIXI.extras = {}));
 })(PIXI || (PIXI = {}));
 var PIXI;
 (function (PIXI) {
     var extras;
     (function (extras) {
-        var NineSlicePlane = /** @class */ (function (_super) {
+        var NTilingSprite = (function (_super) {
+            __extends(NTilingSprite, _super);
+            function NTilingSprite(frameId, tex) {
+                var _this = _super.call(this, tex) || this;
+                _this.$flipX = false;
+                _this.$flipY = false;
+                _this.$frameId = frameId;
+                return _this;
+            }
+            Object.defineProperty(NTilingSprite.prototype, "flipX", {
+                get: function () {
+                    return this.$flipX;
+                },
+                set: function (v) {
+                    if (this.$flipX != v) {
+                        this.$flipX = v;
+                        fgui.GTimer.inst.callLater(this.updateUvs, this);
+                    }
+                },
+                enumerable: true,
+                configurable: true
+            });
+            Object.defineProperty(NTilingSprite.prototype, "flipY", {
+                get: function () {
+                    return this.$flipY;
+                },
+                set: function (v) {
+                    if (this.$flipY != v) {
+                        this.$flipY = v;
+                        fgui.GTimer.inst.callLater(this.updateUvs, this);
+                    }
+                },
+                enumerable: true,
+                configurable: true
+            });
+            NTilingSprite.prototype.combineCacheId = function (flipx, flipy) {
+                if (!this.$frameId || this.$frameId == "")
+                    return null;
+                return "" + this.$frameId + (flipx ? '_fx' : '') + (flipy ? '_fy' : '');
+            };
+            NTilingSprite.prototype.getTextureFromCache = function (flipx, flipy) {
+                var cachedid = this.combineCacheId(flipx, flipy);
+                if (cachedid == null)
+                    return this.texture;
+                var ret = NTilingSprite.$cachedTexturePool[cachedid];
+                if (!ret) {
+                    ret = {
+                        refCount: 1,
+                        texture: this.createFlippedTexture(this.texture, flipx, flipy)
+                    };
+                    NTilingSprite.$cachedTexturePool[cachedid] = ret;
+                }
+                else
+                    ret.refCount++;
+                return ret.texture;
+            };
+            NTilingSprite.prototype.tryRemoveTextureCache = function (flipx, flipy) {
+                var cachedid = this.combineCacheId(flipx, flipy);
+                if (!cachedid)
+                    return false;
+                var ret = NTilingSprite.$cachedTexturePool[cachedid];
+                if (ret) {
+                    ret.refCount--;
+                    if (ret.refCount <= 0) {
+                        ret.texture.destroy();
+                        delete NTilingSprite.$cachedTexturePool[cachedid];
+                    }
+                    return true;
+                }
+                return false;
+            };
+            NTilingSprite.prototype.createFlippedTexture = function (origTexture, flipx, flipy) {
+                var newTex = origTexture.clone();
+                var uvs = newTex["_uvs"];
+                if (this.$flipX) {
+                    var tx0 = uvs.x0;
+                    var tx3 = uvs.x3;
+                    uvs.x0 = uvs.x1;
+                    uvs.x1 = tx0;
+                    uvs.x3 = uvs.x2;
+                    uvs.x2 = tx3;
+                }
+                if (this.$flipY) {
+                    var ty0 = uvs.y0;
+                    var ty1 = uvs.y1;
+                    uvs.y0 = uvs.y3;
+                    uvs.y3 = ty0;
+                    uvs.y1 = uvs.y2;
+                    uvs.y2 = ty1;
+                }
+                uvs.uvsFloat32[0] = uvs.x0;
+                uvs.uvsFloat32[1] = uvs.y0;
+                uvs.uvsFloat32[2] = uvs.x1;
+                uvs.uvsFloat32[3] = uvs.y1;
+                uvs.uvsFloat32[4] = uvs.x2;
+                uvs.uvsFloat32[5] = uvs.y2;
+                uvs.uvsFloat32[6] = uvs.x3;
+                uvs.uvsFloat32[7] = uvs.y3;
+                return newTex;
+            };
+            NTilingSprite.prototype.updateUvs = function () {
+                if (!this.texture)
+                    return;
+                if (this.$flipX || this.$flipY) {
+                    var cachedTex = this.getTextureFromCache(this.$flipX, this.$flipY);
+                    if (this.texture != cachedTex)
+                        this.texture = cachedTex;
+                }
+            };
+            NTilingSprite.prototype.destroy = function (options) {
+                this.tryRemoveTextureCache(this.$flipX, this.$flipY);
+                _super.prototype.destroy.call(this, options);
+            };
+            NTilingSprite.$cachedTexturePool = {};
+            return NTilingSprite;
+        }(PIXI.TilingSprite));
+        extras.NTilingSprite = NTilingSprite;
+    })(extras = PIXI.extras || (PIXI.extras = {}));
+})(PIXI || (PIXI = {}));
+var PIXI;
+(function (PIXI) {
+    var extras;
+    (function (extras) {
+        var NineSlicePlane = (function (_super) {
             __extends(NineSlicePlane, _super);
             function NineSlicePlane() {
                 var _this = _super !== null && _super.apply(this, arguments) || this;
@@ -13032,28 +13149,27 @@ var PIXI;
             }
             NineSlicePlane.prototype.updateHorizontalVertices = function () {
                 var vertices = this.vertices;
-                var h = this._topHeight + this._bottomHeight;
+                var h = this.topHeight + this.bottomHeight;
                 var scale = this._height > h ? 1.0 : this._height / h;
-                vertices[9] = vertices[11] = vertices[13] = vertices[15] = (this.$flipY ? this._bottomHeight : this._topHeight) * scale;
-                vertices[17] = vertices[19] = vertices[21] = vertices[23] = this._height - (this.$flipY ? this._topHeight : this._bottomHeight) * scale;
+                vertices[9] = vertices[11] = vertices[13] = vertices[15] = (this.$flipY ? this.bottomHeight : this.topHeight) * scale;
+                vertices[17] = vertices[19] = vertices[21] = vertices[23] = this._height - (this.$flipY ? this.topHeight : this.bottomHeight) * scale;
                 vertices[25] = vertices[27] = vertices[29] = vertices[31] = this._height;
             };
             ;
             NineSlicePlane.prototype.updateVerticalVertices = function () {
                 var vertices = this.vertices;
-                var w = this._leftWidth + this._rightWidth;
+                var w = this.leftWidth + this.rightWidth;
                 var scale = this._width > w ? 1.0 : this._width / w;
-                vertices[2] = vertices[10] = vertices[18] = vertices[26] = (this.$flipX ? this._rightWidth : this._leftWidth) * scale;
-                vertices[4] = vertices[12] = vertices[20] = vertices[28] = this._width - (this.$flipX ? this._leftWidth : this._rightWidth) * scale;
+                vertices[2] = vertices[10] = vertices[18] = vertices[26] = (this.$flipX ? this.rightWidth : this.leftWidth) * scale;
+                vertices[4] = vertices[12] = vertices[20] = vertices[28] = this._width - (this.$flipX ? this.leftWidth : this.rightWidth) * scale;
                 vertices[6] = vertices[14] = vertices[22] = vertices[30] = this._width;
             };
             ;
             NineSlicePlane.prototype._refresh = function () {
-                //call stack: super() -> Plane.refresh -> this._refresh() but now _leftWidth etc are undefined, so the calculations in this._refresh are useless.
-                if (isNaN(this._leftWidth) || isNaN(this._topHeight) || isNaN(this._rightWidth) || isNaN(this._bottomHeight))
+                if (isNaN(this.leftWidth) || isNaN(this.topHeight) || isNaN(this.rightWidth) || isNaN(this.bottomHeight))
                     return;
                 _super.prototype._refresh.call(this);
-                var uvs = this.uvs;
+                var uvs = this.geometry["buffers"][1].data;
                 if (this.$flipX) {
                     var x0 = uvs[0];
                     var x1 = uvs[2];
@@ -13134,7 +13250,7 @@ var PIXI;
                 configurable: true
             });
             return NineSlicePlane;
-        }(PIXI.mesh.NineSlicePlane));
+        }(PIXI.NineSlicePlane));
         extras.NineSlicePlane = NineSlicePlane;
     })(extras = PIXI.extras || (PIXI.extras = {}));
 })(PIXI || (PIXI = {}));
@@ -13142,7 +13258,7 @@ var PIXI;
 (function (PIXI) {
     var extras;
     (function (extras) {
-        var Sprite = /** @class */ (function (_super) {
+        var Sprite = (function (_super) {
             __extends(Sprite, _super);
             function Sprite(frameId, tex) {
                 var _this = _super.call(this, tex) || this;
@@ -13185,12 +13301,12 @@ var PIXI;
             Sprite.prototype.getTextureFromCache = function (flipx, flipy) {
                 var cachedid = this.combineCacheId(flipx, flipy);
                 if (cachedid == null)
-                    return this._texture;
+                    return this.texture;
                 var ret = Sprite.$cachedTexturePool[cachedid];
                 if (!ret) {
                     ret = {
                         refCount: 1,
-                        texture: this.createFlippedTexture(this._texture, flipx, flipy)
+                        texture: this.createFlippedTexture(this.texture, flipx, flipy)
                     };
                     Sprite.$cachedTexturePool[cachedid] = ret;
                 }
@@ -13232,19 +13348,23 @@ var PIXI;
                     uvs.y1 = uvs.y2;
                     uvs.y2 = ty1;
                 }
-                uvs.uvsUint32[0] = (uvs.y0 * 65535 & 0xFFFF) << 16 | uvs.x0 * 65535 & 0xFFFF;
-                uvs.uvsUint32[1] = (uvs.y1 * 65535 & 0xFFFF) << 16 | uvs.x1 * 65535 & 0xFFFF;
-                uvs.uvsUint32[2] = (uvs.y2 * 65535 & 0xFFFF) << 16 | uvs.x2 * 65535 & 0xFFFF;
-                uvs.uvsUint32[3] = (uvs.y3 * 65535 & 0xFFFF) << 16 | uvs.x3 * 65535 & 0xFFFF;
+                uvs.uvsFloat32[0] = uvs.x0;
+                uvs.uvsFloat32[1] = uvs.y0;
+                uvs.uvsFloat32[2] = uvs.x1;
+                uvs.uvsFloat32[3] = uvs.y1;
+                uvs.uvsFloat32[4] = uvs.x2;
+                uvs.uvsFloat32[5] = uvs.y2;
+                uvs.uvsFloat32[6] = uvs.x3;
+                uvs.uvsFloat32[7] = uvs.y3;
                 return newTex;
             };
             Sprite.prototype.updateUvs = function () {
-                if (!this._texture)
+                if (!this.texture)
                     return;
                 if (this.$flipX || this.$flipY) {
                     var cachedTex = this.getTextureFromCache(this.$flipX, this.$flipY);
-                    if (this._texture != cachedTex)
-                        this._texture = cachedTex;
+                    if (this.texture != cachedTex)
+                        this.texture = cachedTex;
                 }
             };
             Sprite.prototype.destroy = function (options) {
@@ -13257,44 +13377,32 @@ var PIXI;
         extras.Sprite = Sprite;
     })(extras = PIXI.extras || (PIXI.extras = {}));
 })(PIXI || (PIXI = {}));
-var fgui;
+
 (function (fgui) {
-    /**global ui configuration */
-    var UIConfig = /** @class */ (function () {
+    var UIConfig = (function () {
         function UIConfig() {
         }
-        /**default font name of your project. */
         UIConfig.defaultFont = "Arial";
-        /** modal layer background configuration. */
         UIConfig.modalLayerColor = 0x333333;
         UIConfig.modalLayerAlpha = 0.2;
-        /** scrolling distance per action in pixel*/
         UIConfig.defaultScrollSpeed = 25;
-        /** default scrollbar display mode. It's recommended to set ScrollBarDisplayType.Visible for Desktop environment and ScrollBarDisplayType.Auto for mobile environment.*/
-        UIConfig.defaultScrollBarDisplay = 1 /* Visible */;
-        /** allow user to drag the content of a container. Set to true for mobile is recommended.*/
+        UIConfig.defaultScrollBarDisplay = 1;
         UIConfig.defaultScrollTouchEffect = true;
-        /** enable bounce effect when the scrolling reaches to the edge of a container. Set to true for mobile is recommended.*/
         UIConfig.defaultScrollBounceEffect = true;
-        /** Deceleration ratio of scrollpane when its in touch dragging.*/
         UIConfig.defaultScrollDecelerationRate = .967;
-        /** maximum count of items to be displayed in the visible viewport of the GCombobox.*/
         UIConfig.defaultComboBoxVisibleItemCount = 10;
-        /** the finger moving threshold in pixel to trigger the scrolling action.*/
         UIConfig.touchScrollSensitivity = 20;
-        /** the finger moving threshold in pixel to trigger the dragging event.*/
         UIConfig.touchDragSensitivity = 10;
-        /** auto bring the window you clicked to the topmost level of the GRoot children list.*/
         UIConfig.bringWindowToFrontOnClick = true;
         return UIConfig;
     }());
     fgui.UIConfig = UIConfig;
 })(fgui || (fgui = {}));
-var fgui;
+
 (function (fgui) {
     var controller;
     (function (controller_1) {
-        var Action = /** @class */ (function () {
+        var Action = (function () {
             function Action() {
             }
             Action.create = function (type) {
@@ -13331,11 +13439,11 @@ var fgui;
         controller_1.Action = Action;
     })(controller = fgui.controller || (fgui.controller = {}));
 })(fgui || (fgui = {}));
-var fgui;
+
 (function (fgui) {
     var controller;
     (function (controller_2) {
-        var ChangePageAction = /** @class */ (function (_super) {
+        var ChangePageAction = (function (_super) {
             __extends(ChangePageAction, _super);
             function ChangePageAction() {
                 return _super !== null && _super.apply(this, arguments) || this;
@@ -13365,11 +13473,21 @@ var fgui;
         controller_2.ChangePageAction = ChangePageAction;
     })(controller = fgui.controller || (fgui.controller = {}));
 })(fgui || (fgui = {}));
-var fgui;
+
+(function (fgui) {
+    var StateChangeEvent = (function () {
+        function StateChangeEvent() {
+        }
+        StateChangeEvent.CHANGED = "__stateChanged";
+        return StateChangeEvent;
+    }());
+    fgui.StateChangeEvent = StateChangeEvent;
+})(fgui || (fgui = {}));
+
 (function (fgui) {
     var controller;
     (function (controller) {
-        var Controller = /** @class */ (function (_super) {
+        var Controller = (function (_super) {
             __extends(Controller, _super);
             function Controller() {
                 var _this = _super.call(this) || this;
@@ -13410,14 +13528,13 @@ var fgui;
                         this.$previousIndex = this.$selectedIndex;
                         this.$selectedIndex = value;
                         this.$parent.applyController(this);
-                        this.emit("__stateChanged" /* CHANGED */, this);
+                        this.emit(fgui.StateChangeEvent.CHANGED, this);
                         this.$updating = false;
                     }
                 },
                 enumerable: true,
                 configurable: true
             });
-            //same effect as selectedIndex but without event emitted
             Controller.prototype.setSelectedIndex = function (value) {
                 if (value === void 0) { value = 0; }
                 if (this.$selectedIndex != value) {
@@ -13642,11 +13759,11 @@ var fgui;
         controller.Controller = Controller;
     })(controller = fgui.controller || (fgui.controller = {}));
 })(fgui || (fgui = {}));
-var fgui;
+
 (function (fgui) {
     var controller;
     (function (controller) {
-        var PageOption = /** @class */ (function () {
+        var PageOption = (function () {
             function PageOption() {
             }
             Object.defineProperty(PageOption.prototype, "controller", {
@@ -13700,11 +13817,95 @@ var fgui;
         controller.PageOption = PageOption;
     })(controller = fgui.controller || (fgui.controller = {}));
 })(fgui || (fgui = {}));
-var fgui;
+
+(function (fgui) {
+    var utils;
+    (function (utils) {
+        var XmlNode = (function () {
+            function XmlNode(ele) {
+                this.nodeName = ele.nodeName;
+                this.context = ele;
+                this.type = ele.nodeType;
+                this.text = (this.type == Node.COMMENT_NODE || this.type == Node.TEXT_NODE) ? this.context.textContent : null;
+            }
+            Object.defineProperty(XmlNode.prototype, "children", {
+                get: function () {
+                    if (!this.$children)
+                        this.$children = XmlParser.getChildNodes(this);
+                    return this.$children;
+                },
+                enumerable: true,
+                configurable: true
+            });
+            Object.defineProperty(XmlNode.prototype, "attributes", {
+                get: function () {
+                    if (!this.$attributes)
+                        this.$attributes = XmlParser.getNodeAttributes(this);
+                    return this.$attributes;
+                },
+                enumerable: true,
+                configurable: true
+            });
+            return XmlNode;
+        }());
+        utils.XmlNode = XmlNode;
+        var XmlParser = (function () {
+            function XmlParser() {
+            }
+            XmlParser.tryParse = function (xmlstring, mimeType) {
+                if (mimeType === void 0) { mimeType = "application/xml"; }
+                var doc = XmlParser.$parser.parseFromString(xmlstring, mimeType);
+                if (doc && doc.childNodes && doc.childNodes.length >= 1)
+                    return new XmlNode(doc.firstChild);
+                return null;
+            };
+            XmlParser.getXmlRoot = function (xml) {
+                if (!xml || !xml.context)
+                    throw new Error("Invalid xml node");
+                var p = xml.context;
+                while (p.parentNode != null)
+                    p = p.parentNode;
+                return p == xml.context ? xml : new XmlNode(p);
+            };
+            XmlParser.getChildNodes = function (xml, matchName) {
+                if (matchName === void 0) { matchName = null; }
+                var nodes = xml.context.childNodes;
+                var ret = [];
+                if (!nodes || nodes.length <= 0)
+                    return ret;
+                var len = nodes.length;
+                for (var i = 0; i < len; i++) {
+                    var n = nodes.item(i);
+                    if (n.nodeType == Node.TEXT_NODE)
+                        continue;
+                    if (!matchName || (matchName && matchName.length > 0 && n.nodeName.toLowerCase() == matchName.toLowerCase()))
+                        ret.push(new XmlNode(n));
+                }
+                return ret;
+            };
+            XmlParser.getNodeAttributes = function (xml) {
+                var asList = xml.context.attributes;
+                var ret = {};
+                if (!asList || asList.length <= 0)
+                    return ret;
+                var len = asList.length;
+                for (var i = 0; i < len; i++) {
+                    var a = asList.item(i);
+                    ret[a.nodeName] = a.nodeValue;
+                }
+                return ret;
+            };
+            XmlParser.$parser = new DOMParser();
+            return XmlParser;
+        }());
+        utils.XmlParser = XmlParser;
+    })(utils = fgui.utils || (fgui.utils = {}));
+})(fgui || (fgui = {}));
+
 (function (fgui) {
     var controller;
     (function (controller_3) {
-        var PlayTransitionAction = /** @class */ (function (_super) {
+        var PlayTransitionAction = (function (_super) {
             __extends(PlayTransitionAction, _super);
             function PlayTransitionAction() {
                 var _this = _super !== null && _super.apply(this, arguments) || this;
@@ -13732,7 +13933,6 @@ var fgui;
                     this.$currentTransition = null;
                 }
             };
-            /**@internal */
             PlayTransitionAction.prototype.setup = function (xml) {
                 _super.prototype.setup.call(this, xml);
                 this.transitionName = xml.attributes.transition;
@@ -13750,9 +13950,9 @@ var fgui;
         controller_3.PlayTransitionAction = PlayTransitionAction;
     })(controller = fgui.controller || (fgui.controller = {}));
 })(fgui || (fgui = {}));
-var fgui;
+
 (function (fgui) {
-    var BMGlyph = /** @class */ (function () {
+    var BMGlyph = (function () {
         function BMGlyph() {
             this.x = 0;
             this.y = 0;
@@ -13768,9 +13968,9 @@ var fgui;
     }());
     fgui.BMGlyph = BMGlyph;
 })(fgui || (fgui = {}));
-var fgui;
+
 (function (fgui) {
-    var BitmapFont = /** @class */ (function () {
+    var BitmapFont = (function () {
         function BitmapFont() {
             this.size = 0;
             this.glyphs = {};
@@ -13779,14 +13979,13 @@ var fgui;
     }());
     fgui.BitmapFont = BitmapFont;
 })(fgui || (fgui = {}));
-var fgui;
+
 (function (fgui) {
-    /**for webgl only */
-    var FillSprite = /** @class */ (function (_super) {
+    var FillSprite = (function (_super) {
         __extends(FillSprite, _super);
         function FillSprite(texture) {
             var _this = _super.call(this, texture) || this;
-            _this._fillDir = 0 /* CW */; //for deg type only
+            _this._fillDir = 0;
             _this._flip = 0;
             _this._percent = 0;
             return _this;
@@ -13798,7 +13997,6 @@ var fgui;
             set: function (v) {
                 if (v != this._flip) {
                     this._flip = v;
-                    //this.requiresUpdate = true;
                 }
             },
             enumerable: true,
@@ -13811,7 +14009,6 @@ var fgui;
             set: function (n) {
                 if (n != this._fillAmount) {
                     this._fillAmount = n;
-                    //this.requiresUpdate = true;
                 }
             },
             enumerable: true,
@@ -13824,7 +14021,6 @@ var fgui;
             set: function (n) {
                 if (n != this._fillBegin) {
                     this._fillBegin = n;
-                    //this.requiresUpdate = true;
                 }
             },
             enumerable: true,
@@ -13838,7 +14034,6 @@ var fgui;
                 if (n != this._fillMode) {
                     this._fillMode = n;
                     this.checkAndFixFillBegin();
-                    //this.requiresUpdate = true;
                 }
             },
             enumerable: true,
@@ -13852,7 +14047,6 @@ var fgui;
                 if (n != this._fillDir) {
                     this._fillDir = n;
                     this.checkAndFixFillBegin();
-                    //this.requiresUpdate = true;
                 }
             },
             enumerable: true,
@@ -13860,24 +14054,24 @@ var fgui;
         });
         FillSprite.prototype.checkAndFixFillBegin = function () {
             switch (this._fillMode) {
-                case 1 /* HORZ */:
-                    if (this._fillBegin != 0 /* L */ && this._fillBegin != 1 /* R */)
-                        this._fillBegin = 0 /* L */;
+                case 1:
+                    if (this._fillBegin != 0 && this._fillBegin != 1)
+                        this._fillBegin = 0;
                     break;
-                case 2 /* VERT */:
-                    if (this._fillBegin != 2 /* T */ && this._fillBegin != 3 /* B */)
-                        this._fillBegin = 2 /* T */;
+                case 2:
+                    if (this._fillBegin != 2 && this._fillBegin != 3)
+                        this._fillBegin = 2;
                     break;
-                case 3 /* DEG90 */:
-                    if (this._fillBegin != 4 /* LT */ && this._fillBegin != 6 /* LB */
-                        && this._fillBegin != 5 /* RT */ && this._fillBegin != 7 /* RB */)
-                        this._fillBegin = 4 /* LT */;
+                case 3:
+                    if (this._fillBegin != 4 && this._fillBegin != 6
+                        && this._fillBegin != 5 && this._fillBegin != 7)
+                        this._fillBegin = 4;
                     break;
-                case 4 /* DEG180 */:
-                case 5 /* DEG360 */:
-                    if (this._fillBegin != 0 /* L */ && this._fillBegin != 1 /* R */
-                        && this._fillBegin != 2 /* T */ && this._fillBegin != 3 /* B */)
-                        this._fillBegin = 2 /* T */;
+                case 4:
+                case 5:
+                    if (this._fillBegin != 0 && this._fillBegin != 1
+                        && this._fillBegin != 2 && this._fillBegin != 3)
+                        this._fillBegin = 2;
                     break;
             }
         };
@@ -13895,9 +14089,9 @@ var fgui;
     }(PIXI.Sprite));
     fgui.FillSprite = FillSprite;
 })(fgui || (fgui = {}));
-var fgui;
+
 (function (fgui) {
-    var Frame = /** @class */ (function () {
+    var Frame = (function () {
         function Frame() {
             this.addDelay = 0;
         }
@@ -13905,15 +14099,397 @@ var fgui;
     }());
     fgui.Frame = Frame;
 })(fgui || (fgui = {}));
-var fgui;
+
 (function (fgui) {
-    var HTMLInput = /** @class */ (function () {
+    var utils;
+    (function (utils) {
+        var StringUtil = (function () {
+            function StringUtil() {
+            }
+            StringUtil.encodeHTML = function (str) {
+                if (!str)
+                    return "";
+                else
+                    return str.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;").replace("'", "&apos;");
+            };
+            StringUtil.getFileName = function (source) {
+                var i = source.lastIndexOf("/");
+                if (i != -1)
+                    source = source.substr(i + 1);
+                i = source.lastIndexOf("\\");
+                if (i != -1)
+                    source = source.substr(i + 1);
+                i = source.lastIndexOf(".");
+                if (i != -1)
+                    return source.substring(0, i);
+                else
+                    return source;
+            };
+            StringUtil.startsWith = function (source, str, ignoreCase) {
+                if (ignoreCase === void 0) { ignoreCase = false; }
+                if (!source)
+                    return false;
+                else if (source.length < str.length)
+                    return false;
+                else {
+                    source = source.substring(0, str.length);
+                    if (!ignoreCase)
+                        return source == str;
+                    else
+                        return source.toLowerCase() == str.toLowerCase();
+                }
+            };
+            StringUtil.endsWith = function (source, str, ignoreCase) {
+                if (ignoreCase === void 0) { ignoreCase = false; }
+                if (!source)
+                    return false;
+                else if (source.length < str.length)
+                    return false;
+                else {
+                    source = source.substring(source.length - str.length);
+                    if (!ignoreCase)
+                        return source == str;
+                    else
+                        return source.toLowerCase() == str.toLowerCase();
+                }
+            };
+            StringUtil.trim = function (targetString) {
+                return StringUtil.trimLeft(StringUtil.trimRight(targetString));
+            };
+            StringUtil.trimLeft = function (targetString) {
+                var tempChar = "";
+                var i;
+                for (i = 0; i < targetString.length; i++) {
+                    tempChar = targetString.charAt(i);
+                    if (tempChar != " " && tempChar != "\n" && tempChar != "\r")
+                        break;
+                }
+                return targetString.substr(i);
+            };
+            StringUtil.trimRight = function (targetString) {
+                var tempChar = "";
+                var i;
+                for (i = targetString.length - 1; i >= 0; i--) {
+                    tempChar = targetString.charAt(i);
+                    if (tempChar != " " && tempChar != "\n" && tempChar != "\r")
+                        break;
+                }
+                return targetString.substring(0, i + 1);
+            };
+            StringUtil.convertToHtmlColor = function (argb, hasAlpha) {
+                if (hasAlpha === void 0) { hasAlpha = false; }
+                var alpha;
+                if (hasAlpha)
+                    alpha = (argb >> 24 & 0xFF).toString(16);
+                else
+                    alpha = "";
+                var red = (argb >> 16 & 0xFF).toString(16);
+                var green = (argb >> 8 & 0xFF).toString(16);
+                var blue = (argb & 0xFF).toString(16);
+                if (alpha.length == 1)
+                    alpha = "0" + alpha;
+                if (red.length == 1)
+                    red = "0" + red;
+                if (green.length == 1)
+                    green = "0" + green;
+                if (blue.length == 1)
+                    blue = "0" + blue;
+                return "#" + alpha + red + green + blue;
+            };
+            StringUtil.convertFromHtmlColor = function (str, hasAlpha) {
+                if (hasAlpha === void 0) { hasAlpha = false; }
+                if (str.length < 1)
+                    return 0;
+                if (str.charAt(0) == "#")
+                    str = str.substr(1);
+                if (str.length == 8)
+                    return (parseInt(str.substr(0, 2), 16) << 24) + parseInt(str.substr(2), 16);
+                else if (hasAlpha)
+                    return 0xFF000000 + parseInt(str, 16);
+                else
+                    return parseInt(str, 16);
+            };
+            return StringUtil;
+        }());
+        utils.StringUtil = StringUtil;
+    })(utils = fgui.utils || (fgui.utils = {}));
+})(fgui || (fgui = {}));
+
+(function (fgui) {
+    var utils;
+    (function (utils) {
+        var Binder = (function () {
+            function Binder() {
+            }
+            Binder.create = function (func, context) {
+                var args = [];
+                for (var _i = 2; _i < arguments.length; _i++) {
+                    args[_i - 2] = arguments[_i];
+                }
+                if (!context)
+                    return func;
+                return (function () {
+                    var fullargs = arguments.length > 0 ? [].concat(Array.prototype.slice.call(arguments)).concat(args) : [].concat(args);
+                    func.apply(context, fullargs);
+                });
+            };
+            return Binder;
+        }());
+        utils.Binder = Binder;
+    })(utils = fgui.utils || (fgui.utils = {}));
+})(fgui || (fgui = {}));
+
+(function (fgui) {
+    var FocusEvent = (function () {
+        function FocusEvent() {
+        }
+        FocusEvent.CHANGED = "__focusChanged";
+        return FocusEvent;
+    }());
+    fgui.FocusEvent = FocusEvent;
+})(fgui || (fgui = {}));
+
+(function (fgui) {
+    var InputElement = (function (_super) {
+        __extends(InputElement, _super);
+        function InputElement(tf) {
+            var _this = _super.call(this) || this;
+            _this.$requestToShow = false;
+            _this.inputElement = null;
+            _this.inputDiv = null;
+            _this.$scaleX = 0;
+            _this.$scaleY = 0;
+            _this.textValue = "";
+            _this.colorValue = 0xffffff;
+            _this.$attrsCache = {};
+            _this.$textfield = tf;
+            return _this;
+        }
+        InputElement.prototype.$addToStage = function () {
+            this.htmlInput = fgui.HTMLInput.inst;
+        };
+        InputElement.prototype.initElement = function () {
+            var point = this.$textfield.localToGlobal(0, 0);
+            var x = point.x;
+            var y = point.y;
+            var scaleX = this.htmlInput.$scaleX;
+            var scaleY = this.htmlInput.$scaleY;
+            if (!this.$textfield.multipleLine)
+                this.inputElement.style.top = (-this.$textfield.leading * scaleY) + "px";
+            this.inputDiv.style.top = (y + 1) * scaleY + "px";
+            this.inputDiv.style.left = x * scaleX + "px";
+            var node = this.$textfield;
+            var cX = 1;
+            var cY = 1;
+            var rotation = 0;
+            while (node.parent) {
+                cX *= node.scaleX;
+                cY *= node.scaleY;
+                rotation += node.rotation;
+                node = node.parent;
+            }
+            var style = this.inputDiv.style;
+            style.transform = style.webkitTransform = style.msTransform = style.mozTransform = style.oTransform = "rotate(" + rotation + "deg)";
+            this.$scaleX = scaleX * cX;
+            this.$scaleY = scaleY * cY;
+        };
+        Object.defineProperty(InputElement.prototype, "textField", {
+            get: function () {
+                return this.$textfield;
+            },
+            enumerable: true,
+            configurable: true
+        });
+        InputElement.prototype.$show = function () {
+            if (!this.htmlInput.isCurrentInput(this)) {
+                this.inputElement = this.htmlInput.requestInput(this);
+                if (!this.$textfield.multipleLine)
+                    this.inputElement.type = this.$textfield.type;
+                for (var key in this.$attrsCache)
+                    this.inputElement.setAttribute(key, this.$attrsCache[key]);
+                this.inputDiv = this.htmlInput.$wrapper;
+            }
+            else
+                this.inputElement.onblur = null;
+            this.htmlInput.$requestToShow = true;
+            this.$requestToShow = true;
+            this.initElement();
+        };
+        InputElement.prototype.onBlurHandler = function () {
+            this.htmlInput.clearInputElement();
+            this.htmlInput.clearAttributes(this.$attrsCache);
+            window.scrollTo(0, 0);
+        };
+        InputElement.prototype.$hide = function () {
+        };
+        Object.defineProperty(InputElement.prototype, "text", {
+            get: function () {
+                if (!this.textValue)
+                    this.textValue = "";
+                return this.textValue;
+            },
+            set: function (value) {
+                this.textValue = value;
+                if (this.inputElement)
+                    this.inputElement.value = this.textValue;
+            },
+            enumerable: true,
+            configurable: true
+        });
+        InputElement.prototype.setColor = function (value) {
+            this.colorValue = value;
+            if (this.inputElement)
+                this.setElementStyle("color", fgui.utils.StringUtil.convertToHtmlColor(this.colorValue));
+        };
+        InputElement.prototype.$onBlur = function () {
+        };
+        InputElement.prototype.onInputHandler = function () {
+            var _this = this;
+            window.setTimeout(function () {
+                if (_this.inputElement && _this.inputElement.selectionStart == _this.inputElement.selectionEnd) {
+                    _this.textValue = _this.inputElement.value;
+                    _this.emit("updateText");
+                }
+            }, 0);
+        };
+        InputElement.prototype.setAreaHeight = function () {
+            var tf = this.$textfield;
+            if (tf.multipleLine) {
+                var textheight = tf.textHeight;
+                if (tf.height <= tf.fontSize) {
+                    this.setElementStyle("height", tf.fontSize * this.$scaleY + "px");
+                    this.setElementStyle("padding", "0px");
+                    this.setElementStyle("lineHeight", tf.lineHeight * this.$scaleY + "px");
+                }
+                else if (tf.height < textheight) {
+                    this.setElementStyle("height", (tf.height) * this.$scaleY + "px");
+                    this.setElementStyle("padding", "0px");
+                    this.setElementStyle("lineHeight", tf.lineHeight * this.$scaleY + "px");
+                }
+                else {
+                    this.setElementStyle("height", (textheight + tf.leading) * this.$scaleY + "px");
+                    var rap = (tf.height - textheight) * this.$scaleY;
+                    var valign = this.getVAlignFactor(tf);
+                    var top_1 = rap * valign;
+                    var bottom = rap - top_1;
+                    this.setElementStyle("padding", top_1 + "px 0px " + bottom + "px 0px");
+                    this.setElementStyle("lineHeight", tf.lineHeight * this.$scaleY + "px");
+                }
+            }
+        };
+        InputElement.prototype.getVAlignFactor = function (textfield) {
+            var vao = 0;
+            switch (textfield.verticalAlign) {
+                case 0:
+                    break;
+                case 1:
+                    vao = .5;
+                    break;
+                case 2:
+                    vao = 1;
+                    break;
+            }
+            return vao;
+        };
+        InputElement.prototype.onClickHandler = function (e) {
+            if (this.$requestToShow) {
+                this.$requestToShow = false;
+                this.inputElement.value = this.text;
+                if (this.inputElement.onblur == null)
+                    this.inputElement.onblur = fgui.utils.Binder.create(this.onBlurHandler, this);
+                this.resetInput();
+                if (this.$textfield.maxLength > 0)
+                    this.inputElement.setAttribute("maxlength", String(this.$textfield.maxLength));
+                else
+                    this.inputElement.removeAttribute("maxlength");
+                this.inputElement.selectionStart = this.inputElement.value.length;
+                this.inputElement.selectionEnd = this.inputElement.value.length;
+                this.inputElement.focus();
+                this.emit(fgui.FocusEvent.CHANGED, "focus", this.inputElement);
+            }
+        };
+        InputElement.prototype.onDisconnect = function () {
+            this.inputElement = null;
+            this.emit(fgui.FocusEvent.CHANGED, "blur", this.inputElement);
+        };
+        InputElement.prototype.setElementStyle = function (style, value) {
+            if (value == null)
+                return;
+            if (this.inputElement) {
+                var ss = this.inputElement.style;
+                ss[style] = value;
+            }
+        };
+        InputElement.prototype.setAttribute = function (name, value) {
+            if (name == null || value == null)
+                return;
+            this.$attrsCache[name] = value;
+        };
+        InputElement.prototype.getAttribute = function (name) {
+            return this.$attrsCache[name];
+        };
+        InputElement.prototype.$removeFromStage = function () {
+            if (this.inputElement)
+                this.htmlInput.disconnect(this);
+        };
+        InputElement.prototype.resetInput = function () {
+            if (this.inputElement) {
+                var textfield = this.$textfield;
+                this.setElementStyle("fontFamily", textfield.font);
+                this.setElementStyle("fontStyle", textfield.italic ? "italic" : "normal");
+                this.setElementStyle("fontWeight", textfield.bold ? "bold" : "normal");
+                this.setElementStyle("textAlign", textfield.align);
+                this.setElementStyle("fontSize", textfield.fontSize * this.$scaleY + "px");
+                this.setElementStyle("color", fgui.utils.StringUtil.convertToHtmlColor(textfield.color));
+                this.setElementStyle("width", textfield.width * this.$scaleX + "px");
+                var va = "middle", vao = 0;
+                switch (textfield.verticalAlign) {
+                    case 0:
+                        va = "top";
+                        break;
+                    case 1:
+                        va = "middle";
+                        vao = .5;
+                        break;
+                    case 2:
+                        va = "bottom";
+                        vao = 1;
+                        break;
+                }
+                this.setElementStyle("verticalAlign", va);
+                if (textfield.multipleLine)
+                    this.setAreaHeight();
+                else {
+                    this.setElementStyle("lineHeight", textfield.lineHeight * this.$scaleY + "px");
+                    if (textfield.height < textfield.fontSize) {
+                        this.setElementStyle("height", textfield.fontSize * this.$scaleY + "px");
+                        this.setElementStyle("padding", "0px 0px " + (textfield.fontSize * .5 * this.$scaleX) + "px 0px");
+                    }
+                    else {
+                        this.setElementStyle("height", textfield.fontSize * this.$scaleY + "px");
+                        var rap = (textfield.height - textfield.fontSize) * this.$scaleY;
+                        var top_2 = rap * vao;
+                        var bottom = rap - top_2, fsy = textfield.fontSize * .5 * this.$scaleY;
+                        if (bottom < fsy)
+                            bottom = fsy;
+                        this.setElementStyle("padding", top_2 + "px 0px " + bottom + "px 0px");
+                    }
+                }
+                this.inputDiv.style.clip = "rect(0px " + (textfield.width * this.$scaleX) + "px " + (textfield.height * this.$scaleY) + "px 0px)";
+                this.inputDiv.style.height = textfield.height * this.$scaleY + "px";
+                this.inputDiv.style.width = textfield.width * this.$scaleX + "px";
+            }
+        };
+        return InputElement;
+    }(PIXI.utils.EventEmitter));
+    fgui.InputElement = InputElement;
+})(fgui || (fgui = {}));
+
+(function (fgui) {
+    var HTMLInput = (function () {
         function HTMLInput() {
-            /**@internal */
             this.$requestToShow = false;
-            /**@internal */
             this.$scaleX = 1;
-            /**@internal */
             this.$scaleY = 1;
         }
         Object.defineProperty(HTMLInput, "inst", {
@@ -13943,8 +14519,8 @@ var fgui;
                 this.setTransform(this.$wrapper, "0% 0% 0px");
                 div.appendChild(this.$wrapper);
                 fgui.GRoot.inst.on(fgui.InteractiveEvents.Click, this.canvasClickHandler, this);
-                this.initInputElement(true); //input
-                this.initInputElement(false); //textarea
+                this.initInputElement(true);
+                this.initInputElement(false);
             }
         };
         HTMLInput.prototype.isInputOn = function () {
@@ -13983,7 +14559,6 @@ var fgui;
             if (transform && transform.length > 0)
                 style.transform = style.webkitTransform = style.msTransform = style.mozTransform = style.oTransform = transform;
         };
-        /**@internal */
         HTMLInput.prototype.updateSize = function (sx, sy) {
             if (!this.$canvas)
                 return;
@@ -14093,463 +14668,39 @@ var fgui;
     }());
     fgui.HTMLInput = HTMLInput;
 })(fgui || (fgui = {}));
-var fgui;
+
 (function (fgui) {
     fgui.isUIObject = function (obj) {
         return obj && "UIOwner" in obj && obj.UIOwner != null;
     };
 })(fgui || (fgui = {}));
-var fgui;
+
 (function (fgui) {
-    var InputElement = /** @class */ (function (_super) {
-        __extends(InputElement, _super);
-        function InputElement(tf) {
-            var _this = _super.call(this) || this;
-            _this.$requestToShow = false;
-            //private $requestToHide:boolean = false;
-            _this.inputElement = null;
-            _this.inputDiv = null;
-            _this.$scaleX = 0;
-            _this.$scaleY = 0;
-            _this.textValue = "";
-            _this.colorValue = 0xffffff;
-            _this.$attrsCache = {};
-            _this.$textfield = tf;
-            return _this;
+    var DefaultMovieClipSettings = (function () {
+        function DefaultMovieClipSettings() {
+            this.startFrame = 0;
+            this.endFrame = -1;
+            this.repeatCount = 0;
+            this.loopEndAt = -1;
+            this.endCallback = null;
+            this.endCallbackContext = null;
         }
-        /**@internal */
-        InputElement.prototype.$addToStage = function () {
-            this.htmlInput = fgui.HTMLInput.inst; //take multiple canvas on webpage into account?
-        };
-        InputElement.prototype.initElement = function () {
-            var point = this.$textfield.localToGlobal(0, 0);
-            var x = point.x;
-            var y = point.y;
-            var scaleX = this.htmlInput.$scaleX;
-            var scaleY = this.htmlInput.$scaleY;
-            if (!this.$textfield.multipleLine)
-                this.inputElement.style.top = (-this.$textfield.leading * scaleY) + "px";
-            this.inputDiv.style.top = (y + 1) * scaleY + "px";
-            this.inputDiv.style.left = x * scaleX + "px";
-            var node = this.$textfield;
-            var cX = 1;
-            var cY = 1;
-            var rotation = 0;
-            while (node.parent) {
-                cX *= node.scaleX;
-                cY *= node.scaleY;
-                rotation += node.rotation;
-                node = node.parent;
+        DefaultMovieClipSettings.prototype.mix = function (other) {
+            var ret = this;
+            for (var key in other) {
+                if (key == "mix")
+                    continue;
+                ret[key] = other[key];
             }
-            var style = this.inputDiv.style;
-            style.transform = style.webkitTransform = style.msTransform = style.mozTransform = style.oTransform = "rotate(" + rotation + "deg)";
-            this.$scaleX = scaleX * cX;
-            this.$scaleY = scaleY * cY;
+            return this;
         };
-        Object.defineProperty(InputElement.prototype, "textField", {
-            get: function () {
-                return this.$textfield;
-            },
-            enumerable: true,
-            configurable: true
-        });
-        /**@internal */
-        InputElement.prototype.$show = function () {
-            if (!this.htmlInput.isCurrentInput(this)) {
-                this.inputElement = this.htmlInput.requestInput(this);
-                if (!this.$textfield.multipleLine)
-                    this.inputElement.type = this.$textfield.type;
-                for (var key in this.$attrsCache)
-                    this.inputElement.setAttribute(key, this.$attrsCache[key]);
-                this.inputDiv = this.htmlInput.$wrapper;
-            }
-            else
-                this.inputElement.onblur = null;
-            this.htmlInput.$requestToShow = true;
-            this.$requestToShow = true;
-            this.initElement();
-        };
-        InputElement.prototype.onBlurHandler = function () {
-            this.htmlInput.clearInputElement();
-            this.htmlInput.clearAttributes(this.$attrsCache);
-            window.scrollTo(0, 0);
-        };
-        /**@internal */
-        InputElement.prototype.$hide = function () {
-            /*this.$requestToHide = true;
-            if (this.htmlInput && PIXI.utils.isMobile && iOS) {  //if os is ios need to clearInput once
-                this.htmlInput.disconnect(this);
-            }*/
-        };
-        Object.defineProperty(InputElement.prototype, "text", {
-            get: function () {
-                if (!this.textValue)
-                    this.textValue = "";
-                return this.textValue;
-            },
-            set: function (value) {
-                this.textValue = value;
-                if (this.inputElement)
-                    this.inputElement.value = this.textValue;
-            },
-            enumerable: true,
-            configurable: true
-        });
-        InputElement.prototype.setColor = function (value) {
-            this.colorValue = value;
-            if (this.inputElement)
-                this.setElementStyle("color", fgui.utils.StringUtil.convertToHtmlColor(this.colorValue));
-        };
-        /**@internal */
-        InputElement.prototype.$onBlur = function () {
-            //this.emit("updateText");
-        };
-        InputElement.prototype.onInputHandler = function () {
-            var _this = this;
-            window.setTimeout(function () {
-                if (_this.inputElement && _this.inputElement.selectionStart == _this.inputElement.selectionEnd) {
-                    _this.textValue = _this.inputElement.value;
-                    _this.emit("updateText");
-                }
-            }, 0);
-        };
-        InputElement.prototype.setAreaHeight = function () {
-            var tf = this.$textfield;
-            if (tf.multipleLine) {
-                var textheight = tf.textHeight;
-                if (tf.height <= tf.fontSize) {
-                    this.setElementStyle("height", tf.fontSize * this.$scaleY + "px");
-                    this.setElementStyle("padding", "0px");
-                    this.setElementStyle("lineHeight", tf.lineHeight * this.$scaleY + "px");
-                }
-                else if (tf.height < textheight) {
-                    this.setElementStyle("height", (tf.height) * this.$scaleY + "px");
-                    this.setElementStyle("padding", "0px");
-                    this.setElementStyle("lineHeight", tf.lineHeight * this.$scaleY + "px");
-                }
-                else {
-                    this.setElementStyle("height", (textheight + tf.leading) * this.$scaleY + "px");
-                    var rap = (tf.height - textheight) * this.$scaleY;
-                    var valign = this.getVAlignFactor(tf);
-                    var top_1 = rap * valign;
-                    var bottom = rap - top_1;
-                    this.setElementStyle("padding", top_1 + "px 0px " + bottom + "px 0px");
-                    this.setElementStyle("lineHeight", tf.lineHeight * this.$scaleY + "px");
-                }
-            }
-        };
-        InputElement.prototype.getVAlignFactor = function (textfield) {
-            var vao = 0;
-            switch (textfield.verticalAlign) {
-                case 0 /* Top */:
-                    break;
-                case 1 /* Middle */:
-                    vao = .5;
-                    break;
-                case 2 /* Bottom */:
-                    vao = 1;
-                    break;
-            }
-            return vao;
-        };
-        InputElement.prototype.onClickHandler = function (e) {
-            if (this.$requestToShow) {
-                //e.stopImmediatePropagation();
-                this.$requestToShow = false;
-                this.inputElement.value = this.text;
-                if (this.inputElement.onblur == null)
-                    this.inputElement.onblur = fgui.utils.Binder.create(this.onBlurHandler, this);
-                this.resetInput();
-                if (this.$textfield.maxLength > 0)
-                    this.inputElement.setAttribute("maxlength", String(this.$textfield.maxLength));
-                else
-                    this.inputElement.removeAttribute("maxlength");
-                this.inputElement.selectionStart = this.inputElement.value.length;
-                this.inputElement.selectionEnd = this.inputElement.value.length;
-                this.inputElement.focus();
-                this.emit("__focusChanged" /* CHANGED */, "focus", this.inputElement);
-            }
-        };
-        InputElement.prototype.onDisconnect = function () {
-            this.inputElement = null;
-            this.emit("__focusChanged" /* CHANGED */, "blur", this.inputElement);
-        };
-        InputElement.prototype.setElementStyle = function (style, value) {
-            if (value == null)
-                return;
-            if (this.inputElement) {
-                var ss = this.inputElement.style;
-                ss[style] = value;
-            }
-        };
-        InputElement.prototype.setAttribute = function (name, value) {
-            if (name == null || value == null)
-                return;
-            this.$attrsCache[name] = value;
-        };
-        InputElement.prototype.getAttribute = function (name) {
-            return this.$attrsCache[name];
-        };
-        /**@internal */
-        InputElement.prototype.$removeFromStage = function () {
-            if (this.inputElement)
-                this.htmlInput.disconnect(this);
-        };
-        InputElement.prototype.resetInput = function () {
-            if (this.inputElement) {
-                var textfield = this.$textfield;
-                this.setElementStyle("fontFamily", textfield.font);
-                this.setElementStyle("fontStyle", textfield.italic ? "italic" : "normal");
-                this.setElementStyle("fontWeight", textfield.bold ? "bold" : "normal");
-                this.setElementStyle("textAlign", textfield.align);
-                this.setElementStyle("fontSize", textfield.fontSize * this.$scaleY + "px");
-                this.setElementStyle("color", fgui.utils.StringUtil.convertToHtmlColor(textfield.color));
-                this.setElementStyle("width", textfield.width * this.$scaleX + "px"); //take 'maxWidth' into account
-                var va = "middle", vao = 0;
-                switch (textfield.verticalAlign) {
-                    case 0 /* Top */:
-                        va = "top";
-                        break;
-                    case 1 /* Middle */:
-                        va = "middle";
-                        vao = .5;
-                        break;
-                    case 2 /* Bottom */:
-                        va = "bottom";
-                        vao = 1;
-                        break;
-                }
-                this.setElementStyle("verticalAlign", va);
-                if (textfield.multipleLine)
-                    this.setAreaHeight();
-                else {
-                    this.setElementStyle("lineHeight", textfield.lineHeight * this.$scaleY + "px");
-                    if (textfield.height < textfield.fontSize) {
-                        this.setElementStyle("height", textfield.fontSize * this.$scaleY + "px");
-                        this.setElementStyle("padding", "0px 0px " + (textfield.fontSize * .5 * this.$scaleX) + "px 0px");
-                    }
-                    else {
-                        this.setElementStyle("height", textfield.fontSize * this.$scaleY + "px");
-                        var rap = (textfield.height - textfield.fontSize) * this.$scaleY;
-                        var top_2 = rap * vao;
-                        var bottom = rap - top_2, fsy = textfield.fontSize * .5 * this.$scaleY;
-                        if (bottom < fsy)
-                            bottom = fsy;
-                        this.setElementStyle("padding", top_2 + "px 0px " + bottom + "px 0px");
-                    }
-                }
-                this.inputDiv.style.clip = "rect(0px " + (textfield.width * this.$scaleX) + "px " + (textfield.height * this.$scaleY) + "px 0px)";
-                this.inputDiv.style.height = textfield.height * this.$scaleY + "px";
-                this.inputDiv.style.width = textfield.width * this.$scaleX + "px"; //take 'maxWidth' into account
-            }
-        };
-        return InputElement;
-    }(PIXI.utils.EventEmitter));
-    fgui.InputElement = InputElement;
+        return DefaultMovieClipSettings;
+    }());
+    fgui.DefaultMovieClipSettings = DefaultMovieClipSettings;
 })(fgui || (fgui = {}));
-var fgui;
+
 (function (fgui) {
-    ;
-    var MovieClip = /** @class */ (function (_super) {
-        __extends(MovieClip, _super);
-        function MovieClip(owner) {
-            var _this = _super.call(this) || this;
-            _this.interval = 0;
-            _this.repeatDelay = 0;
-            _this.$frameCount = 0;
-            _this.$currentFrame = 0;
-            _this.$status = 0 /* NORMAL */;
-            _this.UIOwner = owner;
-            _this.data = new fgui.MovieClipData();
-            _this.$playing = true;
-            _this.interactive = _this.interactiveChildren = false;
-            _this.$settings = new fgui.DefaultMovieClipSettings();
-            _this.on("added", _this.added, _this);
-            _this.on("removed", _this.removed, _this);
-            return _this;
-        }
-        Object.defineProperty(MovieClip.prototype, "frames", {
-            get: function () {
-                return this.$frames;
-            },
-            set: function (value) {
-                this.$frames = value;
-                if (this.$frames != null)
-                    this.$frameCount = this.$frames.length;
-                else
-                    this.$frameCount = 0;
-                if (this.$settings.endFrame == -1 || this.$settings.endFrame > this.$frameCount - 1)
-                    this.$settings.endFrame = this.$frameCount - 1;
-                if (this.$settings.loopEndAt == -1 || this.$settings.loopEndAt > this.$frameCount - 1)
-                    this.$settings.loopEndAt = this.$frameCount - 1;
-                if (this.$currentFrame < 0 || this.$currentFrame > this.$frameCount - 1)
-                    this.$currentFrame = this.$frameCount - 1;
-                if (this.$frameCount > 0)
-                    this.setFrame(this.$frames[this.$currentFrame]);
-                else
-                    this.setFrame(null);
-                this.data.rewind();
-            },
-            enumerable: true,
-            configurable: true
-        });
-        Object.defineProperty(MovieClip.prototype, "frameCount", {
-            get: function () {
-                return this.$frameCount;
-            },
-            enumerable: true,
-            configurable: true
-        });
-        Object.defineProperty(MovieClip.prototype, "boundsRect", {
-            get: function () {
-                return this._boundsRect;
-            },
-            set: function (value) {
-                this._boundsRect = value;
-            },
-            enumerable: true,
-            configurable: true
-        });
-        Object.defineProperty(MovieClip.prototype, "currentFrame", {
-            get: function () {
-                return this.$currentFrame;
-            },
-            set: function (value) {
-                if (this.$currentFrame != value) {
-                    this.$currentFrame = value;
-                    this.data.currentFrame = value;
-                    this.setFrame(this.$currentFrame < this.$frameCount ? this.$frames[this.$currentFrame] : null);
-                }
-            },
-            enumerable: true,
-            configurable: true
-        });
-        Object.defineProperty(MovieClip.prototype, "playing", {
-            get: function () {
-                return this.$playing;
-            },
-            set: function (value) {
-                this.$playing = value;
-                if (value && fgui.GObject.isDisplayObjectOnStage(this))
-                    fgui.GTimer.inst.add(0, 0, this.update, this);
-                else
-                    fgui.GTimer.inst.remove(this.update, this);
-            },
-            enumerable: true,
-            configurable: true
-        });
-        /**
-         * Modify the playing settings for the current MovieClip object, there are two ways to call this method:
-         * 1) pass whole parameters:
-                startFrame: number;
-                endFrame: number;
-                repeatCount: number;
-                loopEndAt: number;
-                endCallback: (target?: MovieClip) => void;
-                endCallbackContext: any;
-         * 2) just pass 1 object which implements MovieClipSettings (recommended)
-         */
-        MovieClip.prototype.setPlaySettings = function () {
-            var args = [];
-            for (var _i = 0; _i < arguments.length; _i++) {
-                args[_i] = arguments[_i];
-            }
-            if (args.length == 1 && typeof args[0] == "object")
-                this.$settings.mix(args[0]);
-            else {
-                var s = args[0], e = args[1], r = args[2], l = args[3], ec = args[4], ecc = args[5];
-                var o = {};
-                if (fgui.utils.NumberUtil.isNumber(s))
-                    o.startFrame = s;
-                if (fgui.utils.NumberUtil.isNumber(e))
-                    o.endFrame = e;
-                if (fgui.utils.NumberUtil.isNumber(r))
-                    o.repeatCount = r;
-                if (fgui.utils.NumberUtil.isNumber(l))
-                    o.loopEndAt = l;
-                if (ec && typeof (ec) == "function")
-                    o.endCallback = ec;
-                if (ecc)
-                    o.endCallbackContext = ecc;
-                this.$settings.mix(o);
-            }
-            if (this.$settings.endFrame == -1 || this.$settings.endFrame > this.$frameCount - 1)
-                this.$settings.endFrame = this.$frameCount - 1;
-            if (this.$settings.loopEndAt == -1)
-                this.$settings.loopEndAt = this.$settings.endFrame;
-            this.$status = 0 /* NORMAL */;
-            this.currentFrame = this.$settings.startFrame;
-        };
-        MovieClip.prototype.update = function () {
-            if (this.UIOwner.$inProgressBuilding)
-                return;
-            if (this.$playing && this.$frameCount != 0 && this.$status != 3 /* ENDED */) {
-                this.data.update(this);
-                if (this.$currentFrame != this.data.currentFrame) {
-                    if (this.$status == 1 /* LOOPING */) {
-                        this.$currentFrame = this.$settings.startFrame;
-                        this.data.currentFrame = this.$currentFrame;
-                        this.$status = 0 /* NORMAL */;
-                    }
-                    else if (this.$status == 2 /* STOPPING */) {
-                        this.$currentFrame = this.$settings.loopEndAt;
-                        this.data.currentFrame = this.$currentFrame;
-                        this.$status = 3 /* ENDED */;
-                        //play end
-                        if (this.$settings.endCallback != null)
-                            fgui.GTimer.inst.callLater(this.$playEnd, this);
-                    }
-                    else {
-                        this.$currentFrame = this.data.currentFrame;
-                        if (this.$currentFrame == this.$settings.endFrame) {
-                            if (this.$settings.repeatCount > 0) {
-                                this.$settings.repeatCount--;
-                                if (this.$settings.repeatCount == 0)
-                                    this.$status = 2 /* STOPPING */;
-                                else
-                                    this.$status = 1 /* LOOPING */;
-                            }
-                        }
-                    }
-                    this.setFrame(this.$frames[this.$currentFrame]);
-                }
-            }
-        };
-        MovieClip.prototype.$playEnd = function () {
-            if (this.$settings.endCallback != null) {
-                var f = this.$settings.endCallback;
-                var fObj = this.$settings.endCallbackContext;
-                this.$settings.endCallback = this.$settings.endCallbackContext = null;
-                this.$settings.endCallbackContext = null;
-                if (f)
-                    f.call(fObj, this);
-            }
-        };
-        MovieClip.prototype.setFrame = function (frame) {
-            this._texture = frame == null ? null : frame.texture;
-            this._textureID = -1;
-        };
-        MovieClip.prototype.added = function (disp) {
-            if (this.$playing)
-                fgui.GTimer.inst.add(0, 0, this.update, this);
-        };
-        MovieClip.prototype.removed = function (disp) {
-            if (this.$playing)
-                fgui.GTimer.inst.remove(this.update, this);
-        };
-        MovieClip.prototype.destroy = function () {
-            fgui.GTimer.inst.remove(this.update, this);
-            this.off("added", this.added, this);
-            this.off("removed", this.removed, this);
-            _super.prototype.destroy.call(this);
-        };
-        return MovieClip;
-    }(PIXI.Sprite));
-    fgui.MovieClip = MovieClip;
-})(fgui || (fgui = {}));
-var fgui;
-(function (fgui) {
-    var MovieClipData = /** @class */ (function () {
+    var MovieClipData = (function () {
         function MovieClipData() {
             this.repeatedCount = 0;
             this.$curFrame = 0;
@@ -14636,40 +14787,243 @@ var fgui;
     }());
     fgui.MovieClipData = MovieClipData;
 })(fgui || (fgui = {}));
-var fgui;
+
 (function (fgui) {
-    var DefaultMovieClipSettings = /** @class */ (function () {
-        function DefaultMovieClipSettings() {
-            /**the first frame number to start to play */
-            this.startFrame = 0;
-            /**the end frame the playing will end at, -1 means to the tail */
-            this.endFrame = -1;
-            /**play count, 0 means endeless */
-            this.repeatCount = 0;
-            /**once the repeated playing completes, the playing will end at, -1 means to the tail */
-            this.loopEndAt = -1;
-            /**complete callback handler */
-            this.endCallback = null;
-            /**context object for the callback function */
-            this.endCallbackContext = null;
-        }
-        /**modify the current settings without whole parameters provided */
-        DefaultMovieClipSettings.prototype.mix = function (other) {
-            var ret = this;
-            for (var key in other) {
-                if (key == "mix")
-                    continue;
-                ret[key] = other[key];
+    var utils;
+    (function (utils) {
+        var NumberUtil = (function () {
+            function NumberUtil() {
             }
-            return this;
-        };
-        return DefaultMovieClipSettings;
-    }());
-    fgui.DefaultMovieClipSettings = DefaultMovieClipSettings;
+            NumberUtil.clamp = function (value, min, max) {
+                if (value < min)
+                    value = min;
+                else if (value > max)
+                    value = max;
+                return value;
+            };
+            NumberUtil.clamp01 = function (value) {
+                if (value > 1)
+                    value = 1;
+                else if (value < 0)
+                    value = 0;
+                return value;
+            };
+            NumberUtil.isNumber = function (n) {
+                if (typeof (n) != "number")
+                    return false;
+                if (isNaN(n))
+                    return false;
+                return true;
+            };
+            NumberUtil.sign = function (x) {
+                x = Number(x);
+                if (x === 0 || isNaN(x))
+                    return x;
+                return x > 0 ? 1 : -1;
+            };
+            NumberUtil.angleToRadian = function (n) {
+                return n * NumberUtil.RADIAN;
+            };
+            NumberUtil.lerp = function (s, e, p) {
+                return s + p * (e - s);
+            };
+            NumberUtil.RADIAN = Math.PI / 180;
+            return NumberUtil;
+        }());
+        utils.NumberUtil = NumberUtil;
+    })(utils = fgui.utils || (fgui.utils = {}));
 })(fgui || (fgui = {}));
-var fgui;
+
 (function (fgui) {
-    var UIContainer = /** @class */ (function (_super) {
+    ;
+    var MovieClip = (function (_super) {
+        __extends(MovieClip, _super);
+        function MovieClip(owner) {
+            var _this = _super.call(this) || this;
+            _this.interval = 0;
+            _this.repeatDelay = 0;
+            _this.$frameCount = 0;
+            _this.$currentFrame = 0;
+            _this.$status = 0;
+            _this.UIOwner = owner;
+            _this.data = new fgui.MovieClipData();
+            _this.$playing = true;
+            _this.interactive = _this.interactiveChildren = false;
+            _this.$settings = new fgui.DefaultMovieClipSettings();
+            _this.on("added", _this.added, _this);
+            _this.on("removed", _this.removed, _this);
+            return _this;
+        }
+        Object.defineProperty(MovieClip.prototype, "frames", {
+            get: function () {
+                return this.$frames;
+            },
+            set: function (value) {
+                this.$frames = value;
+                if (this.$frames != null)
+                    this.$frameCount = this.$frames.length;
+                else
+                    this.$frameCount = 0;
+                if (this.$settings.endFrame == -1 || this.$settings.endFrame > this.$frameCount - 1)
+                    this.$settings.endFrame = this.$frameCount - 1;
+                if (this.$settings.loopEndAt == -1 || this.$settings.loopEndAt > this.$frameCount - 1)
+                    this.$settings.loopEndAt = this.$frameCount - 1;
+                if (this.$currentFrame < 0 || this.$currentFrame > this.$frameCount - 1)
+                    this.$currentFrame = this.$frameCount - 1;
+                if (this.$frameCount > 0)
+                    this.setFrame(this.$frames[this.$currentFrame]);
+                else
+                    this.setFrame(null);
+                this.data.rewind();
+            },
+            enumerable: true,
+            configurable: true
+        });
+        Object.defineProperty(MovieClip.prototype, "frameCount", {
+            get: function () {
+                return this.$frameCount;
+            },
+            enumerable: true,
+            configurable: true
+        });
+        Object.defineProperty(MovieClip.prototype, "boundsRect", {
+            get: function () {
+                return this._bounds.getRectangle(PIXI.Rectangle.EMPTY);
+            },
+            set: function (value) {
+                this._bounds.addBoundsArea(new PIXI.Bounds(), value);
+            },
+            enumerable: true,
+            configurable: true
+        });
+        Object.defineProperty(MovieClip.prototype, "currentFrame", {
+            get: function () {
+                return this.$currentFrame;
+            },
+            set: function (value) {
+                if (this.$currentFrame != value) {
+                    this.$currentFrame = value;
+                    this.data.currentFrame = value;
+                    this.setFrame(this.$currentFrame < this.$frameCount ? this.$frames[this.$currentFrame] : null);
+                }
+            },
+            enumerable: true,
+            configurable: true
+        });
+        Object.defineProperty(MovieClip.prototype, "playing", {
+            get: function () {
+                return this.$playing;
+            },
+            set: function (value) {
+                this.$playing = value;
+                if (value && fgui.GObject.isDisplayObjectOnStage(this))
+                    fgui.GTimer.inst.add(0, 0, this.update, this);
+                else
+                    fgui.GTimer.inst.remove(this.update, this);
+            },
+            enumerable: true,
+            configurable: true
+        });
+        MovieClip.prototype.setPlaySettings = function () {
+            var args = [];
+            for (var _i = 0; _i < arguments.length; _i++) {
+                args[_i] = arguments[_i];
+            }
+            if (args.length == 1 && typeof args[0] == "object")
+                this.$settings.mix(args[0]);
+            else {
+                var s = args[0], e = args[1], r = args[2], l = args[3], ec = args[4], ecc = args[5];
+                var o = {};
+                if (fgui.utils.NumberUtil.isNumber(s))
+                    o.startFrame = s;
+                if (fgui.utils.NumberUtil.isNumber(e))
+                    o.endFrame = e;
+                if (fgui.utils.NumberUtil.isNumber(r))
+                    o.repeatCount = r;
+                if (fgui.utils.NumberUtil.isNumber(l))
+                    o.loopEndAt = l;
+                if (ec && typeof (ec) == "function")
+                    o.endCallback = ec;
+                if (ecc)
+                    o.endCallbackContext = ecc;
+                this.$settings.mix(o);
+            }
+            if (this.$settings.endFrame == -1 || this.$settings.endFrame > this.$frameCount - 1)
+                this.$settings.endFrame = this.$frameCount - 1;
+            if (this.$settings.loopEndAt == -1)
+                this.$settings.loopEndAt = this.$settings.endFrame;
+            this.$status = 0;
+            this.currentFrame = this.$settings.startFrame;
+        };
+        MovieClip.prototype.update = function () {
+            if (this.UIOwner.$inProgressBuilding)
+                return;
+            if (this.$playing && this.$frameCount != 0 && this.$status != 3) {
+                this.data.update(this);
+                if (this.$currentFrame != this.data.currentFrame) {
+                    if (this.$status == 1) {
+                        this.$currentFrame = this.$settings.startFrame;
+                        this.data.currentFrame = this.$currentFrame;
+                        this.$status = 0;
+                    }
+                    else if (this.$status == 2) {
+                        this.$currentFrame = this.$settings.loopEndAt;
+                        this.data.currentFrame = this.$currentFrame;
+                        this.$status = 3;
+                        if (this.$settings.endCallback != null)
+                            fgui.GTimer.inst.callLater(this.$playEnd, this);
+                    }
+                    else {
+                        this.$currentFrame = this.data.currentFrame;
+                        if (this.$currentFrame == this.$settings.endFrame) {
+                            if (this.$settings.repeatCount > 0) {
+                                this.$settings.repeatCount--;
+                                if (this.$settings.repeatCount == 0)
+                                    this.$status = 2;
+                                else
+                                    this.$status = 1;
+                            }
+                        }
+                    }
+                    this.setFrame(this.$frames[this.$currentFrame]);
+                }
+            }
+        };
+        MovieClip.prototype.$playEnd = function () {
+            if (this.$settings.endCallback != null) {
+                var f = this.$settings.endCallback;
+                var fObj = this.$settings.endCallbackContext;
+                this.$settings.endCallback = this.$settings.endCallbackContext = null;
+                this.$settings.endCallbackContext = null;
+                if (f)
+                    f.call(fObj, this);
+            }
+        };
+        MovieClip.prototype.setFrame = function (frame) {
+            this.texture = frame == null ? null : frame.texture;
+            this._textureID = -1;
+        };
+        MovieClip.prototype.added = function (disp) {
+            if (this.$playing)
+                fgui.GTimer.inst.add(0, 0, this.update, this);
+        };
+        MovieClip.prototype.removed = function (disp) {
+            if (this.$playing)
+                fgui.GTimer.inst.remove(this.update, this);
+        };
+        MovieClip.prototype.destroy = function () {
+            fgui.GTimer.inst.remove(this.update, this);
+            this.off("added", this.added, this);
+            this.off("removed", this.removed, this);
+            _super.prototype.destroy.call(this);
+        };
+        return MovieClip;
+    }(PIXI.Sprite));
+    fgui.MovieClip = MovieClip;
+})(fgui || (fgui = {}));
+
+(function (fgui) {
+    var UIContainer = (function (_super) {
         __extends(UIContainer, _super);
         function UIContainer(owner) {
             var _this = _super.call(this) || this;
@@ -14708,9 +15062,9 @@ var fgui;
     }(PIXI.Container));
     fgui.UIContainer = UIContainer;
 })(fgui || (fgui = {}));
-var fgui;
+
 (function (fgui) {
-    var UIImage = /** @class */ (function (_super) {
+    var UIImage = (function (_super) {
         __extends(UIImage, _super);
         function UIImage(owner) {
             var _this = _super.call(this) || this;
@@ -14718,14 +15072,13 @@ var fgui;
             _this.interactive = _this.interactiveChildren = false;
             return _this;
         }
-        /**@internal */
         UIImage.prototype.$initDisp = function (item) {
             if (this.$disp)
                 return;
             if (item) {
                 item.load();
                 if (item.scaleByTile) {
-                    var ts = new PIXI.extras.TilingSprite(item.texture);
+                    var ts = new PIXI.extras.NTilingSprite(item.id, item.texture);
                     this.$disp = ts;
                 }
                 else if (item.scale9Grid) {
@@ -14774,34 +15127,20 @@ var fgui;
                 return this.$disp.texture;
             },
             set: function (v) {
-                //need to reset first?
-                /*if (this.$disp instanceof PIXI.extras.TilingSprite) {
-                    this.$disp.tileScale.set(1, 1);
-                    this.$disp.tilePosition.set(0, 0);
-                }
-                else if (this.$disp instanceof PIXI.mesh.NineSlicePlane)
-                    this.$disp.leftWidth = this.$disp.topHeight = this.$disp.rightWidth = this.$disp.bottomHeight = 0;
-                */
                 this.$disp.texture = v;
             },
             enumerable: true,
             configurable: true
         });
         Object.defineProperty(UIImage.prototype, "scale9Grid", {
-            /**
-             * rect = x,y,w,h = l,t,r,b
-             */
             get: function () {
-                if (this.$disp instanceof PIXI.mesh.NineSlicePlane) {
+                if (this.$disp instanceof PIXI.NineSlicePlane) {
                     return new PIXI.Rectangle(this.$disp.leftWidth, this.$disp.topHeight, this.$disp.rightWidth, this.$disp.bottomHeight);
                 }
                 return null;
             },
-            /**
-             * rect = x,y,w,h = l,t,r,b
-             */
             set: function (rect) {
-                if (this.$disp instanceof PIXI.mesh.NineSlicePlane) {
+                if (this.$disp instanceof PIXI.NineSlicePlane) {
                     if (rect.left != this.$disp.leftWidth)
                         this.$disp.leftWidth = rect.left;
                     if (rect.top != this.$disp.topHeight)
@@ -14820,7 +15159,6 @@ var fgui;
                 return 0;
             },
             set: function (flags) {
-                //not support
             },
             enumerable: true,
             configurable: true
@@ -14860,9 +15198,9 @@ var fgui;
     }(PIXI.Container));
     fgui.UIImage = UIImage;
 })(fgui || (fgui = {}));
-var fgui;
+
 (function (fgui) {
-    var UISprite = /** @class */ (function (_super) {
+    var UISprite = (function (_super) {
         __extends(UISprite, _super);
         function UISprite(owner) {
             var _this = _super.call(this) || this;
@@ -14875,26 +15213,22 @@ var fgui;
     }(PIXI.Graphics));
     fgui.UISprite = UISprite;
 })(fgui || (fgui = {}));
-var fgui;
+
 (function (fgui) {
     var utils;
     (function (utils) {
-        var DOMEventManager = /** @class */ (function (_super) {
+        var DOMEventManager = (function (_super) {
             __extends(DOMEventManager, _super);
             function DOMEventManager() {
                 var _this = _super.call(this) || this;
                 _this.retEvent = {};
                 _this.nullLowestDeltaTimeout = NaN;
-                /*******************keys*******************/
                 _this.$pressedKeys = {};
                 _this.$releasedKeys = {};
                 _this.$downKeys = [];
-                //resize
                 window.addEventListener("resize", function (e) { return _this.notifyResizeEvents(e); }, false);
-                //modifer keys
                 window.addEventListener('keydown', function (e) { return _this.onWindowKeyDown(e); }, false);
                 window.addEventListener('keyup', function (e) { return _this.onWindowKeyUp(e); }, false);
-                //mouse wheel
                 var toBind = ('onwheel' in document || document["documentMode"] >= 9) ?
                     ['wheel'] : ['mousewheel', 'DomMouseScroll', 'MozMousePixelScroll'];
                 for (var i = toBind.length; i;) {
@@ -14902,7 +15236,6 @@ var fgui;
                 }
                 return _this;
             }
-            //resize
             DOMEventManager.prototype.notifyResizeEvents = function (e) {
                 this.emit('resize');
             };
@@ -14921,7 +15254,6 @@ var fgui;
                 if ('wheelDeltaX' in orgEvent) {
                     deltaX = orgEvent.wheelDeltaX * -1;
                 }
-                //FF DOMMouseScroll
                 if ('axis' in orgEvent && orgEvent.axis === orgEvent.HORIZONTAL_AXIS) {
                     deltaX = deltaY * -1;
                     deltaY = 0;
@@ -14940,18 +15272,14 @@ var fgui;
                 if (deltaY === 0 && deltaX === 0) {
                     return;
                 }
-                // Delta modes:
-                //   * deltaMode 0 is by pixels, nothing to do
-                //   * deltaMode 1 is by lines
-                //   * deltaMode 2 is by pages
                 if (orgEvent.deltaMode === 1) {
-                    var lineHeight = 16; //fontSize - line-height;
+                    var lineHeight = 16;
                     delta *= lineHeight;
                     deltaY *= lineHeight;
                     deltaX *= lineHeight;
                 }
                 else if (orgEvent.deltaMode === 2) {
-                    var pageHeight = 16; //dom.clientHeight = page-height
+                    var pageHeight = 16;
                     delta *= pageHeight;
                     deltaY *= pageHeight;
                     deltaX *= pageHeight;
@@ -14979,7 +15307,7 @@ var fgui;
                     clearTimeout(this.nullLowestDeltaTimeout);
                 }
                 this.nullLowestDeltaTimeout = setTimeout(function () { return _this.nullLowestDelta(); }, 200);
-                this.emit("__mouseWheel" /* MOUSE_WHEEL */, this.retEvent);
+                this.emit(fgui.DisplayObjectEvent.MOUSE_WHEEL, this.retEvent);
             };
             DOMEventManager.prototype.nullLowestDelta = function () {
                 this.lowestDelta = null;
@@ -15018,31 +15346,29 @@ var fgui;
         utils.DOMEventManager = DOMEventManager;
     })(utils = fgui.utils || (fgui.utils = {}));
 })(fgui || (fgui = {}));
-/// <reference path="../utils/DOMEventManager.ts" />
-var fgui;
+
 (function (fgui) {
-    var DefaultUIStageOptions = /** @class */ (function () {
+    var DefaultUIStageOptions = (function () {
         function DefaultUIStageOptions() {
-            this.scaleMode = "showAll" /* SHOW_ALL */;
-            this.orientation = "auto" /* AUTO */;
+            this.scaleMode = "showAll";
+            this.orientation = "auto";
             this.resolution = 1;
             this.designWidth = 800;
             this.designHeight = 600;
-            this.alignV = 4 /* MIDDLE */;
-            this.alignH = 1 /* CENTER */;
+            this.alignV = 4;
+            this.alignH = 1;
             this.fallbackWidth = 0;
             this.fallbackHeight = 0;
         }
         return DefaultUIStageOptions;
     }());
     fgui.DefaultUIStageOptions = DefaultUIStageOptions;
-    var DefaultBoudingRectCalculator = /** @class */ (function () {
+    var DefaultBoudingRectCalculator = (function () {
         function DefaultBoudingRectCalculator() {
         }
         DefaultBoudingRectCalculator.prototype.getRect = function (view, fallbackWidth, fallbackHeight) {
             var p = view.parentElement;
             if (!p)
-                //this should be impossible situation unless the user forget to append the view into the DOM.
                 throw new Error("Your view of PIXI are still in memory but not appended to DOM yet? it's necessary that there is a parent element to wrap your view up.");
             var rect = p.getBoundingClientRect();
             var ret = {
@@ -15064,7 +15390,6 @@ var fgui;
                 ret.width = rect.width;
                 ret.height = rect.height;
             }
-            //consider the worst situation: window does not have size!!
             if (ret.width <= 0 || ret.height <= 0) {
                 console.warn("fetch container size to initialize PIXI in all ways have failed, now use default size (fallbackWidth / fallbackHeight) specified in the options instead.");
                 ret.width = fallbackWidth;
@@ -15074,7 +15399,7 @@ var fgui;
         };
         return DefaultBoudingRectCalculator;
     }());
-    var UIStage = /** @class */ (function (_super) {
+    var UIStage = (function (_super) {
         __extends(UIStage, _super);
         function UIStage(app, stageOptions) {
             var _this = _super.call(this) || this;
@@ -15088,7 +15413,6 @@ var fgui;
             _this.$sizeCalcer = new DefaultBoudingRectCalculator();
             UIStageInst.push(_this);
             _this.$appContext = app;
-            _this.$appContext.renderer.autoResize = false;
             _this.$appStage = app.stage;
             _this.$appStage.interactive = true;
             var opt;
@@ -15108,12 +15432,11 @@ var fgui;
             _this.$appContext.view.style.position = "absolute";
             var container = _this.$appContext.view.parentElement;
             var style = container.style;
-            //if parent is not a DIV box, make one
             if (container.tagName != "DIV") {
                 container = document.createElement("DIV");
                 style.position = "relative";
                 style.left = style.top = "0px";
-                style.width = style.height = "100%"; //and set default full-screen
+                style.width = style.height = "100%";
                 style.overflow = "hidden";
                 _this.$appContext.view.parentElement.appendChild(container);
                 container.appendChild(_this.$appContext.view);
@@ -15219,27 +15542,27 @@ var fgui;
             var scaleX = (screenWidth / stageWidth) || 0;
             var scaleY = (screenHeight / stageHeight) || 0;
             switch (scaleMode) {
-                case "exactFit" /* EXACT_FIT */:
+                case "exactFit":
                     break;
-                case "fixedHeight" /* FIXED_HEIGHT */:
+                case "fixedHeight":
                     stageWidth = Math.round(screenWidth / scaleY);
                     break;
-                case "fixedWidth" /* FIXED_WIDTH */:
+                case "fixedWidth":
                     stageHeight = Math.round(screenHeight / scaleX);
                     break;
-                case "noBorder" /* NO_BORDER */:
+                case "noBorder":
                     if (scaleX > scaleY)
                         displayHeight = Math.round(stageHeight * scaleX);
                     else
                         displayWidth = Math.round(stageWidth * scaleY);
                     break;
-                case "showAll" /* SHOW_ALL */:
+                case "showAll":
                     if (scaleX > scaleY)
                         displayWidth = Math.round(stageWidth * scaleY);
                     else
                         displayHeight = Math.round(stageHeight * scaleX);
                     break;
-                case "fixedAuto" /* FIXED_AUTO */:
+                case "fixedAuto":
                     if ((displayWidth / displayHeight) < (stageWidth / stageHeight)) {
                         scaleY = scaleX;
                         stageHeight = Math.round(screenHeight / scaleX);
@@ -15261,7 +15584,6 @@ var fgui;
                 displayHeight: displayHeight
             };
         };
-        /**@internal */
         UIStage.prototype.updateScreenSize = function () {
             if (fgui.HTMLInput.isTyping)
                 return;
@@ -15270,9 +15592,9 @@ var fgui;
             var rect = this.$sizeCalcer.getRect(canvas, this.$options.fallbackWidth, this.$options.fallbackHeight);
             var shouldRotate = false;
             var orientation = this.$options.orientation;
-            if (orientation != "auto" /* AUTO */) {
-                shouldRotate = orientation != "portrait" /* PORTRAIT */ && rect.height > rect.width
-                    || orientation == "portrait" /* PORTRAIT */ && rect.width > rect.height;
+            if (orientation != "auto") {
+                shouldRotate = orientation != "portrait" && rect.height > rect.width
+                    || orientation == "portrait" && rect.width > rect.height;
             }
             var screenWidth = shouldRotate ? rect.height : rect.width;
             var screenHeight = shouldRotate ? rect.width : rect.height;
@@ -15288,25 +15610,26 @@ var fgui;
             canvasStyle.transformOrigin = canvasStyle.webkitTransformOrigin = canvasStyle.msTransformOrigin = canvasStyle.mozTransformOrigin = canvasStyle.oTransformOrigin = "0px 0px 0px";
             canvasStyle.width = displayWidth + "px";
             canvasStyle.height = displayHeight + "px";
+            this.$appContext.renderer.resize(stageWidth, stageHeight);
             var mat = this.$canvasMatrix.identity();
             var dispWidth = shouldRotate ? displayHeight : displayWidth;
             var dispHeight = shouldRotate ? displayWidth : displayHeight;
             var offx, offy;
-            if (this.$options.alignH == 0 /* LEFT */)
+            if (this.$options.alignH == 0)
                 offx = 0;
-            else if (this.$options.alignH == 2 /* RIGHT */)
+            else if (this.$options.alignH == 2)
                 offx = rect.width - dispWidth;
             else
                 offx = (rect.width - dispWidth) * 0.5;
-            if (this.$options.alignV == 3 /* TOP */)
+            if (this.$options.alignV == 3)
                 offy = 0;
-            else if (this.$options.alignV == 5 /* BOTTOM */)
+            else if (this.$options.alignV == 5)
                 offy = rect.height - dispHeight;
             else
                 offy = (rect.height - dispHeight) * 0.5;
             var rotDeg = 0;
             if (shouldRotate) {
-                if (this.$options.orientation == "landscape" /* LANDSCAPE */) {
+                if (this.$options.orientation == "landscape") {
                     mat.rotate(Math.PI / 2);
                     mat.translate(screenHeight - offx, offy);
                     rotDeg = 90;
@@ -15341,7 +15664,7 @@ var fgui;
             im.stageScaleY = this.$scaleY;
             this.$appContext.renderer.resize(stageWidth, stageHeight);
             fgui.HTMLInput.inst.updateSize(displayWidth / stageWidth, displayHeight / stageHeight);
-            this.emit("__sizeChanged" /* SIZE_CHANGED */, this);
+            this.emit(fgui.DisplayObjectEvent.SIZE_CHANGED, this);
         };
         UIStage.prototype.formatData = function (value) {
             if (Math.abs(value) < 0.000001)
@@ -15363,26 +15686,20 @@ var fgui;
     var UIStageInst = [];
     var resizeCheckTimer = NaN;
     function resizeHandler() {
-        var onSafari = !!window.navigator.userAgent.match(/Version\/\d+\.\d\x20Mobile\/\S+\x20Safari/);
-        resizeCheckTimer = NaN;
         UIStageInst.forEach(function (stage) {
-            if (onSafari)
-                stage.offsetY = (document.body.clientHeight || document.documentElement.clientHeight) - window.innerHeight;
             stage.updateScreenSize();
         });
     }
     fgui.utils.DOMEventManager.inst.on('resize', function () {
-        if (isNaN(resizeCheckTimer)) {
-            resizeCheckTimer = window.setTimeout(resizeHandler, 300);
-        }
+        clearTimeout(resizeCheckTimer);
+        resizeCheckTimer = window.setTimeout(resizeHandler, 300);
     });
 })(fgui || (fgui = {}));
-var fgui;
+
 (function (fgui) {
     var isEmojiChar = function (charCode, nextCharCode) {
         var hs = charCode;
         var nextCharValid = typeof nextCharCode === 'number' && !isNaN(nextCharCode) && nextCharCode > 0;
-        // surrogate pair
         if (hs >= 0xd800 && hs <= 0xdbff) {
             if (nextCharValid) {
                 var uc = ((hs - 0xd800) * 0x400) + (nextCharCode - 0xdc00) + 0x10000;
@@ -15391,7 +15708,6 @@ var fgui;
                 }
             }
         }
-        // non surrogate
         else if ((hs >= 0x2100 && hs <= 0x27ff)
             || (hs >= 0x2B05 && hs <= 0x2b07)
             || (hs >= 0x2934 && hs <= 0x2935)
@@ -15406,42 +15722,32 @@ var fgui;
         }
         return 0;
     };
-    //override for emoji test
     PIXI.TextMetrics.canBreakChars = function (char, nextChar, token, index, breakWords) {
         if (isEmojiChar(char.charCodeAt(0), nextChar && nextChar.charCodeAt(0)) == 2)
             return false;
         return true;
     };
-    /*
-    * I assume that your project uses CJK languages so that the sentence won't be splitted by ' ' char here,
-    * In case if your project has multiple-language support please override this method in your project like the code below:
-    *      PIXI.TextMetrics.isBreakingSpace = function(char?: string): boolean {
-           if (typeof char !== 'string')
-               return false;
-           //not break by ' ' char here for CJK language, and other alphabetic language like English will be splitted by ' ' char naturally
-           if(char === ' ' && langSetting.language === 'CJK') return false;
-           return (PIXI.TextMetrics._breakingSpaces.indexOf(char.charCodeAt(0)) >= 0);
-       };
-    */
     PIXI.TextMetrics.isBreakingSpace = function (char) {
         if (typeof char !== 'string')
             return false;
         if (char === ' ')
-            return false; //not break by this
-        return (PIXI.TextMetrics._breakingSpaces.indexOf(char.charCodeAt(0)) >= 0);
+            return false;
+        return (PIXI.TextMetrics["_breakingSpaces"].indexOf(char.charCodeAt(0)) >= 0);
     };
-    var UITextField = /** @class */ (function (_super) {
+    var UITextField = (function (_super) {
         __extends(UITextField, _super);
         function UITextField(owner) {
-            var _this = _super.call(this) || this;
+            var _this = _super.call(this, "") || this;
             _this.$minHeightID = -1;
+            _this._width = 0;
+            _this._height = 0;
             _this.UIOwner = owner;
             _this.interactive = _this.interactiveChildren = false;
-            _this._texture.noFrame = false;
-            _this._width = _this._texture.frame.width;
-            _this._height = _this._texture.frame.height;
+            _this.texture.noFrame = false;
+            _this._width = _this.texture.frame.width;
+            _this._height = _this.texture.frame.height;
             _this.$minHeight = -1;
-            _this._texture.on("update", _this.updateFrame, _this);
+            _this.texture.on("update", _this.updateFrame, _this);
             return _this;
         }
         Object.defineProperty(UITextField.prototype, "minHeight", {
@@ -15451,10 +15757,9 @@ var fgui;
             enumerable: true,
             configurable: true
         });
-        /**@internal */
         UITextField.prototype.$updateMinHeight = function () {
             if (this.style.styleID != this.$minHeightID || this.$minHeight <= 0) {
-                this.$minHeight = PIXI.TextMetrics.measureText("", this.style, false).lineHeight; //no way to get the cached auto-lineheight (when style.lineHeight=0);
+                this.$minHeight = PIXI.TextMetrics.measureText("", this.style, false).lineHeight;
                 this.$minHeightID = this.style.styleID;
             }
         };
@@ -15462,25 +15767,24 @@ var fgui;
             fgui.GTimer.inst.callLater(this.internalUpdateFrame, this);
         };
         UITextField.prototype.internalUpdateFrame = function () {
-            if (this._texture) {
-                var frm = this._texture.frame;
+            if (this.texture) {
+                var frm = this.texture.frame;
                 this._height = Math.max(this._height, this.$minHeight);
                 var w = frm.x + this._width, h = frm.y + this._height;
-                if (w > this._texture.baseTexture.width)
-                    w = this._texture.baseTexture.width - frm.x;
-                if (h > this._texture.baseTexture.height)
-                    h = this._texture.baseTexture.height - frm.y;
+                if (w > this.texture.baseTexture.width)
+                    w = this.texture.baseTexture.width - frm.x;
+                if (h > this.texture.baseTexture.height)
+                    h = this.texture.baseTexture.height - frm.y;
                 frm.width = w / this.resolution;
                 frm.height = h / this.resolution;
-                this._texture.trim.width = frm.width;
-                this._texture.trim.height = frm.height;
-                var padding = this._style.trim ? 0 : this._style.padding;
-                this._texture.trim.x = -padding;
-                this._texture.trim.y = -padding;
-                this._texture.frame = frm;
+                this.texture.trim.width = frm.width;
+                this.texture.trim.height = frm.height;
+                var padding = this.style.trim ? 0 : this.style.padding;
+                this.texture.trim.x = -padding;
+                this.texture.trim.y = -padding;
+                this.texture.frame = frm;
             }
         };
-        //cancel scaling update
         UITextField.prototype._onTextureUpdate = function () {
             this._textureID = -1;
             this._textureTrimmedID = -1;
@@ -15510,7 +15814,7 @@ var fgui;
         Object.defineProperty(UITextField.prototype, "textHeight", {
             get: function () {
                 this.updateText(true);
-                return this._texture.orig.height;
+                return this.texture.orig.height;
             },
             set: function (v) {
             },
@@ -15520,7 +15824,7 @@ var fgui;
         Object.defineProperty(UITextField.prototype, "textWidth", {
             get: function () {
                 this.updateText(true);
-                return this._texture.orig.width;
+                return this.texture.orig.width;
             },
             set: function (v) {
                 if (v != this.style.wordWrapWidth)
@@ -15533,9 +15837,82 @@ var fgui;
     }(PIXI.Text));
     fgui.UITextField = UITextField;
 })(fgui || (fgui = {}));
-var fgui;
+
 (function (fgui) {
-    var DisplayListItem = /** @class */ (function () {
+    var DisplayObjectEvent = (function () {
+        function DisplayObjectEvent() {
+        }
+        DisplayObjectEvent.XY_CHANGED = "__xyChanged";
+        DisplayObjectEvent.SIZE_CHANGED = "__sizeChanged";
+        DisplayObjectEvent.VISIBLE_CHANGED = "__visibleChanged";
+        DisplayObjectEvent.SIZE_DELAY_CHANGE = "__sizeDelayChange";
+        DisplayObjectEvent.MOUSE_WHEEL = "__mouseWheel";
+        return DisplayObjectEvent;
+    }());
+    fgui.DisplayObjectEvent = DisplayObjectEvent;
+})(fgui || (fgui = {}));
+
+(function (fgui) {
+    var DragEvent = (function () {
+        function DragEvent() {
+        }
+        DragEvent.START = "__dragStart";
+        DragEvent.END = "__dragEnd";
+        DragEvent.MOVING = "__dragMoving";
+        DragEvent.DROP = "__dragDrop";
+        return DragEvent;
+    }());
+    fgui.DragEvent = DragEvent;
+})(fgui || (fgui = {}));
+
+(function (fgui) {
+    var GearEvent = (function () {
+        function GearEvent() {
+        }
+        GearEvent.GEAR_STOP = "__gearStop";
+        return GearEvent;
+    }());
+    fgui.GearEvent = GearEvent;
+})(fgui || (fgui = {}));
+
+(function (fgui) {
+    var ListEvent = (function () {
+        function ListEvent() {
+        }
+        ListEvent.ItemClick = "__itemClick";
+        return ListEvent;
+    }());
+    fgui.ListEvent = ListEvent;
+})(fgui || (fgui = {}));
+
+(function (fgui) {
+    var ScrollEvent = (function () {
+        function ScrollEvent() {
+        }
+        ScrollEvent.SCROLL = "__scroll";
+        ScrollEvent.SCROLL_END = "__scrollEnd";
+        ScrollEvent.PULL_DOWN_RELEASE = "__pullDownRelease";
+        ScrollEvent.PULL_UP_RELEASE = "__pullUpRelease";
+        return ScrollEvent;
+    }());
+    fgui.ScrollEvent = ScrollEvent;
+})(fgui || (fgui = {}));
+
+(function (fgui) {
+    var TextEvent = (function () {
+        function TextEvent() {
+        }
+        TextEvent.LinkClick = "__linkClick";
+        TextEvent.Change = "__textChange";
+        TextEvent.FocusIn = "__textFocusIn";
+        TextEvent.FocusOut = "__textFocusOut";
+        return TextEvent;
+    }());
+    fgui.TextEvent = TextEvent;
+})(fgui || (fgui = {}));
+
+(function (fgui) {
+    var DisplayListItem = (function () {
         function DisplayListItem(packageItem, type) {
             this.packageItem = packageItem;
             this.type = type;
@@ -15544,14 +15921,13 @@ var fgui;
     }());
     fgui.DisplayListItem = DisplayListItem;
 })(fgui || (fgui = {}));
-var fgui;
+
 (function (fgui) {
-    var PackageItem = /** @class */ (function () {
+    var PackageItem = (function () {
         function PackageItem() {
             this.width = 0;
             this.height = 0;
             this.tiledSlices = 0;
-            //movieclip
             this.interval = 0;
             this.repeatDelay = 0;
         }
@@ -15565,9 +15941,9 @@ var fgui;
     }());
     fgui.PackageItem = PackageItem;
 })(fgui || (fgui = {}));
-var fgui;
+
 (function (fgui) {
-    var UIObjectFactory = /** @class */ (function () {
+    var UIObjectFactory = (function () {
         function UIObjectFactory() {
         }
         UIObjectFactory.setPackageItemExtension = function (url, type) {
@@ -15578,11 +15954,11 @@ var fgui;
         };
         UIObjectFactory.newObject = function (pi) {
             switch (pi.type) {
-                case 0 /* Image */:
+                case 0:
                     return new fgui.GImage();
-                case 2 /* MovieClip */:
+                case 2:
                     return new fgui.GMovieClip();
-                case 4 /* Component */:
+                case 4:
                     var cls = UIObjectFactory.packageItemExtensions[pi.owner.id + pi.id];
                     if (cls)
                         return new cls();
@@ -15611,7 +15987,6 @@ var fgui;
             }
             return null;
         };
-        /**@internal */
         UIObjectFactory.newObjectDirectly = function (type) {
             switch (type) {
                 case "image":
@@ -15645,9 +16020,9 @@ var fgui;
     }());
     fgui.UIObjectFactory = UIObjectFactory;
 })(fgui || (fgui = {}));
-var fgui;
+
 (function (fgui) {
-    var AtlasConfig = /** @class */ (function () {
+    var AtlasConfig = (function () {
         function AtlasConfig(atlasName, frame, orig, trim, rotate) {
             this.atlasName = atlasName;
             this.frame = frame;
@@ -15657,7 +16032,7 @@ var fgui;
         }
         return AtlasConfig;
     }());
-    var UIPackage = /** @class */ (function () {
+    var UIPackage = (function () {
         function UIPackage() {
             this.$items = [];
             this.$atlasConfigs = {};
@@ -15757,10 +16132,6 @@ var fgui;
                 }
             });
         };
-        /**
-         * format the URL from old version to new version
-         * @param url url with old version format
-         */
         UIPackage.normalizeURL = function (url) {
             if (url == null)
                 return null;
@@ -15803,11 +16174,8 @@ var fgui;
                     }
                     var cfg = new AtlasConfig(texID);
                     cfg.frame = new PIXI.Rectangle(parseInt(arr[2]), parseInt(arr[3]), parseInt(arr[4]), parseInt(arr[5]));
-                    cfg.rotate = arr[6] == "1" ? 6 : 0; //refer to PIXI.GroupD8, the editors rotate image by -90deg
+                    cfg.rotate = arr[6] == "1" ? 6 : 0;
                     cfg.orig = cfg.rotate != 0 ? new PIXI.Rectangle(0, 0, cfg.frame.height, cfg.frame.width) : null;
-                    /*
-                    cfg.trim = trimed;  //ignored for now - editor not support
-                    */
                     _this.$atlasConfigs[itemId] = cfg;
                 }
             });
@@ -15831,7 +16199,7 @@ var fgui;
                     pi.height = parseInt(arr[1]);
                 }
                 switch (pi.type) {
-                    case 0 /* Image */: {
+                    case 0: {
                         str = cxml.attributes.scale;
                         if (str == "9grid") {
                             str = cxml.attributes.scale9grid;
@@ -15856,7 +16224,7 @@ var fgui;
                     _this.$itemsByName[pi.name] = pi;
             }, this);
             this.$items.forEach(function (pi) {
-                if (pi.type == 6 /* Font */) {
+                if (pi.type == 6) {
                     _this.loadFont(pi);
                     UIPackage.$bitmapFonts[pi.bitmapFont.id] = pi.bitmapFont;
                 }
@@ -15889,7 +16257,6 @@ var fgui;
                 var texture = pi.texture;
                 if (texture != null) {
                     texture.destroy();
-                    //texture.baseTexture.destroy();
                     PIXI.Texture.removeFromCache(texture);
                 }
                 else if (pi.frames != null) {
@@ -15897,7 +16264,6 @@ var fgui;
                         texture = f.texture;
                         if (texture) {
                             texture.destroy();
-                            //texture.baseTexture.destroy();
                             PIXI.Texture.removeFromCache(texture);
                         }
                     });
@@ -15947,7 +16313,7 @@ var fgui;
         };
         UIPackage.prototype.internalCreateObject = function (item, userClass) {
             if (userClass === void 0) { userClass = null; }
-            var g = item.type == 4 /* Component */ && userClass != null ? new userClass() : fgui.UIObjectFactory.newObject(item);
+            var g = item.type == 4 && userClass != null ? new userClass() : fgui.UIObjectFactory.newObject(item);
             if (g == null)
                 return null;
             UIPackage.$constructingObjects++;
@@ -15988,7 +16354,7 @@ var fgui;
         };
         UIPackage.prototype.getItemAsset = function (item) {
             switch (item.type) {
-                case 0 /* Image */:
+                case 0:
                     if (!item.decoded) {
                         item.decoded = true;
                         var cfg = this.$atlasConfigs[item.id];
@@ -15996,7 +16362,7 @@ var fgui;
                             item.texture = this.createSpriteTexture(item.id, cfg);
                     }
                     return item.texture;
-                case 7 /* Atlas */:
+                case 7:
                     if (!item.decoded) {
                         item.decoded = true;
                         var fileName = (item.file != null && item.file.length > 0) ? item.file : (item.id + ".png");
@@ -16011,22 +16377,22 @@ var fgui;
                         }
                     }
                     return item.texture;
-                case 3 /* Sound */: //ignored, maybe integrate with PIXI.Sound
+                case 3:
                     item.decoded = false;
                     return null;
-                case 6 /* Font */:
+                case 6:
                     if (!item.decoded) {
                         item.decoded = true;
                         this.loadFont(item);
                     }
                     return item.bitmapFont;
-                case 2 /* MovieClip */:
+                case 2:
                     if (!item.decoded) {
                         item.decoded = true;
                         this.loadMovieClip(item);
                     }
                     return item.frames;
-                case 4 /* Component */:
+                case 4:
                     if (!item.decoded) {
                         item.decoded = true;
                         var str = this.getResDescriptor(item.id + ".xml");
@@ -16314,7 +16680,6 @@ var fgui;
             font.colorable = colorable;
             item.bitmapFont = font;
         };
-        /**@internal */
         UIPackage.$constructingObjects = 0;
         UIPackage.$packageInstById = {};
         UIPackage.$packageInstByName = {};
@@ -16328,18 +16693,18 @@ var fgui;
     }());
     fgui.UIPackage = UIPackage;
 })(fgui || (fgui = {}));
-var fgui;
+
 (function (fgui) {
     var utils;
     (function (utils) {
-        var AssetLoader = /** @class */ (function (_super) {
+        var AssetLoader = (function (_super) {
             __extends(AssetLoader, _super);
             function AssetLoader(baseUrl, concurrency) {
                 return _super.call(this, baseUrl, concurrency) || this;
             }
             AssetLoader.prototype._onComplete = function () {
                 AssetLoader.addResources(this.resources);
-                _super.prototype._onComplete.call(this);
+                this.onComplete.dispatch();
             };
             ;
             Object.defineProperty(AssetLoader, "resourcesPool", {
@@ -16366,94 +16731,25 @@ var fgui;
             AssetLoader.addResources = function (res) {
                 if (!res)
                     return;
-                for (var key in res) //override the item which has same key name
+                for (var key in res)
                     AssetLoader.$resources[key] = res[key];
             };
             AssetLoader.$resources = {};
             return AssetLoader;
-        }(PIXI.loaders.Loader));
+        }(PIXI.Loader));
         utils.AssetLoader = AssetLoader;
     })(utils = fgui.utils || (fgui.utils = {}));
 })(fgui || (fgui = {}));
-var fgui;
+
 (function (fgui) {
     var utils;
     (function (utils) {
-        var Binder = /** @class */ (function () {
-            function Binder() {
-            }
-            Binder.create = function (func, context) {
-                var args = [];
-                for (var _i = 2; _i < arguments.length; _i++) {
-                    args[_i - 2] = arguments[_i];
-                }
-                if (!context)
-                    return func;
-                return (function () {
-                    var fullargs = arguments.length > 0 ? [].concat(Array.prototype.slice.call(arguments)).concat(args) : [].concat(args);
-                    func.apply(context, fullargs);
-                });
-            };
-            return Binder;
-        }());
-        utils.Binder = Binder;
-    })(utils = fgui.utils || (fgui.utils = {}));
-})(fgui || (fgui = {}));
-var fgui;
-(function (fgui) {
-    var utils;
-    (function (utils) {
-        /*
-        * ColorMatrix
-        * Visit http://createjs.com/ for documentation, updates and examples.
-        *
-        * Copyright (c) 2010 gskinner.com, inc.
-        *
-        * Permission is hereby granted, free of charge, to any person
-        * obtaining a copy of this software and associated documentation
-        * files (the "Software"), to deal in the Software without
-        * restriction, including without limitation the rights to use,
-        * copy, modify, merge, publish, distribute, sublicense, and/or sell
-        * copies of the Software, and to permit persons to whom the
-        * Software is furnished to do so, subject to the following
-        * conditions:
-        *
-        * The above copyright notice and this permission notice shall be
-        * included in all copies or substantial portions of the Software.
-        *
-        * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-        * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
-        * OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-        * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
-        * HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
-        * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-        * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
-        * OTHER DEALINGS IN THE SOFTWARE.
-        */
-        var ColorMatrix = /** @class */ (function () {
-            /**
-             * Provides helper functions for assembling a matrix for use with the {{#crossLink "ColorMatrixFilter"}}{{/crossLink}}.
-             * Most methods return the instance to facilitate chained calls.
-             *
-             * <h4>Example</h4>
-             *
-             *      myColorMatrix.adjustHue(20).adjustBrightness(50);
-             *
-             * See {{#crossLink "Filter"}}{{/crossLink}} for an example of how to apply filters, or {{#crossLink "ColorMatrixFilter"}}{{/crossLink}}
-             * for an example of how to use ColorMatrix to change a DisplayObject's color.
-             * @class ColorMatrix
-             * @param {Number} brightness
-             * @param {Number} contrast
-             * @param {Number} saturation
-             * @param {Number} hue
-             * @constructor
-             **/
+        var ColorMatrix = (function () {
             function ColorMatrix(brightness, contrast, saturation, hue) {
                 if (brightness === void 0) { brightness = 0; }
                 if (contrast === void 0) { contrast = 0; }
                 if (saturation === void 0) { saturation = 0; }
                 if (hue === void 0) { hue = 0; }
-                /** @internal */
                 this._raw = [];
                 this.h = 0;
                 this.s = 0;
@@ -16481,42 +16777,14 @@ var fgui;
                 enumerable: true,
                 configurable: true
             });
-            /**
-             * Resets the instance with the specified values.
-             * @method setColor
-             * @param {Number} brightness
-             * @param {Number} contrast
-             * @param {Number} saturation
-             * @param {Number} hue
-             * @return {ColorMatrix} The ColorMatrix instance the method is called on (useful for chaining calls.)
-             * @chainable
-             */
             ColorMatrix.prototype.setColor = function (brightness, contrast, saturation, hue) {
                 return this.reset().adjustColor(brightness, contrast, saturation, hue);
             };
             ;
-            /**
-             * Resets the matrix to identity values.
-             * @method reset
-             * @return {ColorMatrix} The ColorMatrix instance the method is called on (useful for chaining calls.)
-             * @chainable
-             */
             ColorMatrix.prototype.reset = function () {
                 return this.copy(ColorMatrix.IDENTITY_MATRIX);
             };
             ;
-            /**
-             * Shortcut method to adjust brightness, contrast, saturation and hue.
-             * Equivalent to calling adjustHue(hue), adjustContrast(contrast),
-             * adjustBrightness(brightness), adjustSaturation(saturation), in that order.
-             * @method adjustColor
-             * @param {Number} brightness
-             * @param {Number} contrast
-             * @param {Number} saturation
-             * @param {Number} hue
-             * @return {ColorMatrix} The ColorMatrix instance the method is called on (useful for chaining calls.)
-             * @chainable
-             **/
             ColorMatrix.prototype.adjustColor = function (brightness, contrast, saturation, hue) {
                 this.adjustHue(hue);
                 this.adjustContrast(contrast);
@@ -16524,14 +16792,6 @@ var fgui;
                 return this.adjustSaturation(saturation);
             };
             ;
-            /**
-             * Adjusts the brightness of pixel color by adding the specified value to the red, green and blue channels.
-             * Positive values will make the image brighter, negative values will make it darker.
-             * @method adjustBrightness
-             * @param {Number} value A value between -255 & 255 that will be added to the RGB channels.
-             * @return {ColorMatrix} The ColorMatrix instance the method is called on (useful for chaining calls.)
-             * @chainable
-             **/
             ColorMatrix.prototype.adjustBrightness = function (value) {
                 if (value == 0 || isNaN(value)) {
                     return this;
@@ -16548,14 +16808,6 @@ var fgui;
                 return this;
             };
             ;
-            /**
-             * Adjusts the contrast of pixel color.
-             * Positive values will increase contrast, negative values will decrease contrast.
-             * @method adjustContrast
-             * @param {Number} value A value between -100 & 100.
-             * @return {ColorMatrix} The ColorMatrix instance the method is called on (useful for chaining calls.)
-             * @chainable
-             **/
             ColorMatrix.prototype.adjustContrast = function (value) {
                 if (value == 0 || isNaN(value)) {
                     return this;
@@ -16563,7 +16815,7 @@ var fgui;
                 this.c = value;
                 value = this._cleanValue(value, 100);
                 var x;
-                var cst = 1; //127
+                var cst = 1;
                 if (value < 0) {
                     x = cst + value / 100 * cst;
                 }
@@ -16573,7 +16825,7 @@ var fgui;
                         x = ColorMatrix.DELTA_INDEX[value];
                     }
                     else {
-                        x = ColorMatrix.DELTA_INDEX[(value << 0)] * (1 - x) + ColorMatrix.DELTA_INDEX[(value << 0) + 1] * x; // use linear interpolation for more granularity.
+                        x = ColorMatrix.DELTA_INDEX[(value << 0)] * (1 - x) + ColorMatrix.DELTA_INDEX[(value << 0) + 1] * x;
                     }
                     x = x * cst + cst;
                 }
@@ -16587,14 +16839,6 @@ var fgui;
                 return this;
             };
             ;
-            /**
-             * Adjusts the color saturation of the pixel.
-             * Positive values will increase saturation, negative values will decrease saturation (trend towards greyscale).
-             * @method adjustSaturation
-             * @param {Number} value A value between -100 & 100.
-             * @return {ColorMatrix} The ColorMatrix instance the method is called on (useful for chaining calls.)
-             * @chainable
-             **/
             ColorMatrix.prototype.adjustSaturation = function (value) {
                 if (value == 0 || isNaN(value)) {
                     return this;
@@ -16615,13 +16859,6 @@ var fgui;
                 return this;
             };
             ;
-            /**
-             * Adjusts the hue of the pixel color.
-             * @method adjustHue
-             * @param {Number} value A value between -180 & 180.
-             * @return {ColorMatrix} The ColorMatrix instance the method is called on (useful for chaining calls.)
-             * @chainable
-             **/
             ColorMatrix.prototype.adjustHue = function (value) {
                 if (value == 0 || isNaN(value)) {
                     return this;
@@ -16643,13 +16880,6 @@ var fgui;
                 return this;
             };
             ;
-            /**
-             * Concatenates (multiplies) the specified matrix with this one.
-             * @method concat
-             * @param {Array} matrix An array or ColorMatrix instance.
-             * @return {ColorMatrix} The ColorMatrix instance the method is called on (useful for chaining calls.)
-             * @chainable
-             **/
             ColorMatrix.prototype.concat = function (matrix) {
                 matrix = this._fixMatrix(matrix);
                 if (matrix.length != ColorMatrix.LENGTH) {
@@ -16659,20 +16889,10 @@ var fgui;
                 return this;
             };
             ;
-            /**
-             * Returns a clone of this ColorMatrix.
-             * @method clone
-             * @return {ColorMatrix} A clone of this ColorMatrix.
-             **/
             ColorMatrix.prototype.clone = function () {
                 return (new ColorMatrix()).copy(this._raw);
             };
             ;
-            /**
-             * Return a length 25 (5x5) array instance containing this matrix's values.
-             * @method toArray
-             * @return {Array} An array holding this matrix's values.
-             **/
             ColorMatrix.prototype.toArray = function () {
                 var arr = [];
                 for (var i = 0, l = ColorMatrix.LENGTH; i < l; i++) {
@@ -16681,13 +16901,6 @@ var fgui;
                 return arr;
             };
             ;
-            /**
-             * Copy the specified matrix's values to this matrix.
-             * @method copy
-             * @param {Array} matrix An array or ColorMatrix instance.
-             * @return {ColorMatrix} The ColorMatrix instance the method is called on (useful for chaining calls.)
-             * @chainable
-             **/
             ColorMatrix.prototype.copy = function (matrix) {
                 var l = ColorMatrix.LENGTH;
                 for (var i = 0; i < l; i++) {
@@ -16696,11 +16909,6 @@ var fgui;
                 return this;
             };
             ;
-            /**
-             * @method _multiplyMatrix
-             * @param {Array} matrix
-             * @protected
-             **/
             ColorMatrix.prototype._multiplyMatrix = function (matrix) {
                 var i, j, k, col = [];
                 for (i = 0; i < 5; i++) {
@@ -16717,23 +16925,10 @@ var fgui;
                 }
             };
             ;
-            /**
-             * Make sure values are within the specified range, hue has a limit of 180, brightness is 255, others are 100.
-             * @method _cleanValue
-             * @param {Number} value The raw number
-             * @param {Number} limit The maximum that the number can be. The minimum is the limit * -1.
-             * @protected
-             **/
             ColorMatrix.prototype._cleanValue = function (value, limit) {
                 return Math.min(limit, Math.max(-limit, value));
             };
             ;
-            /**
-             * Makes sure matrixes are 5x5 (25 long).
-             * @method _fixMatrix
-             * @param {Array} matrix
-             * @protected
-             **/
             ColorMatrix.prototype._fixMatrix = function (matrix) {
                 if (matrix instanceof ColorMatrix) {
                     matrix = matrix.toArray();
@@ -16746,13 +16941,6 @@ var fgui;
                 }
                 return matrix;
             };
-            /**
-             * Array of delta values for contrast calculations.
-             * @property DELTA_INDEX
-             * @type Array
-             * @protected
-             * @static
-             **/
             ColorMatrix.DELTA_INDEX = [
                 0, 0.01, 0.02, 0.04, 0.05, 0.06, 0.07, 0.08, 0.1, 0.11,
                 0.12, 0.14, 0.15, 0.16, 0.17, 0.18, 0.20, 0.21, 0.22, 0.24,
@@ -16766,13 +16954,6 @@ var fgui;
                 7.3, 7.5, 7.8, 8.0, 8.4, 8.7, 9.0, 9.4, 9.6, 9.8,
                 10.0
             ];
-            /**
-             * Identity matrix values.
-             * @property IDENTITY_MATRIX
-             * @type Array
-             * @protected
-             * @static
-             **/
             ColorMatrix.IDENTITY_MATRIX = [
                 1, 0, 0, 0, 0,
                 0, 1, 0, 0, 0,
@@ -16780,35 +16961,27 @@ var fgui;
                 0, 0, 0, 1, 0,
                 0, 0, 0, 0, 1
             ];
-            /**
-             * The constant length of a color matrix.
-             * @property LENGTH
-             * @type Number
-             * @protected
-             * @static
-             **/
             ColorMatrix.LENGTH = ColorMatrix.IDENTITY_MATRIX.length;
             return ColorMatrix;
         }());
         utils.ColorMatrix = ColorMatrix;
     })(utils = fgui.utils || (fgui.utils = {}));
 })(fgui || (fgui = {}));
-/// <reference path="../GRoot.ts" />
-var fgui;
+
 (function (fgui) {
     var utils;
     (function (utils) {
-        var DragIndicator = /** @class */ (function () {
+        var DragIndicator = (function () {
             function DragIndicator() {
                 this.$agent = new fgui.GLoader();
                 this.$agent.draggable = true;
                 this.$agent.touchable = false;
                 this.$agent.setSize(100, 100);
                 this.$agent.setPivot(0.5, 0.5, true);
-                this.$agent.align = "center" /* Center */;
-                this.$agent.verticalAlign = 1 /* Middle */;
-                this.$agent.sortingOrder = 1000000; //top most
-                this.$agent.on("__dragEnd" /* END */, this.$dragEnd, this);
+                this.$agent.align = "center";
+                this.$agent.verticalAlign = 1;
+                this.$agent.sortingOrder = 1000000;
+                this.$agent.on(fgui.DragEvent.END, this.$dragEnd, this);
             }
             Object.defineProperty(DragIndicator.prototype, "dragAgent", {
                 get: function () {
@@ -16858,10 +17031,10 @@ var fgui;
                 this.$sourceData = null;
                 var obj = fgui.GRoot.inst.getObjectUnderPoint(evt.data.global.x, evt.data.global.y);
                 while (obj != null) {
-                    if (obj.hasListener("__dragDrop" /* DROP */)) {
+                    if (obj.hasListener(fgui.DragEvent.DROP)) {
                         obj.requestFocus();
                         evt.currentTarget = obj.displayObject;
-                        obj.emit("__dragDrop" /* DROP */, evt, sourceData);
+                        obj.emit(fgui.DragEvent.DROP, evt, sourceData);
                         return;
                     }
                     obj = obj.parent;
@@ -16872,173 +17045,11 @@ var fgui;
         utils.DragIndicator = DragIndicator;
     })(utils = fgui.utils || (fgui.utils = {}));
 })(fgui || (fgui = {}));
-var fgui;
+
 (function (fgui) {
     var utils;
     (function (utils) {
-        var InputDelegate = /** @class */ (function () {
-            function InputDelegate(tf) {
-                this.$inited = false;
-                this.$restrictString = null;
-                this.$restrictRegex = null;
-                this.$focused = false;
-                this.$textField = tf;
-                this.$input = new fgui.InputElement(tf);
-            }
-            InputDelegate.prototype.initialize = function () {
-                if (this.$inited)
-                    return;
-                this.$input.$addToStage();
-                this.$input.on("updateText", this.updateText, this);
-                this.$input.on("__focusChanged" /* CHANGED */, this.focusHandler, this);
-                this.$textField.on(fgui.InteractiveEvents.Down, this.textFieldDownHandler, this);
-                this.$inited = true;
-            };
-            InputDelegate.prototype.textFieldDownHandler = function () {
-                this.$onFocus();
-            };
-            InputDelegate.prototype.destroy = function () {
-                if (!this.$inited)
-                    return;
-                this.$input.$removeFromStage();
-                this.$textField.off(fgui.InteractiveEvents.Down, this.textFieldDownHandler, this);
-                fgui.GRoot.inst.off(fgui.InteractiveEvents.Down, this.onStageDown, this);
-                this.$input.off("updateText", this.updateText, this);
-                this.$input.off("__focusChanged" /* CHANGED */, this.focusHandler, this);
-                this.$inited = false;
-            };
-            Object.defineProperty(InputDelegate.prototype, "text", {
-                get: function () {
-                    return this.$input.text;
-                },
-                set: function (v) {
-                    this.$input.text = v;
-                },
-                enumerable: true,
-                configurable: true
-            });
-            InputDelegate.prototype.setColor = function (v) {
-                return this.$input.setColor(v);
-            };
-            InputDelegate.prototype.updateText = function () {
-                var textValue = this.$input.text;
-                var isChanged = false;
-                if (this.$restrictRegex != null) {
-                    var result = textValue.match(this.$restrictRegex);
-                    if (result)
-                        textValue = result.join("");
-                    else
-                        textValue = "";
-                    isChanged = true;
-                }
-                if (isChanged && this.$input.text != textValue)
-                    this.$input.text = textValue;
-                this.$textField.text = this.$input.text;
-                this.$textField.emit("__textChange" /* Change */, this.$textField);
-            };
-            InputDelegate.prototype.onStageDown = function (e) {
-                var target = fgui.GObject.castFromNativeObject(e.currentTarget);
-                if (target != this.$textField)
-                    this.$input.$hide();
-            };
-            InputDelegate.prototype.focusHandler = function (type) {
-                if (type == "focus") {
-                    if (!this.$focused) {
-                        this.$focused = true;
-                        this.$textField.$isTyping = true;
-                        this.$textField.alpha = 0;
-                        this.$textField.emit("__focusChanged" /* CHANGED */, "focus", this.$textField);
-                    }
-                }
-                else if (type == "blur") {
-                    if (this.$focused) {
-                        this.$focused = false;
-                        fgui.GRoot.inst.off(fgui.InteractiveEvents.Down, this.onStageDown, this);
-                        this.$textField.$isTyping = false;
-                        this.$textField.alpha = 1;
-                        this.$input.$onBlur();
-                        this.$textField.emit("__focusChanged" /* CHANGED */, "blur", this.$textField);
-                    }
-                }
-            };
-            Object.defineProperty(InputDelegate.prototype, "isFocused", {
-                get: function () {
-                    return this.$focused;
-                },
-                enumerable: true,
-                configurable: true
-            });
-            /**@internal */
-            InputDelegate.prototype.$getProperty = function (name) {
-                return this.$inited && this.$input.getAttribute(name) || null;
-            };
-            /**@internal */
-            InputDelegate.prototype.$setProperty = function (name, value) {
-                if (!this.$inited)
-                    return;
-                this.$input.setAttribute(name, value);
-            };
-            Object.defineProperty(InputDelegate.prototype, "$restrict", {
-                get: function () {
-                    return this.$restrictString;
-                },
-                set: function (v) {
-                    this.$restrictString = v;
-                    if (this.$restrictString != null && this.$restrictString.length > 0)
-                        this.$restrictRegex = new RegExp(this.$restrictString);
-                    else
-                        this.$restrictRegex = null;
-                },
-                enumerable: true,
-                configurable: true
-            });
-            Object.defineProperty(InputDelegate.prototype, "type", {
-                get: function () {
-                    return this.$type;
-                },
-                set: function (v) {
-                    if (v != this.$type)
-                        this.$type = v;
-                },
-                enumerable: true,
-                configurable: true
-            });
-            InputDelegate.prototype.tryHideInput = function () {
-                if (!this.$textField.visible && this.$input)
-                    this.$input.$removeFromStage();
-            };
-            /**@internal */
-            InputDelegate.prototype.$updateProperties = function () {
-                if (this.isFocused) {
-                    this.$input.resetInput();
-                    this.tryHideInput();
-                    return;
-                }
-                this.$input.text = this.$textField.text;
-                this.$input.resetInput();
-                this.tryHideInput();
-            };
-            /**@internal */
-            InputDelegate.prototype.$onFocus = function () {
-                var _this = this;
-                if (!this.$textField.visible || this.$focused)
-                    return;
-                fgui.GRoot.inst.off(fgui.InteractiveEvents.Down, this.onStageDown, this);
-                fgui.GTimer.inst.callLater(function () {
-                    fgui.GRoot.inst.on(fgui.InteractiveEvents.Down, _this.onStageDown, _this);
-                }, this);
-                this.$input.$show();
-            };
-            return InputDelegate;
-        }());
-        utils.InputDelegate = InputDelegate;
-    })(utils = fgui.utils || (fgui.utils = {}));
-})(fgui || (fgui = {}));
-var fgui;
-(function (fgui) {
-    var utils;
-    (function (utils) {
-        var Margin = /** @class */ (function () {
+        var Margin = (function () {
             function Margin() {
                 this.left = 0;
                 this.right = 0;
@@ -17073,57 +17084,11 @@ var fgui;
         utils.Margin = Margin;
     })(utils = fgui.utils || (fgui.utils = {}));
 })(fgui || (fgui = {}));
-var fgui;
+
 (function (fgui) {
     var utils;
     (function (utils) {
-        var NumberUtil = /** @class */ (function () {
-            function NumberUtil() {
-            }
-            NumberUtil.clamp = function (value, min, max) {
-                if (value < min)
-                    value = min;
-                else if (value > max)
-                    value = max;
-                return value;
-            };
-            NumberUtil.clamp01 = function (value) {
-                if (value > 1)
-                    value = 1;
-                else if (value < 0)
-                    value = 0;
-                return value;
-            };
-            NumberUtil.isNumber = function (n) {
-                if (typeof (n) != "number")
-                    return false;
-                if (isNaN(n))
-                    return false;
-                return true;
-            };
-            NumberUtil.sign = function (x) {
-                x = Number(x);
-                if (x === 0 || isNaN(x))
-                    return x;
-                return x > 0 ? 1 : -1;
-            };
-            NumberUtil.angleToRadian = function (n) {
-                return n * NumberUtil.RADIAN;
-            };
-            NumberUtil.lerp = function (s, e, p) {
-                return s + p * (e - s);
-            };
-            NumberUtil.RADIAN = Math.PI / 180;
-            return NumberUtil;
-        }());
-        utils.NumberUtil = NumberUtil;
-    })(utils = fgui.utils || (fgui.utils = {}));
-})(fgui || (fgui = {}));
-var fgui;
-(function (fgui) {
-    var utils;
-    (function (utils) {
-        var RawByte = /** @class */ (function () {
+        var RawByte = (function () {
             function RawByte() {
             }
             RawByte.inRange = function (a, min, max) {
@@ -17139,12 +17104,12 @@ var fgui;
                 var utf8_lower_boundary = 0;
                 while (data.length > pos) {
                     var _byte = data[pos++];
-                    if (_byte == -1 /* EOF_byte */) {
+                    if (_byte == -1) {
                         if (utf8_bytes_needed != 0) {
-                            code_point = 65533 /* Fatal_code_point */;
+                            code_point = 65533;
                         }
                         else {
-                            code_point = -1 /* EOF_code_point */;
+                            code_point = -1;
                         }
                     }
                     else {
@@ -17169,7 +17134,6 @@ var fgui;
                                     utf8_code_point = _byte - 0xF0;
                                 }
                                 else {
-                                    //throw new Error("failed to decode the raw binary data");
                                 }
                                 utf8_code_point = utf8_code_point * Math.pow(64, utf8_bytes_needed);
                                 code_point = null;
@@ -17181,7 +17145,7 @@ var fgui;
                             utf8_bytes_seen = 0;
                             utf8_lower_boundary = 0;
                             pos--;
-                            code_point = 65533 /* Fatal_code_point */;
+                            code_point = 65533;
                         }
                         else {
                             utf8_bytes_seen += 1;
@@ -17205,8 +17169,7 @@ var fgui;
                             }
                         }
                     }
-                    //Decode string
-                    if (code_point !== null && code_point !== -1 /* EOF_code_point */) {
+                    if (code_point !== null && code_point !== -1) {
                         if (code_point <= 0xFFFF) {
                             if (code_point > 0)
                                 result += String.fromCharCode(code_point);
@@ -17225,126 +17188,11 @@ var fgui;
         utils.RawByte = RawByte;
     })(utils = fgui.utils || (fgui.utils = {}));
 })(fgui || (fgui = {}));
-var fgui;
+
 (function (fgui) {
     var utils;
     (function (utils) {
-        var StringUtil = /** @class */ (function () {
-            function StringUtil() {
-            }
-            StringUtil.encodeHTML = function (str) {
-                if (!str)
-                    return "";
-                else
-                    return str.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;").replace("'", "&apos;");
-            };
-            StringUtil.getFileName = function (source) {
-                var i = source.lastIndexOf("/");
-                if (i != -1)
-                    source = source.substr(i + 1);
-                i = source.lastIndexOf("\\");
-                if (i != -1)
-                    source = source.substr(i + 1);
-                i = source.lastIndexOf(".");
-                if (i != -1)
-                    return source.substring(0, i);
-                else
-                    return source;
-            };
-            StringUtil.startsWith = function (source, str, ignoreCase) {
-                if (ignoreCase === void 0) { ignoreCase = false; }
-                if (!source)
-                    return false;
-                else if (source.length < str.length)
-                    return false;
-                else {
-                    source = source.substring(0, str.length);
-                    if (!ignoreCase)
-                        return source == str;
-                    else
-                        return source.toLowerCase() == str.toLowerCase();
-                }
-            };
-            StringUtil.endsWith = function (source, str, ignoreCase) {
-                if (ignoreCase === void 0) { ignoreCase = false; }
-                if (!source)
-                    return false;
-                else if (source.length < str.length)
-                    return false;
-                else {
-                    source = source.substring(source.length - str.length);
-                    if (!ignoreCase)
-                        return source == str;
-                    else
-                        return source.toLowerCase() == str.toLowerCase();
-                }
-            };
-            StringUtil.trim = function (targetString) {
-                return StringUtil.trimLeft(StringUtil.trimRight(targetString));
-            };
-            StringUtil.trimLeft = function (targetString) {
-                var tempChar = "";
-                var i;
-                for (i = 0; i < targetString.length; i++) {
-                    tempChar = targetString.charAt(i);
-                    if (tempChar != " " && tempChar != "\n" && tempChar != "\r")
-                        break;
-                }
-                return targetString.substr(i);
-            };
-            StringUtil.trimRight = function (targetString) {
-                var tempChar = "";
-                var i;
-                for (i = targetString.length - 1; i >= 0; i--) {
-                    tempChar = targetString.charAt(i);
-                    if (tempChar != " " && tempChar != "\n" && tempChar != "\r")
-                        break;
-                }
-                return targetString.substring(0, i + 1);
-            };
-            StringUtil.convertToHtmlColor = function (argb, hasAlpha) {
-                if (hasAlpha === void 0) { hasAlpha = false; }
-                var alpha;
-                if (hasAlpha)
-                    alpha = (argb >> 24 & 0xFF).toString(16);
-                else
-                    alpha = "";
-                var red = (argb >> 16 & 0xFF).toString(16);
-                var green = (argb >> 8 & 0xFF).toString(16);
-                var blue = (argb & 0xFF).toString(16);
-                if (alpha.length == 1)
-                    alpha = "0" + alpha;
-                if (red.length == 1)
-                    red = "0" + red;
-                if (green.length == 1)
-                    green = "0" + green;
-                if (blue.length == 1)
-                    blue = "0" + blue;
-                return "#" + alpha + red + green + blue;
-            };
-            StringUtil.convertFromHtmlColor = function (str, hasAlpha) {
-                if (hasAlpha === void 0) { hasAlpha = false; }
-                if (str.length < 1)
-                    return 0;
-                if (str.charAt(0) == "#")
-                    str = str.substr(1);
-                if (str.length == 8)
-                    return (parseInt(str.substr(0, 2), 16) << 24) + parseInt(str.substr(2), 16);
-                else if (hasAlpha)
-                    return 0xFF000000 + parseInt(str, 16);
-                else
-                    return parseInt(str, 16);
-            };
-            return StringUtil;
-        }());
-        utils.StringUtil = StringUtil;
-    })(utils = fgui.utils || (fgui.utils = {}));
-})(fgui || (fgui = {}));
-var fgui;
-(function (fgui) {
-    var utils;
-    (function (utils) {
-        var UBBParser = /** @class */ (function () {
+        var UBBParser = (function () {
             function UBBParser() {
                 this.$readPos = 0;
                 this.smallFontSize = 12;
@@ -17432,7 +17280,6 @@ var fgui;
                     this.$readPos = pos;
                 return ret;
             };
-            //TODO: impl for GRichTextField
             UBBParser.prototype.parseStyle = function (text) {
                 return [];
             };
@@ -17442,88 +17289,3 @@ var fgui;
         utils.UBBParser = UBBParser;
     })(utils = fgui.utils || (fgui.utils = {}));
 })(fgui || (fgui = {}));
-var fgui;
-(function (fgui) {
-    var utils;
-    (function (utils) {
-        var XmlNode = /** @class */ (function () {
-            function XmlNode(ele) {
-                this.nodeName = ele.nodeName;
-                this.context = ele;
-                this.type = ele.nodeType;
-                this.text = (this.type == Node.COMMENT_NODE || this.type == Node.TEXT_NODE) ? this.context.textContent : null;
-            }
-            Object.defineProperty(XmlNode.prototype, "children", {
-                get: function () {
-                    if (!this.$children)
-                        this.$children = XmlParser.getChildNodes(this);
-                    return this.$children;
-                },
-                enumerable: true,
-                configurable: true
-            });
-            Object.defineProperty(XmlNode.prototype, "attributes", {
-                get: function () {
-                    if (!this.$attributes)
-                        this.$attributes = XmlParser.getNodeAttributes(this);
-                    return this.$attributes;
-                },
-                enumerable: true,
-                configurable: true
-            });
-            return XmlNode;
-        }());
-        utils.XmlNode = XmlNode;
-        var XmlParser = /** @class */ (function () {
-            function XmlParser() {
-            }
-            XmlParser.tryParse = function (xmlstring, mimeType) {
-                if (mimeType === void 0) { mimeType = "application/xml"; }
-                var doc = XmlParser.$parser.parseFromString(xmlstring, mimeType);
-                if (doc && doc.childNodes && doc.childNodes.length >= 1)
-                    return new XmlNode(doc.firstChild);
-                return null;
-            };
-            XmlParser.getXmlRoot = function (xml) {
-                if (!xml || !xml.context)
-                    throw new Error("Invalid xml node");
-                var p = xml.context;
-                while (p.parentNode != null)
-                    p = p.parentNode;
-                return p == xml.context ? xml : new XmlNode(p);
-            };
-            XmlParser.getChildNodes = function (xml, matchName) {
-                if (matchName === void 0) { matchName = null; }
-                var nodes = xml.context.childNodes;
-                var ret = [];
-                if (!nodes || nodes.length <= 0)
-                    return ret;
-                var len = nodes.length;
-                for (var i = 0; i < len; i++) {
-                    var n = nodes.item(i);
-                    if (n.nodeType == Node.TEXT_NODE)
-                        continue;
-                    if (!matchName || (matchName && matchName.length > 0 && n.nodeName.toLowerCase() == matchName.toLowerCase()))
-                        ret.push(new XmlNode(n));
-                }
-                return ret;
-            };
-            XmlParser.getNodeAttributes = function (xml) {
-                var asList = xml.context.attributes;
-                var ret = {};
-                if (!asList || asList.length <= 0)
-                    return ret;
-                var len = asList.length;
-                for (var i = 0; i < len; i++) {
-                    var a = asList.item(i);
-                    ret[a.nodeName] = a.nodeValue;
-                }
-                return ret;
-            };
-            XmlParser.$parser = new DOMParser();
-            return XmlParser;
-        }());
-        utils.XmlParser = XmlParser;
-    })(utils = fgui.utils || (fgui.utils = {}));
-})(fgui || (fgui = {}));
-//# sourceMappingURL=fairygui.js.map

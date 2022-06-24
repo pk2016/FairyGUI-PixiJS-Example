@@ -12,8 +12,6 @@
 
 // Library documentation : http://www.createjs.com/Docs/TweenJS/modules/TweenJS.html
 
-/// <reference types="createjs-lib" />
-
 declare namespace createjs {
 
     export class Ease {

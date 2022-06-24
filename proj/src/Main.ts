@@ -45,31 +45,28 @@ class Main extends PIXI.Application {
 
         //test.jpg actually is a binary file but just ends with fake postfix.
         let loader = new fgui.utils.AssetLoader();
-        loader.add("test", "images/test.jpg", { loadType: PIXI.loaders.Resource.LOAD_TYPE.XHR, xhrType: PIXI.loaders.Resource.XHR_RESPONSE_TYPE.BUFFER })
+        loader.add("test", "images/test.jpg", { loadType: PIXI.LoaderResource.LOAD_TYPE.XHR, xhrType: PIXI.LoaderResource.XHR_RESPONSE_TYPE.BUFFER})
             .add("test@atlas0", "images/test@atlas0.png")
             .add("test@atlas0_1", "images/test@atlas0_1.png")
             .add("test@atlas0_2", "images/test@atlas0_2.png")
             .add("test@atlas0_3", "images/test@atlas0_3.png")
             .add("test@atlas0_4", "images/test@atlas0_4.png")
-            .on("progress", this.loadProgress, this)
-            .on("complete", this.resLoaded, this)
             .load();
+        loader.onProgress.add(this.loadProgress, this);
+        loader.onComplete.add(this.resLoaded, this);  
     }
 
-    private loadProgress(loader: PIXI.loaders.Loader): void {
+    private loadProgress(loader: PIXI.Loader): void {
         let p = loader.progress;
         this.loadingView.setProgress(p);
         if (p >= 100) {
-            loader.off("progress", this.loadProgress, this);
+            loader.onProgress.detachAll();
             this.loadingView.dispose();
             this.loadingView = null;
         }
     }
 
-    private resLoaded(loader: PIXI.loaders.Loader): void {
-
-        loader.destroy();
-
+    private resLoaded(): void {
         fgui.UIPackage.addPackage("test");
 
         let ins = fgui.UIPackage.createObject("test", "main") as fgui.GComponent;
@@ -108,7 +105,7 @@ class Main extends PIXI.Application {
         }
     }
 
-    private runDemo(e: PIXI.interaction.InteractionEvent): void {
+    private runDemo(e: PIXI.InteractionEvent): void {
         let name = fgui.GObject.castFromNativeObject(e.currentTarget).name.replace("btn_", "");
         if (this.currentDemo) {
             if (this.currentDemo.name == name) {
@@ -180,7 +177,7 @@ class Main extends PIXI.Application {
         }
     }
 
-    private backToMenu(e: PIXI.interaction.InteractionEvent): void {
+    private backToMenu(e: PIXI.InteractionEvent): void {
         this.disposeDemo();
         this.mainIns.getController("c1").selectedIndex = 0;
     }
@@ -215,7 +212,7 @@ class Main extends PIXI.Application {
     }
 
     //-----depth--------------------
-    private __click1(e: PIXI.interaction.InteractionEvent, obj: fgui.GComponent, startPos: PIXI.Point): void {
+    private __click1(e: PIXI.InteractionEvent, obj: fgui.GComponent, startPos: PIXI.Point): void {
         let graph: fgui.GGraph = new fgui.GGraph();
         startPos.x += 10;
         startPos.y += 10;
@@ -225,7 +222,7 @@ class Main extends PIXI.Application {
         (obj.getChild("n22") as fgui.GComponent).addChild(graph);
     }
 
-    private __click2(e: PIXI.interaction.InteractionEvent, obj: fgui.GComponent, startPos: PIXI.Point): void {
+    private __click2(e: PIXI.InteractionEvent, obj: fgui.GComponent, startPos: PIXI.Point): void {
         let graph: fgui.GGraph = new fgui.GGraph();
         startPos.x += 10;
         startPos.y += 10;
@@ -262,7 +259,7 @@ class Main extends PIXI.Application {
         p.getChild("n22").removeClick(this.__getInputText, this);
         p.getChild("n22").click(this.__getInputText, this);
     }
-    private __getInputText(e:PIXI.interaction.InteractionEvent):void {
+    private __getInputText(e:PIXI.InteractionEvent):void {
         let p = fgui.GObject.castFromNativeObject(e.currentTarget).parent as fgui.GComponent;
         p.getChild("resulttxt").text = p.getChild("inputbox").text;
     }
@@ -292,14 +289,14 @@ class Main extends PIXI.Application {
         btnD.dragBounds = rect;
     }
 
-    private __onDragStart(evt: PIXI.interaction.InteractionEvent): void {
+    private __onDragStart(evt: PIXI.InteractionEvent): void {
         let btn = fgui.GObject.castFromNativeObject(evt.currentTarget);
         btn.stopDrag();
         if (!this.ddi) this.ddi = new fgui.utils.DragIndicator();
-        this.ddi.startDrag(btn, btn.icon, btn.icon, evt.data.pointerID);
+        this.ddi.startDrag(btn, btn.icon, btn.icon, evt.data.pointerId);
     }
 
-    private __onDrop(evt: PIXI.interaction.InteractionEvent, data: any): void {
+    private __onDrop(evt: PIXI.InteractionEvent, data: any): void {
         let btn: fgui.GButton = fgui.GObject.castFromNativeObject(evt.currentTarget) as fgui.GButton;
         btn.icon = data;
     }
@@ -374,7 +371,7 @@ class Main extends PIXI.Application {
         btn2.click(this.__clickPopup2, this);
     }
 
-    private __clickPopup1(evt: PIXI.interaction.InteractionEvent): void {
+    private __clickPopup1(evt: PIXI.InteractionEvent): void {
         let btn: fgui.GObject = fgui.GObject.castFromNativeObject(evt.currentTarget);
         this._pm.show(btn, fgui.PopupDirection.Down);
     }
